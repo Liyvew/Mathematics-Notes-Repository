@@ -1,82 +1,12 @@
 /*-- scss:rules --*/
 $theorem-border-left-color: $green;
 
-/* === 网页背景图片设置 === */
-body {
-  /* 使用渐变背景替代图片，避免路径问题 */
-  background: linear-gradient(135deg, 
-    #667eea 0%, 
-    #764ba2 25%, 
-    #f093fb 50%, 
-    #f5576c 75%, 
-    #4facfe 100%);
-  background-size: 400% 400%;
-  background-attachment: fixed;
-  /* 添加动画效果 */
-  animation: gradientShift 15s ease infinite;
-  min-height: 100vh;
-}
-
-/* 渐变动画 */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* 添加半透明遮罩层 */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1);
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* 主容器背景优化 */
-.quarto-container {
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  margin: 20px auto;
-  padding: 25px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* 主内容区域背景 */
-#quarto-content {
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: 10px;
-  padding: 35px;
-  margin: 20px 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* 侧边栏优化 */
-.sidebar {
-  background-color: rgba(248, 249, 250, 0.8);
-  border-radius: 10px;
-  padding: 20px;
-  margin: 10px 0;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/*copilot*/
 /* === 导航栏自定义样式 === */
-/* 优化导航栏以配合背景图片 */
+/* 方案1：深色主题导航栏 */
 .navbar {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%) !important;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(15px);
-  border-radius: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand, .navbar-nav .nav-link {
@@ -126,39 +56,6 @@ body::before {
   pointer-events: none;
   background-color: #f1f3f4 !important;
 }
-
-/* === 页面元素优化 === */
-/* 代码块背景优化 */
-pre, code {
-  background-color: rgba(248, 249, 250, 0.8) !important;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-}
-
-/* 表格背景优化 */
-.table {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(5px);
-}
-
-/* 公式背景优化 */
-.MathJax {
-  background-color: rgba(255, 255, 255, 0.6);
-  padding: 2px 4px;
-  border-radius: 3px;
-}
-
-/* 脚注和引用优化 */
-.footnotes, .references {
-  background-color: rgba(248, 249, 250, 0.8);
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-}
-
-/*copilot/*
 
 figcaption, .panel-caption, .figure-caption{
   text-align: center;
