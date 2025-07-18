@@ -1,0 +1,502 @@
+---
+title: "概率论选讲期末作业"
+subtitle: "正则条件概率的存在唯一性"
+author: "Liyve"
+date: "2025/06/23"
+date-modified: "2025/07/02"
+abstract: "本作业探讨了正则条件概率的概念, 重点关注其存在性与唯一性. [@Rockner2016ProbabilityNotes] 并未给出存在性与唯一性的证明, 因此, 严谨地补全这些证明成为本次作业的核心内容. "
+bibliography: "regular-conditional-probability.bib"
+lang: zh
+
+number-sections: true
+number-depth: 2
+toc-depth: 2
+
+
+format:
+    html: default
+    pdf:
+        toc: true
+    docx: default
+    gfm: default
+---
+
+\newcommand{\A}{\mathcal{A}}
+
+## 前言
+
+在上学期的 *概率论（双语）* 学习过程中, **求是书院**的同学们使用教材 [@李贤平1997概率论基础] 学习概率论. 该教材并未采用测度论的语言引入概率论, 也没有涉及条件期望的概念. 然而, 在本学期第二周的 *数理统计* 课程证明中, 教材 [@韦来生2015数理统计] 中出现了以条件概率积分形式给出的条件期望. 这让我猜测, 教材 [@韦来生2015数理统计] 中提到的条件期望, 应该与我们上学期在 [@Rockner2016ProbabilityNotes] 中学习到的内容是一致的. 经过与同学们讨论, 大家始终未能得出令人满意的结论. 直到第四周的 *概率论选讲* 课程中, 正则条件概率的概念被简要介绍, 但 [@Rockner2016ProbabilityNotes] 认为该主题与后续课程内容关联不大, 因而未作深入讨论. 因此, 我决定将这一主题作为本次期末作业的研究重点. 
+
+## 正则条件概率
+
+在课上的讨论中, 我们注意到条件概率
+$$
+P[A\mid \mathcal{A}_0]:=\mathbb{E}[\mathbb{I}_A\mid\mathcal{A}_0]
+$$
+
+在几乎处处意义下具有以下性质: 
+$$
+0\leq P[A\mid\A_0]\leq 1
+$$ 
+
+$$
+P[\emptyset\mid\A_0]=0;\ P[\Omega\mid\A_0]=1
+$$
+
+对于两两无交的 $A_n,\ n\in\mathbb{N}$,
+$$
+P[\bigcup_{n=1}^{\infty}A_n\mid \mathcal{A}_0]=\sum_{n=1}^{\infty}P[A_n\mid \mathcal{A}_0]
+$$
+
+然而, 这里的零测集依赖于每一个可测集 $A$, 并不存在一个对所有 $A$ 都适用的"通用"零测集, 使得条件概率 $P[A\mid \mathcal{A}_0]$ 对 $A$ 成为一个概率测度. 这促使我们寻求一种更精细的方式, 以更强的意义刻画 $P[A\mid \mathcal{A}_0]$. 
+
+:::{#def-probability-kernel}
+
+## 概率核
+
+设 $(\Omega,\A)$ 和 $(\Omega',\A')$ 是一对可测空间. 若函数 $K:\Omega\times\A'\to[0,1]$ 满足: 
+
+- 对于任意 $A'\in \A'$, 映射 $\omega\mapsto K(\omega,A')$ 是 $\A$-可测的;
+
+- 对于任意 $\omega\in\Omega$, 映射 $A'\mapsto K(\omega,A')$ 是 $(\Omega',\A')$ 上的概率测度.
+
+则称 $K$ 为**概率核**（Probability Kernel）.
+:::
+
+为了获得理想的"条件概率", 我们需要在结构更良好的空间中进行工作, 在这样的空间里上述构造才能被严格地定义. 
+
+:::{#def-standard-borel-space}
+
+## 标准 Borel 空间
+
+如果可测空间 $(\Omega,\A)$ 上存在一个完备度量 $d$, 使得 $(\Omega,d)$ 是可分度量空间, 并且 $\A$ 是由该拓扑生成的 Borel $\sigma$-代数, 则称 $(\Omega,\A)$ 为**标准 Borel 空间**（Standard Borel Space）.
+:::
+
+:::{#prp-regular-conditional-probability}
+
+## 正则条件概率
+
+参见 [@Rockner2016ProbabilityNotes {Proposition 5.4.3}]
+
+设 $(\Omega,\A)$ 是标准 Borel 空间, $P$ 是 $(\Omega,\A)$ 上的概率测度. 则对于每个子 $\sigma$-代数 $\A_0\subseteq\A$, 存在从 $(\Omega,\A_0)$ 到 $(\Omega,\A)$ 的概率核 $K_{\A_0}$, 使得对所有 $A\in\A$, 有: 
+
+$$
+K_{\A_0}(\omega,A)=P[A\mid\A_0](\omega)\quad \text{对 $P$-几乎处处的 }\omega\in\Omega.
+$$
+其中例外集可能依赖于 $A$. 
+
+若 $\tilde{K}_{\A_0}$ 也是从 $(\Omega,\A_0)$ 到 $(\Omega,\A)$ 的概率核, 并满足同样的性质, 则存在 $P$-零测集 $N\in\A$, 使得对每个 $\omega\in\Omega\setminus N$ 及每个 $A\in\A$, 有: 
+
+$$
+K_{\A_0}(\omega,A)=\tilde{K}_{\A_0}(\omega,A)\quad \text{对所有 }A\in\A.
+$$
+
+$K_{\A_0}(\omega,A)$ 被称为由 $\A_0$ 给定的正则条件概率. 
+:::
+
+## 正则条件概率的存在性
+
+在给出证明之前, 我们先陈述并证明后续论证所需的一些引理和定理. 
+
+:::{#lem-doob-dynkin}
+## Doob-Dynkin 引理
+
+设 $(\Omega, \mathcal{A}, P)$ 是概率空间, $X: \Omega \to S$ 是从 $\Omega$ 到可测空间 $(S, \mathcal{S})$ 的可测函数. 如果 $f: \Omega \to \mathbb{R}$ 是 $\sigma(X)$-可测的, 则存在可测函数 $g: S \to \mathbb{R}$, 使得 $f = g \circ X$ 几乎处处成立. 
+
+:::
+
+:::{.proof}
+## [@lem-doob-dynkin] 的证明
+
+设 $f: \Omega \to \mathbb{R}$ 是 $\sigma(X)$-可测的, 其中 $X: \Omega \to S$ 可测. 
+
+#### 第一步: $\sigma(X)$ 的结构
+
+由 $X$ 生成的 $\sigma$-代数为
+$$
+\sigma(X) = \{ X^{-1}(B) : B \in \mathcal{S} \}.
+$$
+由于 $f$ 是 $\sigma(X)$-可测的, 对于任意 Borel 集 $B \subseteq \mathbb{R}$, 有
+$$
+f^{-1}(B) \in \sigma(X).
+$$
+因此, 存在 $A_B \in \mathcal{S}$, 使得
+$$
+f^{-1}(B) = X^{-1}(A_B).
+$$
+这定义了一个从 $\mathbb{R}$ 的 Borel 集到 $\mathcal{S}$ 的映射 $B \mapsto A_B$. 为保证一致性, 该映射需保持集合运算（如并、交、补）, 这由 $f^{-1}$ 和 $X^{-1}$ 都是 $\sigma$-同态所保证. 
+
+#### 第二步: 用有理区间构造 $g$
+
+定义 $g: S \to \mathbb{R}$. 对每个有理数 $r \in \mathbb{Q}$, 设
+$$
+A_r = A_{(-\infty, r]} \in \mathcal{S},
+$$
+其中 $A_{(-\infty, r]}$ 满足 $f^{-1}((-\infty, r]) = X^{-1}(A_r)$. 
+
+对 $s \in S$, 定义
+$$
+g(s) = \inf \{ r \in \mathbb{Q} : s \in A_r \}.
+$$
+该下确界是良定义的, 因为: 
+
+- 对任意 $s \in S$, 由于 $f(\omega) \in \mathbb{R}$, 必有某个 $r \in \mathbb{Q}$ 使 $f(\omega) \leq r$, 从而 $X(\omega) \in A_r$. 
+- 集合 $\{ r \in \mathbb{Q} : s \in A_r \}$ 有下界. 
+
+#### 第三步: 验证 $f = g \circ X$ 几乎处处成立
+
+对 $\omega \in \Omega$, 我们断言 $f(\omega) = g(X(\omega))$, 除了一个 $P$-零测集外. 
+
+- **若 $f(\omega) \leq r$, $r \in \mathbb{Q}$: **
+
+  - $f(\omega) \leq r$, 则 $\omega \in f^{-1}((-\infty, r]) = X^{-1}(A_r)$, 即 $X(\omega) \in A_r$, 故 $g(X(\omega)) \leq r$. 
+  
+  - 反之, 若 $X(\omega) \in A_r$, 则 $g(X(\omega)) \leq r$, 即 $f(\omega) \leq r$. 
+
+- **若 $f(\omega) > r$, $r \in \mathbb{Q}$: **
+
+  - $f(\omega) > r$, 则 $\omega \notin f^{-1}((-\infty, r]) = X^{-1}(A_r)$, 即 $X(\omega) \notin A_r$, 故 $g(X(\omega)) > r$. 
+
+因此, $g(X(\omega)) \leq f(\omega)$ 且 $g(X(\omega)) \geq f(\omega)$, 除了 $f(\omega) \neq g(X(\omega))$ 的零测集外. 由于 $f$ 和 $g \circ X$ 都是可测的, 集合 $\{ \omega : f(\omega) \neq g(X(\omega)) \}$ 可测且测度为零. 
+
+#### 第四步: $g$ 的可测性
+
+要证明 $g$ 是 $\mathcal{S}$-可测的, 对任意 $a \in \mathbb{R}$, 需有 $\{ s \in S : g(s) \leq a \} \in \mathcal{S}$. 
+
+- **$a$ 为有理数时: **
+  $$
+  \{ s \in S : g(s) \leq a \} = \bigcap_{\substack{r \in \mathbb{Q} \\ r < a}} A_r^c \cup A_a.
+  $$
+  这由 $g$ 的定义可得. 
+
+- **$a$ 为任意实数时: **
+  用递减有理数列 $\{r_n\}$ 逼近 $a$, 则
+  $$
+  \{ s \in S : g(s) \leq a \} = \bigcap_{n=1}^\infty A_{r_n}.
+  $$
+  每个 $A_{r_n} \in \mathcal{S}$, 可数交仍在 $\mathcal{S}$ 中. 
+
+因此, $g$ 是 $\mathcal{S}$-可测的. 
+
+#### 第五步: 零测集上的唯一性
+
+若 $g'$ 也是满足 $f = g' \circ X$ 几乎处处的可测函数, 则 $g(X(\omega)) = g'(X(\omega))$ 对 $P$-几乎处处 $\omega$ 成立. 由于 $X$ 可测, $P_X = P \circ X^{-1}$, 故 $g = g'$ 在 $P_X$-几乎处处成立. 
+
+综上, 构造了可测函数 $g: S \to \mathbb{R}$, 使 $f = g \circ X$ 几乎处处成立, 证毕. 
+:::
+
+:::{.remark}
+**Doob-Dynkin 引理**说明, 任何 $\sigma(X)$-可测函数 $f$ 都可以表示为 $f = g \circ X$, 其中 $g$ 是某个可测函数. 在正则条件概率的背景下, 这意味着条件期望 $\mathbb{E}[1_A \mid \mathcal{A}_0]$ 作为 $\mathcal{A}_0$-可测函数, 可以表示为某个生成随机变量 $\eta$（如 $\eta(\omega) = \omega$）的函数. 这为构造核 $K_{\mathcal{A}_0}(\omega, A)$ 提供了基础, 使其成为 $\omega$ 的可测函数, 并满足所需的性质. 
+:::
+
+:::{#thm-Caratheodory-extension-theorem}
+## Carathéodory 扩张定理
+
+设 $\mathcal{C}$ 是集合 $\Omega$ 上的一个代数, $\mu_0: \mathcal{C} \to [0, \infty]$ 是一个可数可加的前测度（pre-measure）. 则存在一个测度 $\mu$, 定义在由 $\mathcal{C}$ 生成的 $\sigma$-代数 $\mathcal{A} = \sigma(\mathcal{C})$ 上, 并且 $\mu|_{\mathcal{C}} = \mu_0$. 此外, 若 $\mu_0$ 是 $\sigma$-有限的, 则该扩张是唯一的. 
+
+:::
+
+:::{.proof}
+## [@thm-Caratheodory-extension-theorem] 的证明
+
+设 $\mathcal{C}$ 是 $\Omega$ 上的一个集合代数, $\mu_0: \mathcal{C} \to [0, \infty]$ 是可数可加的前测度. 
+
+#### 第一步: 外测度的构造
+
+对任意 $E \subseteq \Omega$, 定义外测度 $\mu^*$: 
+$$
+\mu^*(E) = \inf\left\{ \sum_{n=1}^\infty \mu_0(C_n) : E \subseteq \bigcup_{n=1}^\infty C_n,\, C_n \in \mathcal{C} \right\}.
+$$
+可验证 $\mu^*$ 满足外测度的三条性质: 
+
+- **单调性**: 若 $A \subseteq B$, 则 $B$ 的任意覆盖也是 $A$ 的覆盖, 故 $\mu^*(A) \leq \mu^*(B)$. 
+
+- **可列次可加性**: 对任意 $\{A_n\}$, 分别取 $\{C_{n,k}\}_{k=1}^\infty$ 覆盖 $A_n$ 且 $\sum_{k=1}^\infty \mu_0(C_{n,k}) \leq \mu^*(A_n) + \epsilon/2^n$. 则 $\bigcup_{n,k} C_{n,k}$ 覆盖 $\bigcup_n A_n$, 且 $\sum_{n,k} \mu_0(C_{n,k}) \leq \sum_n \mu^*(A_n) + \epsilon$. 令 $\epsilon \to 0$ 得 $\mu^*(\bigcup_n A_n) \leq \sum_n \mu^*(A_n)$. 
+
+- **空集**: $\mu^*(\emptyset) = 0$, 因 $\emptyset \subseteq \emptyset$ 且 $\mu_0(\emptyset) = 0$. 
+
+#### 第二步: Carathéodory 可测集
+
+称 $A \subseteq \Omega$ 是 $\mu^*$-可测的, 若对任意 $E \subseteq \Omega$, 
+$$
+\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \setminus A).
+$$
+记所有 $\mu^*$-可测集为 $\mathcal{A}$. 可证明 $\mathcal{A}$ 是 $\sigma$-代数: 
+
+- **对补封闭**: 若 $A \in \mathcal{A}$, 则 $A^c$ 也满足同样条件. 
+
+- **对可列并封闭**: 先对有限并用归纳法证明, 再对可列并用极限逼近. 
+
+#### 第三步: 限制在 $\mathcal{A}$ 上是测度
+
+将 $\mu = \mu^*|_{\mathcal{A}}$, 可验证其为测度: 
+
+- 对任意两两不交的 $\{A_n\} \subseteq \mathcal{A}$, 由可列次可加性有 $\mu^*(\bigcup_n A_n) \leq \sum_n \mu^*(A_n)$. 
+
+- 反向不等式: 对有限并用 Carathéodory 条件递归证明 $\mu^*(\bigcup_{n=1}^N A_n) = \sum_{n=1}^N \mu^*(A_n)$, 再令 $N \to \infty$ 得可列可加性. 
+
+#### 第四步: 扩张性质
+
+对 $C \in \mathcal{C}$, 需证 $C$ 是 $\mu^*$-可测集且 $\mu^*(C) = \mu_0(C)$: 
+
+- **可测性**: 对任意 $E \subseteq \Omega$, 设 $\{C_n\}$ 覆盖 $E$, 则 $C_n \cap C,\, C_n \setminus C \in \mathcal{C}$, 且 $\mu_0(C_n) = \mu_0(C_n \cap C) + \mu_0(C_n \setminus C)$. 两边求和得 $\sum_n \mu_0(C_n) \geq \mu^*(E \cap C) + \mu^*(E \setminus C)$, 对所有覆盖取下确界得 $\mu^*(E) \geq \mu^*(E \cap C) + \mu^*(E \setminus C)$. 
+
+- **等式**: 由定义 $\mu^*(C) \leq \mu_0(C)$. 反向不等式: 若 $C \subseteq \bigcup_n C_n$, 则 $\mu_0(C) \leq \sum_n \mu_0(C_n \cap C) \leq \sum_n \mu_0(C_n)$, 取下确界得 $\mu^*(C) \geq \mu_0(C)$. 
+
+#### 第五步: 唯一性
+
+若 $\mu_0$ 是 $\sigma$-有限的, 则扩张唯一. 设 $\nu$ 也是 $\mathcal{A}$ 上的测度且 $\nu|_{\mathcal{C}} = \mu_0$: 
+
+- 用 **$\pi$-$\lambda$ 定理**: 
+
+  $\mathcal{C}$ 是 $\pi$-系统（对有限交封闭）. 
+
+  - 集合 $\{A \in \mathcal{A} : \mu(A) = \nu(A)\}$ 是 $\lambda$-系统. 
+  
+  - $\mu$ 与 $\nu$ 在 $\mathcal{C}$ 上一致, 故在 $\sigma(\mathcal{C})$ 上一致. 
+
+- **$\sigma$-有限性**: $\Omega = \bigcup_n \Omega_n$, $\mu_0(\Omega_n) < \infty$. 对任意 $A \in \mathcal{A}$, $\mu(A \cap \Omega_n) = \nu(A \cap \Omega_n)$, 故 $\mu(A) = \lim_{n \to \infty} \mu(A \cap \Omega_n) = \nu(A)$. 
+:::
+
+:::{.remark}
+**Carathéodory 扩张定理**保证: 只要前测度在代数上是 $\sigma$-有限的, 就能唯一地将其扩张为生成的 $\sigma$-代数上的测度. 在正则条件概率存在性的证明中, 这一结论确保了定义在可数生成集 $\mathcal{C}$ 上的有限可加映射 $f_A(\omega) = \mathbb{E}[1_A \mid \mathcal{A}_0](\omega)$ 能唯一扩张为 $\mathcal{A}$ 上的概率测度 $K_{\mathcal{A}_0}(\omega, \cdot)$. 这一步骤对于严谨构造正则条件概率核至关重要. 
+:::
+
+:::{#thm-k}
+
+[@kallenberg2002foundations{Theorem 6.3}]
+
+对于任意 Borel 空间 $S$ 和可测空间 $T$, 设 $\xi$ 和 $\eta$ 分别为 $S$ 和 $T$ 中的随机元. 则存在从 $T$ 到 $S$ 的概率核 $\mu$, 使得
+$$
+\mathbb{P}[\xi \in \cdot \mid \eta] = \mu(\eta, \cdot) \quad \text{a.e. } \mathcal{L}(\eta),
+$$
+且 $\mu$ 在 $\mathcal{L}(\eta)$ 几乎处处唯一. 
+:::
+
+:::{.proof}
+## [@thm-k] 的证明
+
+我们可以假设 $S \in \mathcal{B}(\mathbb{R})$. 对每个 $r \in \mathbb{Q}$, 可以选取某个可测函数 $f_r = f(\cdot, r): T \to [0, 1]$, 使得
+$$
+f(\eta, r) = \mathbb{P}[\xi \leq r \mid \eta] \quad \text{a.e.}, \quad r \in \mathbb{Q}.
+$${#eq-1}
+
+令 $A$ 为所有 $t\in T$ 使得 $f(t, r)$ 关于 $r \in \mathbb{Q}$ 单调递增, 且在 $\pm\infty$ 处极限分别为 1 和 0 的集合. 由于 $A$ 由可数个可测条件刻画, 且这些条件在 $\eta$ 上几乎处处成立, 故 $A \in \mathcal{T}$ 且 $\eta \in A$ 几乎处处成立. 现在定义
+$$
+F(t, x) = \mathbf{1}_A(t) \inf_{r > x} f(t, r) + \mathbf{1}_{A^c}(t) \mathbf{1}\{x \geq 0\}, \quad x \in \mathbb{R},\ t \in T,
+$$
+注意到对每个 $t \in T$, $F(t, \cdot)$ 是 $\mathbb{R}$ 上的分布函数. 因此, 由命题~\ref{prop:2.14}, 存在概率测度 $m(t, \cdot)$ 使得
+$$
+m(t, (-\infty, x]) = F(t, x), \quad x \in \mathbb{R},\ t \in T.
+$$
+对每个 $x$, $F(t, x)$ 显然关于 $t$ 可测, 通过单调类论证可得 $m$ 是从 $T$ 到 $\mathbb{R}$ 的概率核. 
+
+由 [@eq-1] 及 $\mathbb{E}^\eta$ 的单调收敛性质, 有
+$$
+m(\eta, (-\infty, x]) = F(\eta, x) = \mathbb{P}[\xi \leq x \mid \eta] \quad \text{a.e.}, \quad x \in \mathbb{R}.
+$$
+利用单调类论证和几乎处处的单调收敛性质, 可将上述关系推广为
+$$
+m(\eta, B) = \mathbb{P}[\xi \in B \mid \eta] \quad \text{a.e.}, \quad B \in \mathcal{B}(\mathbb{R}).
+$${#eq-2}
+
+特别地, $m(\eta, S^c) = 0$ 几乎处处成立, 因此在 $\mathcal{S} = \mathcal{B} \cap S$ 上, 令
+$$
+\mu(t, \cdot) = m(t, \cdot) \mathbf{1}\{m(t, S) = 1\} + \delta_s \mathbf{1}\{m(t, S) < 1\}, \quad t \in T,
+$$
+其中 $s \in S$ 任取, 则 [@eq-2] 对 $\mu$ 依然成立. 如果 $\mu'$ 是另一个满足条件的核, 则有
+$$
+\mu(\eta, (-\infty, r]) = \mathbb{P}[\xi \leq r \mid \eta] = \mu'(\eta, (-\infty, r]) \quad \text{a.e.}, \quad r \in \mathbb{Q},
+$$
+再由单调类论证可得 $\mu(\eta, \cdot) = \mu'(\eta, \cdot)$ 几乎处处成立. 
+:::
+
+:::{.proof}
+## 正则条件概率存在性的证明
+
+设 $(\Omega, \mathcal{A})$ 是标准 Borel 空间, $P$ 是其上的概率测度, $\mathcal{A}_0 \subseteq \mathcal{A}$ 是子 $\sigma$-代数. 
+
+#### 第一步: 可数生成集与条件期望
+
+由于 $(\Omega, \mathcal{A})$ 是标准 Borel 空间, 存在使 $\mathcal{A}$ 成为 Borel $\sigma$-代数的 Polish 拓扑. 标准 Borel 空间的一个重要性质是: 对任意子 $\sigma$-代数, 概率测度都存在正则条件概率. 
+
+取 $\mathcal{C}$ 为生成 $\mathcal{A}$ 的可数 $\pi$-系统. 对每个 $A \in \mathcal{C}$, 条件期望 $\mathbb{E}[1_A \mid \mathcal{A}_0]$ 存在且为 $\mathcal{A}_0$-可测函数, $P$-几乎处处唯一. 由 Doob-Dynkin 引理（见 [@lem-doob-dynkin]）, 对每个 $A \in \mathcal{C}$, 存在可测函数 $f_A: \Omega \to [0,1]$, 使得
+$$
+\mathbb{E}[1_A \mid \mathcal{A}_0] = f_A \circ \eta \quad \text{几乎处处},
+$$
+其中 $\eta$ 是生成 $\mathcal{A}_0$ 的可测函数（如 $\eta(\omega) = \omega$）. 
+
+#### 第二步: 通过扩张构造概率核
+
+对每个固定 $\omega \in \Omega$, 定义 $f_A(\omega)$, $A \in \mathcal{C}$. 映射 $A \mapsto f_A(\omega)$ 满足: 
+
+- **有限可加性**: 若 $A_1, A_2 \in \mathcal{C}$ 且互不相交, 则 $f_{A_1 \cup A_2}(\omega) = f_{A_1}(\omega) + f_{A_2}(\omega)$; 
+
+- **非负性**: $f_A(\omega) \geq 0$; 
+
+- **归一性**: $f_\Omega(\omega) = 1$. 
+
+要将 $f_A(\omega)$ 扩张为 $(\Omega, \mathcal{A})$ 上的概率测度, 可用 Carathéodory 扩张定理（见 [@thm-Caratheodory-extension-theorem]）. 由于 $\mathcal{C}$ 是 $\pi$-系统, 若 $f_A(\omega)$ 在 $\mathcal{C}$ 上可数可加, 则扩张唯一. 这可由主导收敛定理和 $\mathcal{C}$ 生成 $\mathcal{A}$ 得到. 
+
+因此, 对 $P$-几乎处处的 $\omega$, 存在唯一的概率测度 $K_{\mathcal{A}_0}(\omega, \cdot)$, 使得
+$$
+K_{\mathcal{A}_0}(\omega, A) = f_A(\omega), \quad \forall A \in \mathcal{C}.
+$$
+
+#### 第三步: 概率核的可测性
+
+对每个 $A \in \mathcal{A}$, 映射 $\omega \mapsto K_{\mathcal{A}_0}(\omega, A)$ 需为 $\mathcal{A}_0$-可测. 由于 $\mathcal{C}$ 生成 $\mathcal{A}$, 可用 $\pi$-$\lambda$ 定理: 
+- 设 $\mathcal{L} = \{ A \in \mathcal{A} : K_{\mathcal{A}_0}(\cdot, A) \text{ 是 } \mathcal{A}_0\text{-可测} \}$; 
+- $\mathcal{L}$ 是包含 $\mathcal{C}$ 的 $\lambda$-系统, 故 $\mathcal{L} = \mathcal{A}$. 
+
+#### 第四步: 联合可测性
+
+由 [@thm-k], 存在从 $\mathcal{A}_0$ 到 $\mathcal{A}$ 的概率核 $\mu$, 使得
+$$
+\mathbb{P}[\xi \in \cdot \mid \eta] = \mu(\eta, \cdot) \quad \text{几乎处处},
+$$
+其中 $\xi, \eta$ 是 $\Omega$ 上的随机元. 此处 $\mu(\eta(\omega), A) = K_{\mathcal{A}_0}(\omega, A)$, $P$-几乎处处成立. $(\omega, A) \mapsto K_{\mathcal{A}_0}(\omega, A)$ 的联合可测性由可数生成集 $\mathcal{C}$ 的构造和 $\mu$ 的唯一性保证. 
+
+#### 第五步: 条件概率的验证
+
+对所有 $A \in \mathcal{A}$, $K_{\mathcal{A}_0}(\omega, A)$ 满足: 
+
+- **可测性**: $K_{\mathcal{A}_0}(\cdot, A)$ 是 $\mathcal{A}_0$-可测; 
+
+- **积分公式**: 对任意 $B \in \mathcal{A}_0$, 
+  $$
+  \int_B K_{\mathcal{A}_0}(\omega, A) \, dP(\omega) = P(A \cap B). 
+  $$
+  该式对 $A \in \mathcal{C}$ 成立, 由 $\pi$-$\lambda$ 定理推广到所有 $A \in \mathcal{A}$. 
+
+因此, $K_{\mathcal{A}_0}$ 是正则条件概率核. 
+
+参见 [@bogachev2007measure] 和 [@kallenberg2002foundations]. 
+:::
+
+因此, 在标准 Borel 空间中, 对于任意子 $\sigma$-代数 $\mathcal{A}_0$, 正则条件概率总是存在的. 
+
+:::{.remark}
+标准 Borel 空间的假设是至关重要的. 对于一般的可测空间, 正则条件概率可能并不存在. 
+:::
+
+
+## 正则条件概率的唯一性
+
+正则条件概率在 $P$-零测集意义下是唯一的. 即, 如果 $K_{\mathcal{A}_0}$ 和 $\tilde{K}_{\mathcal{A}_0}$ 都是关于 $\mathcal{A}_0$ 的正则条件概率, 则存在 $P$-零测集 $N$, 使得对所有 $\omega \notin N$ 及所有 $A \in \mathcal{A}$, 
+$$
+K_{\mathcal{A}_0}(\omega, A) = \tilde{K}_{\mathcal{A}_0}(\omega, A).
+$$
+
+这意味着正则条件概率在本质上是唯一的: 任意两个版本在概率为零的集合之外都一致. 
+
+:::{.proof}
+## 正则条件概率唯一性的证明
+
+设 $K_{\mathcal{A}_0}$ 和 $\tilde{K}_{\mathcal{A}_0}$ 是关于 $\mathcal{A}_0$ 的两个正则条件概率. 对每个 $A \in \mathcal{A}$, 定义
+$$
+N_A = \{\omega \in \Omega : K_{\mathcal{A}_0}(\omega, A) \neq \tilde{K}_{\mathcal{A}_0}(\omega, A)\}.
+$$
+
+#### 第一步: 可数生成集上的零测集
+
+由正则条件概率的定义, $K_{\mathcal{A}_0}(\cdot, A)$ 和 $\tilde{K}_{\mathcal{A}_0}(\cdot, A)$ 都是 $\mathbb{E}[1_A \mid \mathcal{A}_0]$ 的版本, 因此 $P$-几乎处处相等, 即 $P(N_A) = 0$. 
+
+由于 $\mathcal{A}$ 是标准 Borel, 存在可数 $\pi$-系统 $\mathcal{C}$ 生成 $\mathcal{A}$. 定义
+$$
+N = \bigcup_{A \in \mathcal{C}} N_A.
+$$
+$\mathcal{C}$ 可数, $N$ 是可数个 $P$-零测集的并, 故 $P(N) = 0$. 
+
+#### 第二步: $\pi$-$\lambda$ 定理推广到整个 $\sigma$-代数
+
+对任意 $\omega \notin N$, 定义
+$$
+\mathcal{D}_\omega = \{ A \in \mathcal{A} : K_{\mathcal{A}_0}(\omega, A) = \tilde{K}_{\mathcal{A}_0}(\omega, A) \}.
+$$
+$\mathcal{D}_\omega$ 是包含 $\mathcal{C}$ 的 $\lambda$-系统: 
+
+- **包含全集**: $K_{\mathcal{A}_0}(\omega, \Omega) = 1 = \tilde{K}_{\mathcal{A}_0}(\omega, \Omega)$, 故 $\Omega \in \mathcal{D}_\omega$. 
+
+- **对可列不交并封闭**: 若 $A_n \in \mathcal{D}_\omega$ 两两不交, 则
+  $$
+  K_{\mathcal{A}_0}\left(\omega, \bigcup_{n=1}^\infty A_n\right) = \sum_{n=1}^\infty K_{\mathcal{A}_0}(\omega, A_n) = \sum_{n=1}^\infty \tilde{K}_{\mathcal{A}_0}(\omega, A_n) = \tilde{K}_{\mathcal{A}_0}\left(\omega, \bigcup_{n=1}^\infty A_n\right). 
+  $$
+
+- **对补集封闭**: 若 $A \in \mathcal{D}_\omega$, 则
+  $$
+  K_{\mathcal{A}_0}(\omega, A^c) = 1 - K_{\mathcal{A}_0}(\omega, A) = 1 - \tilde{K}_{\mathcal{A}_0}(\omega, A) = \tilde{K}_{\mathcal{A}_0}(\omega, A^c). 
+  $$
+
+由于 $\mathcal{C} \subseteq \mathcal{D}_\omega$ 且 $\mathcal{C}$ 是 $\pi$-系统, $\pi$-$\lambda$ 定理得 $\mathcal{A} \subseteq \mathcal{D}_\omega$. 因此对所有 $\omega \notin N$ 及 $A \in \mathcal{A}$, 有 $K_{\mathcal{A}_0}(\omega, A) = \tilde{K}_{\mathcal{A}_0}(\omega, A)$. 
+
+$N$ 是 $P$-零测集, 故正则条件概率在 $P$-几乎处处唯一. 
+:::
+
+:::{.remark}
+这一唯一性性质确保, 尽管正则条件概率在每一点上未必唯一, 但任意两个版本在 $P$-几乎处处都一致. 
+:::
+
+## 条件期望的积分表示
+
+至此, 我们已经证明了条件概率可以提升为更精细的版本（即正则条件概率）, 它本身是一个概率测度. 这使得我们可以以它为测度定义积分. 
+
+接下来, 我们将证明: 以正则条件概率为测度的积分运算, 恰好与条件期望一致. 
+
+:::{#thm-cond-exp-as-integral}
+## 条件期望的积分表示
+
+设 $(\Omega, \mathcal{A}, P)$ 是一个概率空间, $\mathcal{A}_0 \subseteq \mathcal{A}$ 是一个 子$\sigma$-代数, $K(\omega, A)$ 是一个概率核, 满足 $K(\omega, A) = \mathbb{E}[1_A \mid \mathcal{A}_0](\omega)$ 即是说, 对于所有 $A \in \mathcal{A}$. 那么对于所有可积随机变量 $X$, 它的条件期望满足:
+$$
+\mathbb{E}[X \mid \mathcal{A}_0](\omega) = \int_\Omega X(\omega') K(\omega, d\omega') \quad \text{a.e. } P.
+$$
+:::
+
+:::{.proof}
+## [@thm-cond-exp-as-integral]的证明
+
+#### 第一步: 示性函数
+设 $X = 1_A$ 关于 $A \in \mathcal{A}$. 由正则条件概率的定义有:
+$$
+\mathbb{E}[1_A \mid \mathcal{A}_0](\omega) = K(\omega, A) = \int_\Omega 1_A(\omega') K(\omega, d\omega') \quad \text{a.e. } P.
+$$
+
+#### 第二步: 简单函数
+设 $X = \sum_{i=1}^n a_i 1_{A_i}$ 关于 $A_i \in \mathcal{A}$, $a_i \in \mathbb{R}$. 由条件期望与积分的线性性有:
+$$
+\mathbb{E}[X \mid \mathcal{A}_0](\omega) = \sum_{i=1}^n a_i \mathbb{E}[1_{A_i} \mid \mathcal{A}_0](\omega) = \sum_{i=1}^n a_i \int_\Omega 1_{A_i}(\omega') K(\omega, d\omega') = \int_\Omega X(\omega') K(\omega, d\omega').
+$$
+
+#### 第三步: 非负可积函数
+设 $X \geq 0$ 是可测函数. 取简单函数单调列 $X_n \uparrow X$. 由Levi单调收敛定理:
+
+- $\mathbb{E}[X_n \mid \mathcal{A}_0] \uparrow \mathbb{E}[X \mid \mathcal{A}_0]$ a.e.
+
+- $\int X_n K(\omega, d\omega') \uparrow \int X K(\omega, d\omega')$.
+
+因此:
+$$
+\mathbb{E}[X \mid \mathcal{A}_0](\omega) = \lim_{n \to \infty} \mathbb{E}[X_n \mid \mathcal{A}_0](\omega) = \lim_{n \to \infty} \int X_n K(\omega, d\omega') = \int X K(\omega, d\omega') \quad \text{a.e. } P.
+$$
+
+#### 第四步: 一般可积函数
+对于任意可积函数 $X$, 可分解为 $X = X^+ - X^-$ 其中 $X^\pm \geq 0$. 由第三步:
+$$
+\mathbb{E}[X \mid \mathcal{A}_0] = \mathbb{E}[X^+ \mid \mathcal{A}_0] - \mathbb{E}[X^- \mid \mathcal{A}_0] = \int X^+ K(\omega, d\omega') - \int X^- K(\omega, d\omega') = \int X K(\omega, d\omega') \quad \text{a.e. } P.
+$$
+
+#### Step 5: 可测性与唯一性
+
+- **可测性**: 根据概率核 $K$ 的构造, 积分 $\int X K(\omega, d\omega')$ 是 $\mathcal{A}_0$-可测的.
+
+- **唯一性**: 正则条件概率是一致的在 $P$-几乎处处的意义下, 确保了积分表示也是几乎处处一致的.
+
+:::
+
+## 结语
+通过本次作业的研究, 我们系统梳理了Regular Conditional Probability的构造逻辑, 并严格证明了其在标准 Borel 空间下的存在性与唯一性. 这一结果表明, 在满足良好拓扑结构的测度空间中, 条件概率可以被提升为一个关于样本点 $\omega$ 的概率测度核 $K_{\A_0}(\omega,A)$ , 从而避免了传统条件概率定义中因依赖于事件 A 而导致的"零测集选取问题". 这一结论为条件期望的积分表示提供了严格的数学基础. 
+
+然而, 正则条件概率的构造对空间的结构性质具有强依赖性. 若放宽至一般可测空间, 此类核的存在性可能失效. 
+
+## 致谢 {.unnumbered}
+衷心感谢朱蓉禅老师在本学期《概率论选讲》课程中的指导. 感谢刘晨浩同学与宋柯师姐在课外学习提供的帮助. 同时也感谢大三强基计划的钟星宇学长与我共同探究"不同版本的教材中条件概率与条件期望是否一致", 促使我深入思考正则化条件概率的必要性. 此外, 感谢钟星宇学长的开源排版工具[SunQuarTex](https://github.com/sun123zxy/sunquartex), 使本文档的排版得以高效完成.
