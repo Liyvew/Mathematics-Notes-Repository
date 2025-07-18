@@ -46,6 +46,27 @@ $theorem-border-left-color: $green;
   color: #212529 !important;
 }
 
+/* 暗色主题特定样式 */
+[data-bs-theme="dark"] {
+  .dropdown-menu {
+    background-color: #2d3748;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .dropdown-item {
+    color: #e2e8f0 !important;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #4a5568 !important;
+    color: #ffffff !important;
+  }
+  
+  .tikz svg {
+    filter: drop-shadow(0 0 .3px) invert(0.9);
+  }
+}
+
 /* 分隔符样式 */
 .dropdown-item[data-bs-target]:not([href]) {
   color: #6c757d !important;
