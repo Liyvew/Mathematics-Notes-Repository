@@ -2,6 +2,17 @@ project:
   type: website
 
 website:
+  title: "数学笔记仓库"
   site-url: "https://Liyvew.github.io/Lecture-Notes/"
-  sidebar:
-    contents: auto
+  navbar:
+    title: "数学笔记"
+    left:
+      - href: index.qmd
+        text: 主页
+      - text: 笔记
+        menu:
+          - href: commutative-algebra.qmd
+            text: 交换代数
+    right:
+      - icon: github
+        href: https://github.com/Liyvew/Lecture-Notes
