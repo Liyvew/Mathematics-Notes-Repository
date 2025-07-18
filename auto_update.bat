@@ -52,7 +52,7 @@ echo ✓ 提交成功
 
 echo.
 echo [3/3] 推送到GitHub...
-git push
+git push origin master
 if %errorlevel% neq 0 (
     echo 错误: 推送失败！可能的原因：
     echo - 网络连接问题
