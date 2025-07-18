@@ -8,7 +8,7 @@ website:
     title: "Liyve's Notes"
     left:
       - href: index.qmd
-        text: Home
+        text: Overview
       - text: Probability
         menu:
           - href: en-regular-conditional-probability.qmd
