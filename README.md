@@ -29,7 +29,7 @@
 - **Algebraic Topology（计划中）** - 基于 Hatcher 的《Algebraic Topology》的学习笔记，内容涵盖代数拓扑的基本概念、工具和定理
 
 ## Contributing & Contact
-欢迎提出建议和改进意见！如果您发现任何错误或有改进想法，欢迎直接通过邮箱与我联系：xshubin@qq.com
+欢迎提出建议和改进意见！如果您发现任何错误或有改进想法，欢迎直接通过邮箱与我联系：shubinx@qq.com
 
 ---
 
