@@ -3,14 +3,25 @@ $theorem-border-left-color: $green;
 
 /* === 网页背景图片设置 === */
 body {
-  /* 使用根目录中的图片 */
-  background-image: url('../roxy.jpg');
-  background-size: cover;
-  background-position: center;
+  /* 使用渐变背景替代图片，避免路径问题 */
+  background: linear-gradient(135deg, 
+    #667eea 0%, 
+    #764ba2 25%, 
+    #f093fb 50%, 
+    #f5576c 75%, 
+    #4facfe 100%);
+  background-size: 400% 400%;
   background-attachment: fixed;
-  background-repeat: no-repeat;
-  /* 添加深色遮罩以提高文字可读性 */
-  background-color: #1a1a1a;
+  /* 添加动画效果 */
+  animation: gradientShift 15s ease infinite;
+  min-height: 100vh;
+}
+
+/* 渐变动画 */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* 添加半透明遮罩层 */
