@@ -1,6 +1,6 @@
 # 数学笔记仓库 (Mathematics Notes Repository)
 
-基于 Quarto 的数学学习笔记整理仓库。支持输出至 HTML、PDF/LaTeX、MS Word 等多种格式，包含完整的数学公式支持、定理环境、交叉引用等学术写作功能。
+基于 $\SunQuarTeX$ 的数学学习笔记整理仓库。支持输出至 HTML、PDF/LaTeX、MS Word 等多种格式，包含完整的数学公式支持、定理环境、交叉引用等学术写作功能。
 
 - [仓库主页](https://github.com/Liyvew/Lecture-Notes)
 - [在线阅读](https://Liyvew.github.io/Lecture-Notes)
