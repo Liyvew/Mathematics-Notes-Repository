@@ -40,13 +40,11 @@ echo ✓ 文件添加成功
 
 echo.
 echo [2/3] 提交更改...
-git commit -m "%commit_msg%"
+git commit --allow-empty -m "%commit_msg%"
 if %errorlevel% neq 0 (
-    echo 提示: 没有新的更改需要提交，或提交失败
-    echo 检查是否有文件修改...
-    git status
+    echo 错误: 提交失败！
     pause
-    exit /b 0
+    exit /b 1
 )
 echo ✓ 提交成功
 
