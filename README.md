@@ -24,14 +24,8 @@
 - **General Topology（计划中）** - 基于尤承业的《基础拓扑学讲义》的学习笔记，内容涵盖拓扑学的基本概念、工具和定理
 - **Algebraic Topology（计划中）** - 基于 Hatcher 的《Algebraic Topology》的学习笔记，内容涵盖代数拓扑的基本概念、工具和定理
 
-## Contributing
-欢迎提出建议和改进意见！如果您发现任何错误或有改进想法，请：
-
-1. 提交 Issue 反馈问题或建议  
-2. Fork 仓库并创建 Pull Request 进行修改
-
-## Contact
-E-mail: xshubin@qq.com  
+## Contributing & Contact
+欢迎提出建议和改进意见！如果您发现任何错误或有改进想法，欢迎直接通过邮箱与我联系：xshubin@qq.com
 
 ---
 
