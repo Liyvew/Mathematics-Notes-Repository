@@ -2,7 +2,6 @@ project:
   type: website
   resources: 
     - "_assets/"
-    - "roxy.jpg"
 
 website:
   title: "Liyve's Notes"
