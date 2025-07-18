@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Liyve">
+
+<title>概率论选讲期末作业 – Liyve’s Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d345959adb11cc705a2559764d23265e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      SunQuarTeX: "\\phantom{}\\kern-.0em\\lower.0ex\\hbox{$\\mathbf S$}\\kern-.045em\\lower.0ex\\hbox{$\\scriptstyle \\mathbf U$}\\kern-.045em\\hbox{$\\scriptstyle \\mathbb N$}\\kern-.0em\\hbox{$\\mathbb Q$}\\kern-.045em\\lower.0ex\\hbox{$\\scriptstyle \\mathbf U$}\\kern-.135em\\lower.0ex\\hbox{$\\scriptstyle \\mathbf A$}\\kern-.09em\\lower.0ex\\hbox{$\\scriptstyle \\mathbb R$}\\kern-.072em\\mathbf{\\TeX}"
+    }
+  }
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Liyve’s Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notes</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notes">    
+        <li>
+    <a class="dropdown-item" href="./en-regular-conditional-probability.html">
+ <span class="dropdown-text">Regular Conditional Probability (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cn-regular-conditional-probability.html">
+ <span class="dropdown-text">正则条件概率 (中文)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./en-commutative-algebra.html">
+ <span class="dropdown-text">Commutative Algebra</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./en-pre-classification-quadratic-forms-over-q.html">
+ <span class="dropdown-text">Classification of Quadratic Forms over ℚ</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Liyvew/Lecture-Notes"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#前言" id="toc-前言" class="nav-link active" data-scroll-target="#前言"><span class="header-section-number">1</span> 前言</a></li>
+  <li><a href="#正则条件概率" id="toc-正则条件概率" class="nav-link" data-scroll-target="#正则条件概率"><span class="header-section-number">2</span> 正则条件概率</a></li>
+  <li><a href="#正则条件概率的存在性" id="toc-正则条件概率的存在性" class="nav-link" data-scroll-target="#正则条件概率的存在性"><span class="header-section-number">3</span> 正则条件概率的存在性</a></li>
+  <li><a href="#正则条件概率的唯一性" id="toc-正则条件概率的唯一性" class="nav-link" data-scroll-target="#正则条件概率的唯一性"><span class="header-section-number">4</span> 正则条件概率的唯一性</a></li>
+  <li><a href="#条件期望的积分表示" id="toc-条件期望的积分表示" class="nav-link" data-scroll-target="#条件期望的积分表示"><span class="header-section-number">5</span> 条件期望的积分表示</a></li>
+  <li><a href="#结语" id="toc-结语" class="nav-link" data-scroll-target="#结语"><span class="header-section-number">6</span> 结语</a></li>
+  <li><a href="#致谢" id="toc-致谢" class="nav-link" data-scroll-target="#致谢">致谢</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cn-regular-conditional-probability.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="cn-regular-conditional-probability.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="cn-regular-conditional-probability.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">概率论选讲期末作业</h1>
+<p class="subtitle lead">正则条件概率的存在唯一性</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Liyve </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2025年6月23日</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2025年7月2日</p>
+    </div>
+  </div>
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    本作业探讨了正则条件概率的概念, 重点关注其存在性与唯一性. <span class="citation" data-cites="Rockner2016ProbabilityNotes"><a href="#ref-Rockner2016ProbabilityNotes" role="doc-biblioref">[1]</a></span> 并未给出存在性与唯一性的证明, 因此, 严谨地补全这些证明成为本次作业的核心内容.
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="前言" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="前言"><span class="header-section-number">1</span> 前言</h2>
+<p>在上学期的 <em>概率论（双语）</em> 学习过程中, <strong>求是书院</strong>的同学们使用教材 <span class="citation" data-cites="李贤平1997概率论基础"><a href="#ref-李贤平1997概率论基础" role="doc-biblioref">[2]</a></span> 学习概率论. 该教材并未采用测度论的语言引入概率论, 也没有涉及条件期望的概念. 然而, 在本学期第二周的 <em>数理统计</em> 课程证明中, 教材 <span class="citation" data-cites="韦来生2015数理统计"><a href="#ref-韦来生2015数理统计" role="doc-biblioref">[3]</a></span> 中出现了以条件概率积分形式给出的条件期望. 这让我猜测, 教材 <span class="citation" data-cites="韦来生2015数理统计"><a href="#ref-韦来生2015数理统计" role="doc-biblioref">[3]</a></span> 中提到的条件期望, 应该与我们上学期在 <span class="citation" data-cites="Rockner2016ProbabilityNotes"><a href="#ref-Rockner2016ProbabilityNotes" role="doc-biblioref">[1]</a></span> 中学习到的内容是一致的. 经过与同学们讨论, 大家始终未能得出令人满意的结论. 直到第四周的 <em>概率论选讲</em> 课程中, 正则条件概率的概念被简要介绍, 但 <span class="citation" data-cites="Rockner2016ProbabilityNotes"><a href="#ref-Rockner2016ProbabilityNotes" role="doc-biblioref">[1]</a></span> 认为该主题与后续课程内容关联不大, 因而未作深入讨论. 因此, 我决定将这一主题作为本次期末作业的研究重点.</p>
+</section>
+<section id="正则条件概率" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="正则条件概率"><span class="header-section-number">2</span> 正则条件概率</h2>
+<p>在课上的讨论中, 我们注意到条件概率 <span class="math display">\[
+P[A\mid \mathcal{A}_0]:=\mathbb{E}[\mathbb{I}_A\mid\mathcal{A}_0]
+\]</span></p>
+<p>在几乎处处意义下具有以下性质: <span class="math display">\[
+0\leq P[A\mid\mathcal{A}_0]\leq 1
+\]</span></p>
+<p><span class="math display">\[
+P[\emptyset\mid\mathcal{A}_0]=0;\ P[\Omega\mid\mathcal{A}_0]=1
+\]</span></p>
+<p>对于两两无交的 <span class="math inline">\(A_n,\ n\in\mathbb{N}\)</span>, <span class="math display">\[
+P[\bigcup_{n=1}^{\infty}A_n\mid \mathcal{A}_0]=\sum_{n=1}^{\infty}P[A_n\mid \mathcal{A}_0]
+\]</span></p>
+<p>然而, 这里的零测集依赖于每一个可测集 <span class="math inline">\(A\)</span>, 并不存在一个对所有 <span class="math inline">\(A\)</span> 都适用的”通用”零测集, 使得条件概率 <span class="math inline">\(P[A\mid \mathcal{A}_0]\)</span> 对 <span class="math inline">\(A\)</span> 成为一个概率测度. 这促使我们寻求一种更精细的方式, 以更强的意义刻画 <span class="math inline">\(P[A\mid \mathcal{A}_0]\)</span>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-probability-kernel" class="theorem definition">
+<p><span class="theorem-title"><strong>定义 1 (概率核)</strong></span> 设 <span class="math inline">\((\Omega,\mathcal{A})\)</span> 和 <span class="math inline">\((\Omega',\mathcal{A}')\)</span> 是一对可测空间. 若函数 <span class="math inline">\(K:\Omega\times\mathcal{A}'\to[0,1]\)</span> 满足:</p>
+<ul>
+<li><p>对于任意 <span class="math inline">\(A'\in \mathcal{A}'\)</span>, 映射 <span class="math inline">\(\omega\mapsto K(\omega,A')\)</span> 是 <span class="math inline">\(\mathcal{A}\)</span>-可测的;</p></li>
+<li><p>对于任意 <span class="math inline">\(\omega\in\Omega\)</span>, 映射 <span class="math inline">\(A'\mapsto K(\omega,A')\)</span> 是 <span class="math inline">\((\Omega',\mathcal{A}')\)</span> 上的概率测度.</p></li>
+</ul>
+<p>则称 <span class="math inline">\(K\)</span> 为<strong>概率核</strong>（Probability Kernel）.</p>
+</div>
+</div>
+</div>
+</div>
+<p>为了获得理想的”条件概率”, 我们需要在结构更良好的空间中进行工作, 在这样的空间里上述构造才能被严格地定义.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-standard-borel-space" class="theorem definition">
+<p><span class="theorem-title"><strong>定义 2 (标准 Borel 空间)</strong></span> 如果可测空间 <span class="math inline">\((\Omega,\mathcal{A})\)</span> 上存在一个完备度量 <span class="math inline">\(d\)</span>, 使得 <span class="math inline">\((\Omega,d)\)</span> 是可分度量空间, 并且 <span class="math inline">\(\mathcal{A}\)</span> 是由该拓扑生成的 Borel <span class="math inline">\(\sigma\)</span>-代数, 则称 <span class="math inline">\((\Omega,\mathcal{A})\)</span> 为<strong>标准 Borel 空间</strong>（Standard Borel Space）.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="prp-regular-conditional-probability" class="theorem proposition">
+<p><span class="theorem-title"><strong>命题 1 (正则条件概率)</strong></span> 参见 <span class="citation" data-cites="Rockner2016ProbabilityNotes"><a href="#ref-Rockner2016ProbabilityNotes" role="doc-biblioref">[1, Proposition 5.4.3]</a></span></p>
+<p>设 <span class="math inline">\((\Omega,\mathcal{A})\)</span> 是标准 Borel 空间, <span class="math inline">\(P\)</span> 是 <span class="math inline">\((\Omega,\mathcal{A})\)</span> 上的概率测度. 则对于每个子 <span class="math inline">\(\sigma\)</span>-代数 <span class="math inline">\(\mathcal{A}_0\subseteq\mathcal{A}\)</span>, 存在从 <span class="math inline">\((\Omega,\mathcal{A}_0)\)</span> 到 <span class="math inline">\((\Omega,\mathcal{A})\)</span> 的概率核 <span class="math inline">\(K_{\mathcal{A}_0}\)</span>, 使得对所有 <span class="math inline">\(A\in\mathcal{A}\)</span>, 有:</p>
+<p><span class="math display">\[
+K_{\mathcal{A}_0}(\omega,A)=P[A\mid\mathcal{A}_0](\omega)\quad \text{对 $P$-几乎处处的 }\omega\in\Omega.
+\]</span> 其中例外集可能依赖于 <span class="math inline">\(A\)</span>.</p>
+<p>若 <span class="math inline">\(\tilde{K}_{\mathcal{A}_0}\)</span> 也是从 <span class="math inline">\((\Omega,\mathcal{A}_0)\)</span> 到 <span class="math inline">\((\Omega,\mathcal{A})\)</span> 的概率核, 并满足同样的性质, 则存在 <span class="math inline">\(P\)</span>-零测集 <span class="math inline">\(N\in\mathcal{A}\)</span>, 使得对每个 <span class="math inline">\(\omega\in\Omega\setminus N\)</span> 及每个 <span class="math inline">\(A\in\mathcal{A}\)</span>, 有:</p>
+<p><span class="math display">\[
+K_{\mathcal{A}_0}(\omega,A)=\tilde{K}_{\mathcal{A}_0}(\omega,A)\quad \text{对所有 }A\in\mathcal{A}.
+\]</span></p>
+<p><span class="math inline">\(K_{\mathcal{A}_0}(\omega,A)\)</span> 被称为由 <span class="math inline">\(\mathcal{A}_0\)</span> 给定的正则条件概率.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="正则条件概率的存在性" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="正则条件概率的存在性"><span class="header-section-number">3</span> 正则条件概率的存在性</h2>
+<p>在给出证明之前, 我们先陈述并证明后续论证所需的一些引理和定理.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="lem-doob-dynkin" class="theorem lemma">
+<p><span class="theorem-title"><strong>引理 1 (Doob-Dynkin 引理)</strong></span> 设 <span class="math inline">\((\Omega, \mathcal{A}, P)\)</span> 是概率空间, <span class="math inline">\(X: \Omega \to S\)</span> 是从 <span class="math inline">\(\Omega\)</span> 到可测空间 <span class="math inline">\((S, \mathcal{S})\)</span> 的可测函数. 如果 <span class="math inline">\(f: \Omega \to \mathbb{R}\)</span> 是 <span class="math inline">\(\sigma(X)\)</span>-可测的, 则存在可测函数 <span class="math inline">\(g: S \to \mathbb{R}\)</span>, 使得 <span class="math inline">\(f = g \circ X\)</span> 几乎处处成立.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof (<a href="#lem-doob-dynkin" class="quarto-xref">引理&nbsp;1</a> 的证明)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>证明</em> (<a href="#lem-doob-dynkin" class="quarto-xref">引理&nbsp;1</a> 的证明). </span>设 <span class="math inline">\(f: \Omega \to \mathbb{R}\)</span> 是 <span class="math inline">\(\sigma(X)\)</span>-可测的, 其中 <span class="math inline">\(X: \Omega \to S\)</span> 可测.</p>
+<section id="第一步-sigmax-的结构" class="level4">
+<h4 class="anchored" data-anchor-id="第一步-sigmax-的结构">第一步: <span class="math inline">\(\sigma(X)\)</span> 的结构</h4>
+<p>由 <span class="math inline">\(X\)</span> 生成的 <span class="math inline">\(\sigma\)</span>-代数为 <span class="math display">\[
+\sigma(X) = \{ X^{-1}(B) : B \in \mathcal{S} \}.
+\]</span> 由于 <span class="math inline">\(f\)</span> 是 <span class="math inline">\(\sigma(X)\)</span>-可测的, 对于任意 Borel 集 <span class="math inline">\(B \subseteq \mathbb{R}\)</span>, 有 <span class="math display">\[
+f^{-1}(B) \in \sigma(X).
+\]</span> 因此, 存在 <span class="math inline">\(A_B \in \mathcal{S}\)</span>, 使得 <span class="math display">\[
+f^{-1}(B) = X^{-1}(A_B).
+\]</span> 这定义了一个从 <span class="math inline">\(\mathbb{R}\)</span> 的 Borel 集到 <span class="math inline">\(\mathcal{S}\)</span> 的映射 <span class="math inline">\(B \mapsto A_B\)</span>. 为保证一致性, 该映射需保持集合运算（如并、交、补）, 这由 <span class="math inline">\(f^{-1}\)</span> 和 <span class="math inline">\(X^{-1}\)</span> 都是 <span class="math inline">\(\sigma\)</span>-同态所保证.</p>
+</section>
+<section id="第二步-用有理区间构造-g" class="level4">
+<h4 class="anchored" data-anchor-id="第二步-用有理区间构造-g">第二步: 用有理区间构造 <span class="math inline">\(g\)</span></h4>
+<p>定义 <span class="math inline">\(g: S \to \mathbb{R}\)</span>. 对每个有理数 <span class="math inline">\(r \in \mathbb{Q}\)</span>, 设 <span class="math display">\[
+A_r = A_{(-\infty, r]} \in \mathcal{S},
+\]</span> 其中 <span class="math inline">\(A_{(-\infty, r]}\)</span> 满足 <span class="math inline">\(f^{-1}((-\infty, r]) = X^{-1}(A_r)\)</span>.</p>
+<p>对 <span class="math inline">\(s \in S\)</span>, 定义 <span class="math display">\[
+g(s) = \inf \{ r \in \mathbb{Q} : s \in A_r \}.
+\]</span> 该下确界是良定义的, 因为:</p>
+<ul>
+<li>对任意 <span class="math inline">\(s \in S\)</span>, 由于 <span class="math inline">\(f(\omega) \in \mathbb{R}\)</span>, 必有某个 <span class="math inline">\(r \in \mathbb{Q}\)</span> 使 <span class="math inline">\(f(\omega) \leq r\)</span>, 从而 <span class="math inline">\(X(\omega) \in A_r\)</span>.</li>
+<li>集合 <span class="math inline">\(\{ r \in \mathbb{Q} : s \in A_r \}\)</span> 有下界.</li>
+</ul>
+</section>
+<section id="第三步-验证-f-g-circ-x-几乎处处成立" class="level4">
+<h4 class="anchored" data-anchor-id="第三步-验证-f-g-circ-x-几乎处处成立">第三步: 验证 <span class="math inline">\(f = g \circ X\)</span> 几乎处处成立</h4>
+<p>对 <span class="math inline">\(\omega \in \Omega\)</span>, 我们断言 <span class="math inline">\(f(\omega) = g(X(\omega))\)</span>, 除了一个 <span class="math inline">\(P\)</span>-零测集外.</p>
+<ul>
+<li><p><strong>若 <span class="math inline">\(f(\omega) \leq r\)</span>, <span class="math inline">\(r \in \mathbb{Q}\)</span>: </strong></p>
+<ul>
+<li><p><span class="math inline">\(f(\omega) \leq r\)</span>, 则 <span class="math inline">\(\omega \in f^{-1}((-\infty, r]) = X^{-1}(A_r)\)</span>, 即 <span class="math inline">\(X(\omega) \in A_r\)</span>, 故 <span class="math inline">\(g(X(\omega)) \leq r\)</span>.</p></li>
+<li><p>反之, 若 <span class="math inline">\(X(\omega) \in A_r\)</span>, 则 <span class="math inline">\(g(X(\omega)) \leq r\)</span>, 即 <span class="math inline">\(f(\omega) \leq r\)</span>.</p></li>
+</ul></li>
+<li><p><strong>若 <span class="math inline">\(f(\omega) &gt; r\)</span>, <span class="math inline">\(r \in \mathbb{Q}\)</span>: </strong></p>
+<ul>
+<li><span class="math inline">\(f(\omega) &gt; r\)</span>, 则 <span class="math inline">\(\omega \notin f^{-1}((-\infty, r]) = X^{-1}(A_r)\)</span>, 即 <span class="math inline">\(X(\omega) \notin A_r\)</span>, 故 <span class="math inline">\(g(X(\omega)) &gt; r\)</span>.</li>
+</ul></li>
+</ul>
+<p>因此, <span class="math inline">\(g(X(\omega)) \leq f(\omega)\)</span> 且 <span class="math inline">\(g(X(\omega)) \geq f(\omega)\)</span>, 除了 <span class="math inline">\(f(\omega) \neq g(X(\omega))\)</span> 的零测集外. 由于 <span class="math inline">\(f\)</span> 和 <span class="math inline">\(g \circ X\)</span> 都是可测的, 集合 <span class="math inline">\(\{ \omega : f(\omega) \neq g(X(\omega)) \}\)</span> 可测且测度为零.</p>
+</section>
+<section id="第四步-g-的可测性" class="level4">
+<h4 class="anchored" data-anchor-id="第四步-g-的可测性">第四步: <span class="math inline">\(g\)</span> 的可测性</h4>
+<p>要证明 <span class="math inline">\(g\)</span> 是 <span class="math inline">\(\mathcal{S}\)</span>-可测的, 对任意 <span class="math inline">\(a \in \mathbb{R}\)</span>, 需有 <span class="math inline">\(\{ s \in S : g(s) \leq a \} \in \mathcal{S}\)</span>.</p>
+<ul>
+<li><p><strong><span class="math inline">\(a\)</span> 为有理数时: </strong> <span class="math display">\[
+\{ s \in S : g(s) \leq a \} = \bigcap_{\substack{r \in \mathbb{Q} \\ r &lt; a}} A_r^c \cup A_a.
+\]</span> 这由 <span class="math inline">\(g\)</span> 的定义可得.</p></li>
+<li><p><strong><span class="math inline">\(a\)</span> 为任意实数时: </strong> 用递减有理数列 <span class="math inline">\(\{r_n\}\)</span> 逼近 <span class="math inline">\(a\)</span>, 则 <span class="math display">\[
+\{ s \in S : g(s) \leq a \} = \bigcap_{n=1}^\infty A_{r_n}.
+\]</span> 每个 <span class="math inline">\(A_{r_n} \in \mathcal{S}\)</span>, 可数交仍在 <span class="math inline">\(\mathcal{S}\)</span> 中.</p></li>
+</ul>
+<p>因此, <span class="math inline">\(g\)</span> 是 <span class="math inline">\(\mathcal{S}\)</span>-可测的.</p>
+</section>
+<section id="第五步-零测集上的唯一性" class="level4">
+<h4 class="anchored" data-anchor-id="第五步-零测集上的唯一性">第五步: 零测集上的唯一性</h4>
+<p>若 <span class="math inline">\(g'\)</span> 也是满足 <span class="math inline">\(f = g' \circ X\)</span> 几乎处处的可测函数, 则 <span class="math inline">\(g(X(\omega)) = g'(X(\omega))\)</span> 对 <span class="math inline">\(P\)</span>-几乎处处 <span class="math inline">\(\omega\)</span> 成立. 由于 <span class="math inline">\(X\)</span> 可测, <span class="math inline">\(P_X = P \circ X^{-1}\)</span>, 故 <span class="math inline">\(g = g'\)</span> 在 <span class="math inline">\(P_X\)</span>-几乎处处成立.</p>
+<p>综上, 构造了可测函数 <span class="math inline">\(g: S \to \mathbb{R}\)</span>, 使 <span class="math inline">\(f = g \circ X\)</span> 几乎处处成立, 证毕.</p>
+</section>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remark
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div class="proof remark">
+<p><span class="proof-title"><em>注记</em>. </span><strong>Doob-Dynkin 引理</strong>说明, 任何 <span class="math inline">\(\sigma(X)\)</span>-可测函数 <span class="math inline">\(f\)</span> 都可以表示为 <span class="math inline">\(f = g \circ X\)</span>, 其中 <span class="math inline">\(g\)</span> 是某个可测函数. 在正则条件概率的背景下, 这意味着条件期望 <span class="math inline">\(\mathbb{E}[1_A \mid \mathcal{A}_0]\)</span> 作为 <span class="math inline">\(\mathcal{A}_0\)</span>-可测函数, 可以表示为某个生成随机变量 <span class="math inline">\(\eta\)</span>（如 <span class="math inline">\(\eta(\omega) = \omega\)</span>）的函数. 这为构造核 <span class="math inline">\(K_{\mathcal{A}_0}(\omega, A)\)</span> 提供了基础, 使其成为 <span class="math inline">\(\omega\)</span> 的可测函数, 并满足所需的性质.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="thm-Caratheodory-extension-theorem" class="theorem">
+<p><span class="theorem-title"><strong>定理 1 (Carathéodory 扩张定理)</strong></span> 设 <span class="math inline">\(\mathcal{C}\)</span> 是集合 <span class="math inline">\(\Omega\)</span> 上的一个代数, <span class="math inline">\(\mu_0: \mathcal{C} \to [0, \infty]\)</span> 是一个可数可加的前测度（pre-measure）. 则存在一个测度 <span class="math inline">\(\mu\)</span>, 定义在由 <span class="math inline">\(\mathcal{C}\)</span> 生成的 <span class="math inline">\(\sigma\)</span>-代数 <span class="math inline">\(\mathcal{A} = \sigma(\mathcal{C})\)</span> 上, 并且 <span class="math inline">\(\mu|_{\mathcal{C}} = \mu_0\)</span>. 此外, 若 <span class="math inline">\(\mu_0\)</span> 是 <span class="math inline">\(\sigma\)</span>-有限的, 则该扩张是唯一的.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof (<a href="#thm-Caratheodory-extension-theorem" class="quarto-xref">定理&nbsp;1</a> 的证明)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>证明</em> (<a href="#thm-Caratheodory-extension-theorem" class="quarto-xref">定理&nbsp;1</a> 的证明). </span>设 <span class="math inline">\(\mathcal{C}\)</span> 是 <span class="math inline">\(\Omega\)</span> 上的一个集合代数, <span class="math inline">\(\mu_0: \mathcal{C} \to [0, \infty]\)</span> 是可数可加的前测度.</p>
+<section id="第一步-外测度的构造" class="level4">
+<h4 class="anchored" data-anchor-id="第一步-外测度的构造">第一步: 外测度的构造</h4>
+<p>对任意 <span class="math inline">\(E \subseteq \Omega\)</span>, 定义外测度 <span class="math inline">\(\mu^*\)</span>: <span class="math display">\[
+\mu^*(E) = \inf\left\{ \sum_{n=1}^\infty \mu_0(C_n) : E \subseteq \bigcup_{n=1}^\infty C_n,\, C_n \in \mathcal{C} \right\}.
+\]</span> 可验证 <span class="math inline">\(\mu^*\)</span> 满足外测度的三条性质:</p>
+<ul>
+<li><p><strong>单调性</strong>: 若 <span class="math inline">\(A \subseteq B\)</span>, 则 <span class="math inline">\(B\)</span> 的任意覆盖也是 <span class="math inline">\(A\)</span> 的覆盖, 故 <span class="math inline">\(\mu^*(A) \leq \mu^*(B)\)</span>.</p></li>
+<li><p><strong>可列次可加性</strong>: 对任意 <span class="math inline">\(\{A_n\}\)</span>, 分别取 <span class="math inline">\(\{C_{n,k}\}_{k=1}^\infty\)</span> 覆盖 <span class="math inline">\(A_n\)</span> 且 <span class="math inline">\(\sum_{k=1}^\infty \mu_0(C_{n,k}) \leq \mu^*(A_n) + \epsilon/2^n\)</span>. 则 <span class="math inline">\(\bigcup_{n,k} C_{n,k}\)</span> 覆盖 <span class="math inline">\(\bigcup_n A_n\)</span>, 且 <span class="math inline">\(\sum_{n,k} \mu_0(C_{n,k}) \leq \sum_n \mu^*(A_n) + \epsilon\)</span>. 令 <span class="math inline">\(\epsilon \to 0\)</span> 得 <span class="math inline">\(\mu^*(\bigcup_n A_n) \leq \sum_n \mu^*(A_n)\)</span>.</p></li>
+<li><p><strong>空集</strong>: <span class="math inline">\(\mu^*(\emptyset) = 0\)</span>, 因 <span class="math inline">\(\emptyset \subseteq \emptyset\)</span> 且 <span class="math inline">\(\mu_0(\emptyset) = 0\)</span>.</p></li>
+</ul>
+</section>
+<section id="第二步-carathéodory-可测集" class="level4">
+<h4 class="anchored" data-anchor-id="第二步-carathéodory-可测集">第二步: Carathéodory 可测集</h4>
+<p>称 <span class="math inline">\(A \subseteq \Omega\)</span> 是 <span class="math inline">\(\mu^*\)</span>-可测的, 若对任意 <span class="math inline">\(E \subseteq \Omega\)</span>, <span class="math display">\[
+\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \setminus A).
+\]</span> 记所有 <span class="math inline">\(\mu^*\)</span>-可测集为 <span class="math inline">\(\mathcal{A}\)</span>. 可证明 <span class="math inline">\(\mathcal{A}\)</span> 是 <span class="math inline">\(\sigma\)</span>-代数:</p>
+<ul>
+<li><p><strong>对补封闭</strong>: 若 <span class="math inline">\(A \in \mathcal{A}\)</span>, 则 <span class="math inline">\(A^c\)</span> 也满足同样条件.</p></li>
+<li><p><strong>对可列并封闭</strong>: 先对有限并用归纳法证明, 再对可列并用极限逼近.</p></li>
+</ul>
+</section>
+<section id="第三步-限制在-mathcala-上是测度" class="level4">
+<h4 class="anchored" data-anchor-id="第三步-限制在-mathcala-上是测度">第三步: 限制在 <span class="math inline">\(\mathcal{A}\)</span> 上是测度</h4>
+<p>将 <span class="math inline">\(\mu = \mu^*|_{\mathcal{A}}\)</span>, 可验证其为测度:</p>
+<ul>
+<li><p>对任意两两不交的 <span class="math inline">\(\{A_n\} \subseteq \mathcal{A}\)</span>, 由可列次可加性有 <span class="math inline">\(\mu^*(\bigcup_n A_n) \leq \sum_n \mu^*(A_n)\)</span>.</p></li>
+<li><p>反向不等式: 对有限并用 Carathéodory 条件递归证明 <span class="math inline">\(\mu^*(\bigcup_{n=1}^N A_n) = \sum_{n=1}^N \mu^*(A_n)\)</span>, 再令 <span class="math inline">\(N \to \infty\)</span> 得可列可加性.</p></li>
+</ul>
+</section>
+<section id="第四步-扩张性质" class="level4">
+<h4 class="anchored" data-anchor-id="第四步-扩张性质">第四步: 扩张性质</h4>
+<p>对 <span class="math inline">\(C \in \mathcal{C}\)</span>, 需证 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(\mu^*\)</span>-可测集且 <span class="math inline">\(\mu^*(C) = \mu_0(C)\)</span>:</p>
+<ul>
+<li><p><strong>可测性</strong>: 对任意 <span class="math inline">\(E \subseteq \Omega\)</span>, 设 <span class="math inline">\(\{C_n\}\)</span> 覆盖 <span class="math inline">\(E\)</span>, 则 <span class="math inline">\(C_n \cap C,\, C_n \setminus C \in \mathcal{C}\)</span>, 且 <span class="math inline">\(\mu_0(C_n) = \mu_0(C_n \cap C) + \mu_0(C_n \setminus C)\)</span>. 两边求和得 <span class="math inline">\(\sum_n \mu_0(C_n) \geq \mu^*(E \cap C) + \mu^*(E \setminus C)\)</span>, 对所有覆盖取下确界得 <span class="math inline">\(\mu^*(E) \geq \mu^*(E \cap C) + \mu^*(E \setminus C)\)</span>.</p></li>
+<li><p><strong>等式</strong>: 由定义 <span class="math inline">\(\mu^*(C) \leq \mu_0(C)\)</span>. 反向不等式: 若 <span class="math inline">\(C \subseteq \bigcup_n C_n\)</span>, 则 <span class="math inline">\(\mu_0(C) \leq \sum_n \mu_0(C_n \cap C) \leq \sum_n \mu_0(C_n)\)</span>, 取下确界得 <span class="math inline">\(\mu^*(C) \geq \mu_0(C)\)</span>.</p></li>
+</ul>
+</section>
+<section id="第五步-唯一性" class="level4">
+<h4 class="anchored" data-anchor-id="第五步-唯一性">第五步: 唯一性</h4>
+<p>若 <span class="math inline">\(\mu_0\)</span> 是 <span class="math inline">\(\sigma\)</span>-有限的, 则扩张唯一. 设 <span class="math inline">\(\nu\)</span> 也是 <span class="math inline">\(\mathcal{A}\)</span> 上的测度且 <span class="math inline">\(\nu|_{\mathcal{C}} = \mu_0\)</span>:</p>
+<ul>
+<li><p>用 <strong><span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> 定理</strong>:</p>
+<p><span class="math inline">\(\mathcal{C}\)</span> 是 <span class="math inline">\(\pi\)</span>-系统（对有限交封闭）.</p>
+<ul>
+<li><p>集合 <span class="math inline">\(\{A \in \mathcal{A} : \mu(A) = \nu(A)\}\)</span> 是 <span class="math inline">\(\lambda\)</span>-系统.</p></li>
+<li><p><span class="math inline">\(\mu\)</span> 与 <span class="math inline">\(\nu\)</span> 在 <span class="math inline">\(\mathcal{C}\)</span> 上一致, 故在 <span class="math inline">\(\sigma(\mathcal{C})\)</span> 上一致.</p></li>
+</ul></li>
+<li><p><strong><span class="math inline">\(\sigma\)</span>-有限性</strong>: <span class="math inline">\(\Omega = \bigcup_n \Omega_n\)</span>, <span class="math inline">\(\mu_0(\Omega_n) &lt; \infty\)</span>. 对任意 <span class="math inline">\(A \in \mathcal{A}\)</span>, <span class="math inline">\(\mu(A \cap \Omega_n) = \nu(A \cap \Omega_n)\)</span>, 故 <span class="math inline">\(\mu(A) = \lim_{n \to \infty} \mu(A \cap \Omega_n) = \nu(A)\)</span>.</p></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remark
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div class="proof remark">
+<p><span class="proof-title"><em>注记</em>. </span><strong>Carathéodory 扩张定理</strong>保证: 只要前测度在代数上是 <span class="math inline">\(\sigma\)</span>-有限的, 就能唯一地将其扩张为生成的 <span class="math inline">\(\sigma\)</span>-代数上的测度. 在正则条件概率存在性的证明中, 这一结论确保了定义在可数生成集 <span class="math inline">\(\mathcal{C}\)</span> 上的有限可加映射 <span class="math inline">\(f_A(\omega) = \mathbb{E}[1_A \mid \mathcal{A}_0](\omega)\)</span> 能唯一扩张为 <span class="math inline">\(\mathcal{A}\)</span> 上的概率测度 <span class="math inline">\(K_{\mathcal{A}_0}(\omega, \cdot)\)</span>. 这一步骤对于严谨构造正则条件概率核至关重要.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="thm-k" class="theorem">
+<p><span class="theorem-title"><strong>定理 2</strong></span> <span class="citation" data-cites="kallenberg2002foundations"><a href="#ref-kallenberg2002foundations" role="doc-biblioref">[4, Theorem 6.3]</a></span></p>
+<p>对于任意 Borel 空间 <span class="math inline">\(S\)</span> 和可测空间 <span class="math inline">\(T\)</span>, 设 <span class="math inline">\(\xi\)</span> 和 <span class="math inline">\(\eta\)</span> 分别为 <span class="math inline">\(S\)</span> 和 <span class="math inline">\(T\)</span> 中的随机元. 则存在从 <span class="math inline">\(T\)</span> 到 <span class="math inline">\(S\)</span> 的概率核 <span class="math inline">\(\mu\)</span>, 使得 <span class="math display">\[
+\mathbb{P}[\xi \in \cdot \mid \eta] = \mu(\eta, \cdot) \quad \text{a.e. } \mathcal{L}(\eta),
+\]</span> 且 <span class="math inline">\(\mu\)</span> 在 <span class="math inline">\(\mathcal{L}(\eta)\)</span> 几乎处处唯一.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof (<a href="#thm-k" class="quarto-xref">定理&nbsp;2</a> 的证明)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>证明</em> (<a href="#thm-k" class="quarto-xref">定理&nbsp;2</a> 的证明). </span>我们可以假设 <span class="math inline">\(S \in \mathcal{B}(\mathbb{R})\)</span>. 对每个 <span class="math inline">\(r \in \mathbb{Q}\)</span>, 可以选取某个可测函数 <span class="math inline">\(f_r = f(\cdot, r): T \to [0, 1]\)</span>, 使得 <span id="eq-1"><span class="math display">\[
+f(\eta, r) = \mathbb{P}[\xi \leq r \mid \eta] \quad \text{a.e.}, \quad r \in \mathbb{Q}.
+\tag{1}\]</span></span></p>
+<p>令 <span class="math inline">\(A\)</span> 为所有 <span class="math inline">\(t\in T\)</span> 使得 <span class="math inline">\(f(t, r)\)</span> 关于 <span class="math inline">\(r \in \mathbb{Q}\)</span> 单调递增, 且在 <span class="math inline">\(\pm\infty\)</span> 处极限分别为 1 和 0 的集合. 由于 <span class="math inline">\(A\)</span> 由可数个可测条件刻画, 且这些条件在 <span class="math inline">\(\eta\)</span> 上几乎处处成立, 故 <span class="math inline">\(A \in \mathcal{T}\)</span> 且 <span class="math inline">\(\eta \in A\)</span> 几乎处处成立. 现在定义 <span class="math display">\[
+F(t, x) = \mathbf{1}_A(t) \inf_{r &gt; x} f(t, r) + \mathbf{1}_{A^c}(t) \mathbf{1}\{x \geq 0\}, \quad x \in \mathbb{R},\ t \in T,
+\]</span> 注意到对每个 <span class="math inline">\(t \in T\)</span>, <span class="math inline">\(F(t, \cdot)\)</span> 是 <span class="math inline">\(\mathbb{R}\)</span> 上的分布函数. 因此, 由命题~<span class="math inline">\(\ref{prop:2.14}\)</span>, 存在概率测度 <span class="math inline">\(m(t, \cdot)\)</span> 使得 <span class="math display">\[
+m(t, (-\infty, x]) = F(t, x), \quad x \in \mathbb{R},\ t \in T.
+\]</span> 对每个 <span class="math inline">\(x\)</span>, <span class="math inline">\(F(t, x)\)</span> 显然关于 <span class="math inline">\(t\)</span> 可测, 通过单调类论证可得 <span class="math inline">\(m\)</span> 是从 <span class="math inline">\(T\)</span> 到 <span class="math inline">\(\mathbb{R}\)</span> 的概率核.</p>
+<p>由 <a href="#eq-1" class="quarto-xref">式&nbsp;1</a> 及 <span class="math inline">\(\mathbb{E}^\eta\)</span> 的单调收敛性质, 有 <span class="math display">\[
+m(\eta, (-\infty, x]) = F(\eta, x) = \mathbb{P}[\xi \leq x \mid \eta] \quad \text{a.e.}, \quad x \in \mathbb{R}.
+\]</span> 利用单调类论证和几乎处处的单调收敛性质, 可将上述关系推广为 <span id="eq-2"><span class="math display">\[
+m(\eta, B) = \mathbb{P}[\xi \in B \mid \eta] \quad \text{a.e.}, \quad B \in \mathcal{B}(\mathbb{R}).
+\tag{2}\]</span></span></p>
+<p>特别地, <span class="math inline">\(m(\eta, S^c) = 0\)</span> 几乎处处成立, 因此在 <span class="math inline">\(\mathcal{S} = \mathcal{B} \cap S\)</span> 上, 令 <span class="math display">\[
+\mu(t, \cdot) = m(t, \cdot) \mathbf{1}\{m(t, S) = 1\} + \delta_s \mathbf{1}\{m(t, S) &lt; 1\}, \quad t \in T,
+\]</span> 其中 <span class="math inline">\(s \in S\)</span> 任取, 则 <a href="#eq-2" class="quarto-xref">式&nbsp;2</a> 对 <span class="math inline">\(\mu\)</span> 依然成立. 如果 <span class="math inline">\(\mu'\)</span> 是另一个满足条件的核, 则有 <span class="math display">\[
+\mu(\eta, (-\infty, r]) = \mathbb{P}[\xi \leq r \mid \eta] = \mu'(\eta, (-\infty, r]) \quad \text{a.e.}, \quad r \in \mathbb{Q},
+\]</span> 再由单调类论证可得 <span class="math inline">\(\mu(\eta, \cdot) = \mu'(\eta, \cdot)\)</span> 几乎处处成立.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof (正则条件概率存在性的证明)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>证明</em> (正则条件概率存在性的证明). </span>设 <span class="math inline">\((\Omega, \mathcal{A})\)</span> 是标准 Borel 空间, <span class="math inline">\(P\)</span> 是其上的概率测度, <span class="math inline">\(\mathcal{A}_0 \subseteq \mathcal{A}\)</span> 是子 <span class="math inline">\(\sigma\)</span>-代数.</p>
+<section id="第一步-可数生成集与条件期望" class="level4">
+<h4 class="anchored" data-anchor-id="第一步-可数生成集与条件期望">第一步: 可数生成集与条件期望</h4>
+<p>由于 <span class="math inline">\((\Omega, \mathcal{A})\)</span> 是标准 Borel 空间, 存在使 <span class="math inline">\(\mathcal{A}\)</span> 成为 Borel <span class="math inline">\(\sigma\)</span>-代数的 Polish 拓扑. 标准 Borel 空间的一个重要性质是: 对任意子 <span class="math inline">\(\sigma\)</span>-代数, 概率测度都存在正则条件概率.</p>
+<p>取 <span class="math inline">\(\mathcal{C}\)</span> 为生成 <span class="math inline">\(\mathcal{A}\)</span> 的可数 <span class="math inline">\(\pi\)</span>-系统. 对每个 <span class="math inline">\(A \in \mathcal{C}\)</span>, 条件期望 <span class="math inline">\(\mathbb{E}[1_A \mid \mathcal{A}_0]\)</span> 存在且为 <span class="math inline">\(\mathcal{A}_0\)</span>-可测函数, <span class="math inline">\(P\)</span>-几乎处处唯一. 由 Doob-Dynkin 引理（见 <a href="#lem-doob-dynkin" class="quarto-xref">引理&nbsp;1</a>）, 对每个 <span class="math inline">\(A \in \mathcal{C}\)</span>, 存在可测函数 <span class="math inline">\(f_A: \Omega \to [0,1]\)</span>, 使得 <span class="math display">\[
+\mathbb{E}[1_A \mid \mathcal{A}_0] = f_A \circ \eta \quad \text{几乎处处},
+\]</span> 其中 <span class="math inline">\(\eta\)</span> 是生成 <span class="math inline">\(\mathcal{A}_0\)</span> 的可测函数（如 <span class="math inline">\(\eta(\omega) = \omega\)</span>）.</p>
+</section>
+<section id="第二步-通过扩张构造概率核" class="level4">
+<h4 class="anchored" data-anchor-id="第二步-通过扩张构造概率核">第二步: 通过扩张构造概率核</h4>
+<p>对每个固定 <span class="math inline">\(\omega \in \Omega\)</span>, 定义 <span class="math inline">\(f_A(\omega)\)</span>, <span class="math inline">\(A \in \mathcal{C}\)</span>. 映射 <span class="math inline">\(A \mapsto f_A(\omega)\)</span> 满足:</p>
+<ul>
+<li><p><strong>有限可加性</strong>: 若 <span class="math inline">\(A_1, A_2 \in \mathcal{C}\)</span> 且互不相交, 则 <span class="math inline">\(f_{A_1 \cup A_2}(\omega) = f_{A_1}(\omega) + f_{A_2}(\omega)\)</span>;</p></li>
+<li><p><strong>非负性</strong>: <span class="math inline">\(f_A(\omega) \geq 0\)</span>;</p></li>
+<li><p><strong>归一性</strong>: <span class="math inline">\(f_\Omega(\omega) = 1\)</span>.</p></li>
+</ul>
+<p>要将 <span class="math inline">\(f_A(\omega)\)</span> 扩张为 <span class="math inline">\((\Omega, \mathcal{A})\)</span> 上的概率测度, 可用 Carathéodory 扩张定理（见 <a href="#thm-Caratheodory-extension-theorem" class="quarto-xref">定理&nbsp;1</a>）. 由于 <span class="math inline">\(\mathcal{C}\)</span> 是 <span class="math inline">\(\pi\)</span>-系统, 若 <span class="math inline">\(f_A(\omega)\)</span> 在 <span class="math inline">\(\mathcal{C}\)</span> 上可数可加, 则扩张唯一. 这可由主导收敛定理和 <span class="math inline">\(\mathcal{C}\)</span> 生成 <span class="math inline">\(\mathcal{A}\)</span> 得到.</p>
+<p>因此, 对 <span class="math inline">\(P\)</span>-几乎处处的 <span class="math inline">\(\omega\)</span>, 存在唯一的概率测度 <span class="math inline">\(K_{\mathcal{A}_0}(\omega, \cdot)\)</span>, 使得 <span class="math display">\[
+K_{\mathcal{A}_0}(\omega, A) = f_A(\omega), \quad \forall A \in \mathcal{C}.
+\]</span></p>
+</section>
+<section id="第三步-概率核的可测性" class="level4">
+<h4 class="anchored" data-anchor-id="第三步-概率核的可测性">第三步: 概率核的可测性</h4>
+<p>对每个 <span class="math inline">\(A \in \mathcal{A}\)</span>, 映射 <span class="math inline">\(\omega \mapsto K_{\mathcal{A}_0}(\omega, A)\)</span> 需为 <span class="math inline">\(\mathcal{A}_0\)</span>-可测. 由于 <span class="math inline">\(\mathcal{C}\)</span> 生成 <span class="math inline">\(\mathcal{A}\)</span>, 可用 <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> 定理: - 设 <span class="math inline">\(\mathcal{L} = \{ A \in \mathcal{A} : K_{\mathcal{A}_0}(\cdot, A) \text{ 是 } \mathcal{A}_0\text{-可测} \}\)</span>; - <span class="math inline">\(\mathcal{L}\)</span> 是包含 <span class="math inline">\(\mathcal{C}\)</span> 的 <span class="math inline">\(\lambda\)</span>-系统, 故 <span class="math inline">\(\mathcal{L} = \mathcal{A}\)</span>.</p>
+</section>
+<section id="第四步-联合可测性" class="level4">
+<h4 class="anchored" data-anchor-id="第四步-联合可测性">第四步: 联合可测性</h4>
+<p>由 <a href="#thm-k" class="quarto-xref">定理&nbsp;2</a>, 存在从 <span class="math inline">\(\mathcal{A}_0\)</span> 到 <span class="math inline">\(\mathcal{A}\)</span> 的概率核 <span class="math inline">\(\mu\)</span>, 使得 <span class="math display">\[
+\mathbb{P}[\xi \in \cdot \mid \eta] = \mu(\eta, \cdot) \quad \text{几乎处处},
+\]</span> 其中 <span class="math inline">\(\xi, \eta\)</span> 是 <span class="math inline">\(\Omega\)</span> 上的随机元. 此处 <span class="math inline">\(\mu(\eta(\omega), A) = K_{\mathcal{A}_0}(\omega, A)\)</span>, <span class="math inline">\(P\)</span>-几乎处处成立. <span class="math inline">\((\omega, A) \mapsto K_{\mathcal{A}_0}(\omega, A)\)</span> 的联合可测性由可数生成集 <span class="math inline">\(\mathcal{C}\)</span> 的构造和 <span class="math inline">\(\mu\)</span> 的唯一性保证.</p>
+</section>
+<section id="第五步-条件概率的验证" class="level4">
+<h4 class="anchored" data-anchor-id="第五步-条件概率的验证">第五步: 条件概率的验证</h4>
+<p>对所有 <span class="math inline">\(A \in \mathcal{A}\)</span>, <span class="math inline">\(K_{\mathcal{A}_0}(\omega, A)\)</span> 满足:</p>
+<ul>
+<li><p><strong>可测性</strong>: <span class="math inline">\(K_{\mathcal{A}_0}(\cdot, A)\)</span> 是 <span class="math inline">\(\mathcal{A}_0\)</span>-可测;</p></li>
+<li><p><strong>积分公式</strong>: 对任意 <span class="math inline">\(B \in \mathcal{A}_0\)</span>, <span class="math display">\[
+\int_B K_{\mathcal{A}_0}(\omega, A) \, dP(\omega) = P(A \cap B).
+\]</span> 该式对 <span class="math inline">\(A \in \mathcal{C}\)</span> 成立, 由 <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> 定理推广到所有 <span class="math inline">\(A \in \mathcal{A}\)</span>.</p></li>
+</ul>
+<p>因此, <span class="math inline">\(K_{\mathcal{A}_0}\)</span> 是正则条件概率核.</p>
+<p>参见 <span class="citation" data-cites="bogachev2007measure"><a href="#ref-bogachev2007measure" role="doc-biblioref">[5]</a></span> 和 <span class="citation" data-cites="kallenberg2002foundations"><a href="#ref-kallenberg2002foundations" role="doc-biblioref">[4]</a></span>.</p>
+</section>
+</div>
+</div>
+</div>
+</div>
+<p>因此, 在标准 Borel 空间中, 对于任意子 <span class="math inline">\(\sigma\)</span>-代数 <span class="math inline">\(\mathcal{A}_0\)</span>, 正则条件概率总是存在的.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remark
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div class="proof remark">
+<p><span class="proof-title"><em>注记</em>. </span>标准 Borel 空间的假设是至关重要的. 对于一般的可测空间, 正则条件概率可能并不存在.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="正则条件概率的唯一性" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="正则条件概率的唯一性"><span class="header-section-number">4</span> 正则条件概率的唯一性</h2>
+<p>正则条件概率在 <span class="math inline">\(P\)</span>-零测集意义下是唯一的. 即, 如果 <span class="math inline">\(K_{\mathcal{A}_0}\)</span> 和 <span class="math inline">\(\tilde{K}_{\mathcal{A}_0}\)</span> 都是关于 <span class="math inline">\(\mathcal{A}_0\)</span> 的正则条件概率, 则存在 <span class="math inline">\(P\)</span>-零测集 <span class="math inline">\(N\)</span>, 使得对所有 <span class="math inline">\(\omega \notin N\)</span> 及所有 <span class="math inline">\(A \in \mathcal{A}\)</span>, <span class="math display">\[
+K_{\mathcal{A}_0}(\omega, A) = \tilde{K}_{\mathcal{A}_0}(\omega, A).
+\]</span></p>
+<p>这意味着正则条件概率在本质上是唯一的: 任意两个版本在概率为零的集合之外都一致.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof (正则条件概率唯一性的证明)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>证明</em> (正则条件概率唯一性的证明). </span>设 <span class="math inline">\(K_{\mathcal{A}_0}\)</span> 和 <span class="math inline">\(\tilde{K}_{\mathcal{A}_0}\)</span> 是关于 <span class="math inline">\(\mathcal{A}_0\)</span> 的两个正则条件概率. 对每个 <span class="math inline">\(A \in \mathcal{A}\)</span>, 定义 <span class="math display">\[
+N_A = \{\omega \in \Omega : K_{\mathcal{A}_0}(\omega, A) \neq \tilde{K}_{\mathcal{A}_0}(\omega, A)\}.
+\]</span></p>
+<section id="第一步-可数生成集上的零测集" class="level4">
+<h4 class="anchored" data-anchor-id="第一步-可数生成集上的零测集">第一步: 可数生成集上的零测集</h4>
+<p>由正则条件概率的定义, <span class="math inline">\(K_{\mathcal{A}_0}(\cdot, A)\)</span> 和 <span class="math inline">\(\tilde{K}_{\mathcal{A}_0}(\cdot, A)\)</span> 都是 <span class="math inline">\(\mathbb{E}[1_A \mid \mathcal{A}_0]\)</span> 的版本, 因此 <span class="math inline">\(P\)</span>-几乎处处相等, 即 <span class="math inline">\(P(N_A) = 0\)</span>.</p>
+<p>由于 <span class="math inline">\(\mathcal{A}\)</span> 是标准 Borel, 存在可数 <span class="math inline">\(\pi\)</span>-系统 <span class="math inline">\(\mathcal{C}\)</span> 生成 <span class="math inline">\(\mathcal{A}\)</span>. 定义 <span class="math display">\[
+N = \bigcup_{A \in \mathcal{C}} N_A.
+\]</span> <span class="math inline">\(\mathcal{C}\)</span> 可数, <span class="math inline">\(N\)</span> 是可数个 <span class="math inline">\(P\)</span>-零测集的并, 故 <span class="math inline">\(P(N) = 0\)</span>.</p>
+</section>
+<section id="第二步-pi-lambda-定理推广到整个-sigma-代数" class="level4">
+<h4 class="anchored" data-anchor-id="第二步-pi-lambda-定理推广到整个-sigma-代数">第二步: <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> 定理推广到整个 <span class="math inline">\(\sigma\)</span>-代数</h4>
+<p>对任意 <span class="math inline">\(\omega \notin N\)</span>, 定义 <span class="math display">\[
+\mathcal{D}_\omega = \{ A \in \mathcal{A} : K_{\mathcal{A}_0}(\omega, A) = \tilde{K}_{\mathcal{A}_0}(\omega, A) \}.
+\]</span> <span class="math inline">\(\mathcal{D}_\omega\)</span> 是包含 <span class="math inline">\(\mathcal{C}\)</span> 的 <span class="math inline">\(\lambda\)</span>-系统:</p>
+<ul>
+<li><p><strong>包含全集</strong>: <span class="math inline">\(K_{\mathcal{A}_0}(\omega, \Omega) = 1 = \tilde{K}_{\mathcal{A}_0}(\omega, \Omega)\)</span>, 故 <span class="math inline">\(\Omega \in \mathcal{D}_\omega\)</span>.</p></li>
+<li><p><strong>对可列不交并封闭</strong>: 若 <span class="math inline">\(A_n \in \mathcal{D}_\omega\)</span> 两两不交, 则 <span class="math display">\[
+K_{\mathcal{A}_0}\left(\omega, \bigcup_{n=1}^\infty A_n\right) = \sum_{n=1}^\infty K_{\mathcal{A}_0}(\omega, A_n) = \sum_{n=1}^\infty \tilde{K}_{\mathcal{A}_0}(\omega, A_n) = \tilde{K}_{\mathcal{A}_0}\left(\omega, \bigcup_{n=1}^\infty A_n\right).
+\]</span></p></li>
+<li><p><strong>对补集封闭</strong>: 若 <span class="math inline">\(A \in \mathcal{D}_\omega\)</span>, 则 <span class="math display">\[
+K_{\mathcal{A}_0}(\omega, A^c) = 1 - K_{\mathcal{A}_0}(\omega, A) = 1 - \tilde{K}_{\mathcal{A}_0}(\omega, A) = \tilde{K}_{\mathcal{A}_0}(\omega, A^c).
+\]</span></p></li>
+</ul>
+<p>由于 <span class="math inline">\(\mathcal{C} \subseteq \mathcal{D}_\omega\)</span> 且 <span class="math inline">\(\mathcal{C}\)</span> 是 <span class="math inline">\(\pi\)</span>-系统, <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> 定理得 <span class="math inline">\(\mathcal{A} \subseteq \mathcal{D}_\omega\)</span>. 因此对所有 <span class="math inline">\(\omega \notin N\)</span> 及 <span class="math inline">\(A \in \mathcal{A}\)</span>, 有 <span class="math inline">\(K_{\mathcal{A}_0}(\omega, A) = \tilde{K}_{\mathcal{A}_0}(\omega, A)\)</span>.</p>
+<p><span class="math inline">\(N\)</span> 是 <span class="math inline">\(P\)</span>-零测集, 故正则条件概率在 <span class="math inline">\(P\)</span>-几乎处处唯一.</p>
+</section>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remark
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div class="proof remark">
+<p><span class="proof-title"><em>注记</em>. </span>这一唯一性性质确保, 尽管正则条件概率在每一点上未必唯一, 但任意两个版本在 <span class="math inline">\(P\)</span>-几乎处处都一致.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="条件期望的积分表示" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="条件期望的积分表示"><span class="header-section-number">5</span> 条件期望的积分表示</h2>
+<p>至此, 我们已经证明了条件概率可以提升为更精细的版本（即正则条件概率）, 它本身是一个概率测度. 这使得我们可以以它为测度定义积分.</p>
+<p>接下来, 我们将证明: 以正则条件概率为测度的积分运算, 恰好与条件期望一致.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="thm-cond-exp-as-integral" class="theorem">
+<p><span class="theorem-title"><strong>定理 3 (条件期望的积分表示)</strong></span> 设 <span class="math inline">\((\Omega, \mathcal{A}, P)\)</span> 是一个概率空间, <span class="math inline">\(\mathcal{A}_0 \subseteq \mathcal{A}\)</span> 是一个 子<span class="math inline">\(\sigma\)</span>-代数, <span class="math inline">\(K(\omega, A)\)</span> 是一个概率核, 满足 <span class="math inline">\(K(\omega, A) = \mathbb{E}[1_A \mid \mathcal{A}_0](\omega)\)</span> 即是说, 对于所有 <span class="math inline">\(A \in \mathcal{A}\)</span>. 那么对于所有可积随机变量 <span class="math inline">\(X\)</span>, 它的条件期望满足: <span class="math display">\[
+\mathbb{E}[X \mid \mathcal{A}_0](\omega) = \int_\Omega X(\omega') K(\omega, d\omega') \quad \text{a.e. } P.
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof (<a href="#thm-cond-exp-as-integral" class="quarto-xref">定理&nbsp;3</a>的证明)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>证明</em> (<a href="#thm-cond-exp-as-integral" class="quarto-xref">定理&nbsp;3</a>的证明). </span></p>
+<section id="第一步-示性函数" class="level4">
+<h4 class="anchored" data-anchor-id="第一步-示性函数">第一步: 示性函数</h4>
+<p>设 <span class="math inline">\(X = 1_A\)</span> 关于 <span class="math inline">\(A \in \mathcal{A}\)</span>. 由正则条件概率的定义有: <span class="math display">\[
+\mathbb{E}[1_A \mid \mathcal{A}_0](\omega) = K(\omega, A) = \int_\Omega 1_A(\omega') K(\omega, d\omega') \quad \text{a.e. } P.
+\]</span></p>
+</section>
+<section id="第二步-简单函数" class="level4">
+<h4 class="anchored" data-anchor-id="第二步-简单函数">第二步: 简单函数</h4>
+<p>设 <span class="math inline">\(X = \sum_{i=1}^n a_i 1_{A_i}\)</span> 关于 <span class="math inline">\(A_i \in \mathcal{A}\)</span>, <span class="math inline">\(a_i \in \mathbb{R}\)</span>. 由条件期望与积分的线性性有: <span class="math display">\[
+\mathbb{E}[X \mid \mathcal{A}_0](\omega) = \sum_{i=1}^n a_i \mathbb{E}[1_{A_i} \mid \mathcal{A}_0](\omega) = \sum_{i=1}^n a_i \int_\Omega 1_{A_i}(\omega') K(\omega, d\omega') = \int_\Omega X(\omega') K(\omega, d\omega').
+\]</span></p>
+</section>
+<section id="第三步-非负可积函数" class="level4">
+<h4 class="anchored" data-anchor-id="第三步-非负可积函数">第三步: 非负可积函数</h4>
+<p>设 <span class="math inline">\(X \geq 0\)</span> 是可测函数. 取简单函数单调列 <span class="math inline">\(X_n \uparrow X\)</span>. 由Levi单调收敛定理:</p>
+<ul>
+<li><p><span class="math inline">\(\mathbb{E}[X_n \mid \mathcal{A}_0] \uparrow \mathbb{E}[X \mid \mathcal{A}_0]\)</span> a.e.</p></li>
+<li><p><span class="math inline">\(\int X_n K(\omega, d\omega') \uparrow \int X K(\omega, d\omega')\)</span>.</p></li>
+</ul>
+<p>因此: <span class="math display">\[
+\mathbb{E}[X \mid \mathcal{A}_0](\omega) = \lim_{n \to \infty} \mathbb{E}[X_n \mid \mathcal{A}_0](\omega) = \lim_{n \to \infty} \int X_n K(\omega, d\omega') = \int X K(\omega, d\omega') \quad \text{a.e. } P.
+\]</span></p>
+</section>
+<section id="第四步-一般可积函数" class="level4">
+<h4 class="anchored" data-anchor-id="第四步-一般可积函数">第四步: 一般可积函数</h4>
+<p>对于任意可积函数 <span class="math inline">\(X\)</span>, 可分解为 <span class="math inline">\(X = X^+ - X^-\)</span> 其中 <span class="math inline">\(X^\pm \geq 0\)</span>. 由第三步: <span class="math display">\[
+\mathbb{E}[X \mid \mathcal{A}_0] = \mathbb{E}[X^+ \mid \mathcal{A}_0] - \mathbb{E}[X^- \mid \mathcal{A}_0] = \int X^+ K(\omega, d\omega') - \int X^- K(\omega, d\omega') = \int X K(\omega, d\omega') \quad \text{a.e. } P.
+\]</span></p>
+</section>
+<section id="step-5-可测性与唯一性" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-可测性与唯一性">Step 5: 可测性与唯一性</h4>
+<ul>
+<li><p><strong>可测性</strong>: 根据概率核 <span class="math inline">\(K\)</span> 的构造, 积分 <span class="math inline">\(\int X K(\omega, d\omega')\)</span> 是 <span class="math inline">\(\mathcal{A}_0\)</span>-可测的.</p></li>
+<li><p><strong>唯一性</strong>: 正则条件概率是一致的在 <span class="math inline">\(P\)</span>-几乎处处的意义下, 确保了积分表示也是几乎处处一致的.</p></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="结语" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="结语"><span class="header-section-number">6</span> 结语</h2>
+<p>通过本次作业的研究, 我们系统梳理了Regular Conditional Probability的构造逻辑, 并严格证明了其在标准 Borel 空间下的存在性与唯一性. 这一结果表明, 在满足良好拓扑结构的测度空间中, 条件概率可以被提升为一个关于样本点 <span class="math inline">\(\omega\)</span> 的概率测度核 <span class="math inline">\(K_{\mathcal{A}_0}(\omega,A)\)</span> , 从而避免了传统条件概率定义中因依赖于事件 A 而导致的”零测集选取问题”. 这一结论为条件期望的积分表示提供了严格的数学基础.</p>
+<p>然而, 正则条件概率的构造对空间的结构性质具有强依赖性. 若放宽至一般可测空间, 此类核的存在性可能失效.</p>
+</section>
+<section id="致谢" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="致谢">致谢</h2>
+<p>衷心感谢朱蓉禅老师在本学期《概率论选讲》课程中的指导. 感谢刘晨浩同学与宋柯师姐在课外学习提供的帮助. 同时也感谢大三强基计划的钟星宇学长与我共同探究”不同版本的教材中条件概率与条件期望是否一致”, 促使我深入思考正则化条件概率的必要性. 此外, 感谢钟星宇学长的开源排版工具<a href="https://github.com/sun123zxy/sunquartex">SunQuarTex</a>, 使本文档的排版得以高效完成.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-Rockner2016ProbabilityNotes" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. Röckner, <span>《<span>Probability Theory I and II</span>》</span>, 2016年.</div>
+</div>
+<div id="ref-李贤平1997概率论基础" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">李贤平, <em>概率论基础</em>. 高等教育出版社, 1997.</div>
+</div>
+<div id="ref-韦来生2015数理统计" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">韦来生, <em>数理统计</em>. 科学出版社, 2015.</div>
+</div>
+<div id="ref-kallenberg2002foundations" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">O. Kallenberg 和 O. Kallenberg, <em>Foundations of modern probability</em>, 卷 2. Springer, 2002.</div>
+</div>
+<div id="ref-bogachev2007measure" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">V. I. Bogachev 和 M. A. S. Ruas, <em>Measure theory</em>, 卷 1. Springer, 2007.</div>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/Liyvew\.github\.io\/Lecture-Notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

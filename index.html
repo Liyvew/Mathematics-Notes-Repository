@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>数学笔记仓库</title>
+<title>Liyve’s Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -152,7 +117,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">数学笔记</span>
+    <span class="navbar-title">Liyve’s Notes</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -163,16 +128,28 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">主页</span></a>
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">笔记</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notes</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notes">    
         <li>
-    <a class="dropdown-item" href="./commutative-algebra.html">
- <span class="dropdown-text">交换代数</span></a>
+    <a class="dropdown-item" href="./en-regular-conditional-probability.html">
+ <span class="dropdown-text">Regular Conditional Probability (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cn-regular-conditional-probability.html">
+ <span class="dropdown-text">正则条件概率 (中文)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./en-commutative-algebra.html">
+ <span class="dropdown-text">Commutative Algebra</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./en-pre-classification-quadratic-forms-over-q.html">
+ <span class="dropdown-text">Classification of Quadratic Forms over ℚ</span></a>
   </li>  
     </ul>
   </li>
@@ -199,22 +176,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#数学笔记仓库-mathematics-notes-repository" id="toc-数学笔记仓库-mathematics-notes-repository" class="nav-link active" data-scroll-target="#数学笔记仓库-mathematics-notes-repository">数学笔记仓库 (Mathematics Notes Repository)</a>
+  <li><a href="#mathematics-notes-repository" id="toc-mathematics-notes-repository" class="nav-link active" data-scroll-target="#mathematics-notes-repository">Mathematics Notes Repository</a>
   <ul class="collapse">
-  <li><a href="#笔记内容" id="toc-笔记内容" class="nav-link" data-scroll-target="#笔记内容">📚 笔记内容</a>
+  <li><a href="#notes-overview" id="toc-notes-overview" class="nav-link" data-scroll-target="#notes-overview">Notes Overview</a>
   <ul class="collapse">
-  <li><a href="#代数学" id="toc-代数学" class="nav-link" data-scroll-target="#代数学">代数学</a></li>
-  <li><a href="#计划添加的内容" id="toc-计划添加的内容" class="nav-link" data-scroll-target="#计划添加的内容">计划添加的内容</a></li>
+  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability</a></li>
+  <li><a href="#algebra" id="toc-algebra" class="nav-link" data-scroll-target="#algebra">Algebra</a></li>
+  <li><a href="#geometry" id="toc-geometry" class="nav-link" data-scroll-target="#geometry">Geometry</a></li>
+  <li><a href="#topology" id="toc-topology" class="nav-link" data-scroll-target="#topology">Topology</a></li>
   </ul></li>
-  <li><a href="#功能特性" id="toc-功能特性" class="nav-link" data-scroll-target="#功能特性">✨ 功能特性</a></li>
-  <li><a href="#快速开始" id="toc-快速开始" class="nav-link" data-scroll-target="#快速开始">🚀 快速开始</a>
-  <ul class="collapse">
-  <li><a href="#在线阅读" id="toc-在线阅读" class="nav-link" data-scroll-target="#在线阅读">在线阅读</a></li>
-  <li><a href="#本地使用" id="toc-本地使用" class="nav-link" data-scroll-target="#本地使用">本地使用</a></li>
-  </ul></li>
-  <li><a href="#如何贡献" id="toc-如何贡献" class="nav-link" data-scroll-target="#如何贡献">📝 如何贡献</a></li>
-  <li><a href="#技术说明" id="toc-技术说明" class="nav-link" data-scroll-target="#技术说明">📄 技术说明</a></li>
-  <li><a href="#联系方式" id="toc-联系方式" class="nav-link" data-scroll-target="#联系方式">📧 联系方式</a></li>
+  <li><a href="#contributing-contact" id="toc-contributing-contact" class="nav-link" data-scroll-target="#contributing-contact">Contributing &amp; Contact</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -225,89 +196,48 @@ window.Quarto = {
 
 
 
-<section id="数学笔记仓库-mathematics-notes-repository" class="level1">
-<h1>数学笔记仓库 (Mathematics Notes Repository)</h1>
-<p>基于 <span class="math inline">\(\SunQuarTeX\)</span> 的数学学习笔记整理仓库。支持输出至 HTML、PDF/LaTeX、MS Word 等多种格式，包含完整的数学公式支持、定理环境、交叉引用等学术写作功能。</p>
+<section id="mathematics-notes-repository" class="level1">
+<h1>Mathematics Notes Repository</h1>
+<p>基于 <a href="https://github.com/sun123zxy/sunquartex">SunQuarTeX</a> 的数学学习笔记整理仓库。</p>
 <ul>
 <li><a href="https://github.com/Liyvew/Lecture-Notes">仓库主页</a></li>
 <li><a href="https://Liyvew.github.io/Lecture-Notes">在线阅读</a></li>
 </ul>
-<section id="笔记内容" class="level2">
-<h2 class="anchored" data-anchor-id="笔记内容">📚 笔记内容</h2>
-<section id="代数学" class="level3">
-<h3 class="anchored" data-anchor-id="代数学">代数学</h3>
+<section id="notes-overview" class="level2">
+<h2 class="anchored" data-anchor-id="notes-overview">Notes Overview</h2>
+<p>本仓库按学科或主题整理数学学习笔记，每个部分包含主要教材或讲义的摘要与参考。内容涵盖概率论、代数学、几何学和拓扑学等主题，内容持续更新并计划新增更多内容。</p>
+<section id="probability" class="level3">
+<h3 class="anchored" data-anchor-id="probability">Probability</h3>
 <ul>
-<li><strong>交换代数 (Commutative Algebra)</strong> - 基于 Atiyah &amp; Macdonald 的《Introduction to Commutative Algebra》的学习笔记</li>
+<li><strong>Regular Conditional Probability（施工中）</strong>- 课程<em>Selected Topics in Probability Theory</em>的期末大作业, 内容包括正则条件概率的定义、性质及其在概率论中的应用</li>
 </ul>
 </section>
-<section id="计划添加的内容" class="level3">
-<h3 class="anchored" data-anchor-id="计划添加的内容">计划添加的内容</h3>
+<section id="algebra" class="level3">
+<h3 class="anchored" data-anchor-id="algebra">Algebra</h3>
 <ul>
-<li>抽象代数</li>
-<li>实分析</li>
-<li>复分析</li>
-<li>拓扑学</li>
-<li>微分几何</li>
-<li>更多内容持续更新中…</li>
+<li><strong>Commutative Algebra（施工中）</strong> - 基于 Atiyah &amp; Macdonald 的<em>Introduction to Commutative Algebra</em>的学习笔记</li>
+<li><strong>A Course in Arithmetic</strong> - 基于 Serre 的 <em>A Course in Arithmetic</em>（GTM 7）的学习笔记，内容涵盖 <span class="math inline">\(p\)</span>-adic 数、二次型、模形式等主题，重点介绍有理数域及其扩域上的算术结构与理论，适合进阶数论学习者参考</li>
+<li><strong>Classification of Quadratic Forms over Q（施工中）</strong> - 基于GTM 7的进一步整理，研究有理数域上二次型的分类与应用，内容包括二次型的标准形、判别式以及在数论中的应用</li>
+</ul>
+</section>
+<section id="geometry" class="level3">
+<h3 class="anchored" data-anchor-id="geometry">Geometry</h3>
+<ul>
+<li><strong>Algebraic Geometry（计划中）</strong> - 基于 Hartshorne 的<em>Algebraic Geometry</em>的学习笔记，内容涵盖代数几何的基本概念、工具和定理</li>
+<li><strong>Differential Manifolds（计划中）</strong> - 基于 Lee 的 <em>Introduction to Smooth Manifolds</em>（GTM 228）的学习笔记，内容涵盖微分流形的基本概念、工具和定理</li>
+</ul>
+</section>
+<section id="topology" class="level3">
+<h3 class="anchored" data-anchor-id="topology">Topology</h3>
+<ul>
+<li><strong>General Topology（计划中）</strong> - 基于尤承业的《基础拓扑学讲义》的学习笔记，内容涵盖拓扑学的基本概念、工具和定理</li>
+<li><strong>Algebraic Topology（计划中）</strong> - 基于 Hatcher 的《Algebraic Topology》的学习笔记，内容涵盖代数拓扑的基本概念、工具和定理</li>
 </ul>
 </section>
 </section>
-<section id="功能特性" class="level2">
-<h2 class="anchored" data-anchor-id="功能特性">✨ 功能特性</h2>
-<ul>
-<li>基于 Pandoc’s Markdown 的完备数学写作语法</li>
-<li>强大的交叉引用与定理环境系统</li>
-<li>HTML、PDF/LaTeX、MS Word 全格式输出</li>
-<li>TikZ 数学图表绘制支持</li>
-<li>完整的数学公式渲染</li>
-<li>文献引用管理</li>
-<li>GitHub Actions 自动生成在线版本</li>
-</ul>
-</section>
-<section id="快速开始" class="level2">
-<h2 class="anchored" data-anchor-id="快速开始">🚀 快速开始</h2>
-<section id="在线阅读" class="level3">
-<h3 class="anchored" data-anchor-id="在线阅读">在线阅读</h3>
-<p>直接访问 <a href="https://Liyvew.github.io/Lecture-Notes">在线版本</a> 即可阅读所有笔记内容。</p>
-</section>
-<section id="本地使用" class="level3">
-<h3 class="anchored" data-anchor-id="本地使用">本地使用</h3>
-<section id="环境要求" class="level4">
-<h4 class="anchored" data-anchor-id="环境要求">环境要求</h4>
-<ul>
-<li><a href="https://github.com/quarto-dev/quarto-cli">Quarto CLI</a> - 文档渲染引擎</li>
-<li>LaTeX 发行版（推荐使用 <code>quarto install tinytex --update-path</code>）</li>
-<li>（可选）Python 环境用于数据可视化</li>
-</ul>
-</section>
-<section id="渲染笔记" class="level4">
-<h4 class="anchored" data-anchor-id="渲染笔记">渲染笔记</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 渲染单个笔记为 HTML</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render commutative-algebra.qmd <span class="at">--to</span> html</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 渲染为 PDF</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render commutative-algebra.qmd <span class="at">--to</span> pdf</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 渲染整个网站</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-</section>
-<section id="如何贡献" class="level2">
-<h2 class="anchored" data-anchor-id="如何贡献">📝 如何贡献</h2>
-<p>欢迎提出建议和改进！如果您发现错误或有改进建议，请：</p>
-<ol type="1">
-<li>提交 Issue 报告问题</li>
-<li>或者 Fork 仓库并提交 Pull Request</li>
-</ol>
-</section>
-<section id="技术说明" class="level2">
-<h2 class="anchored" data-anchor-id="技术说明">📄 技术说明</h2>
-<p>本仓库基于 <a href="https://quarto.org/">Quarto</a> 构建，支持： - 完整的 LaTeX 数学公式 - 定理、证明等数学环境 - 交叉引用和文献管理 - 多种输出格式（HTML、PDF、Word 等）</p>
-</section>
-<section id="联系方式" class="level2">
-<h2 class="anchored" data-anchor-id="联系方式">📧 联系方式</h2>
-<p>如有问题或建议，欢迎通过 GitHub Issues 联系。</p>
+<section id="contributing-contact" class="level2">
+<h2 class="anchored" data-anchor-id="contributing-contact">Contributing &amp; Contact</h2>
+<p>欢迎提出建议和改进意见！如果您发现任何错误或有改进想法，欢迎直接通过邮箱与我联系：xshubin@qq.com</p>
 <hr>
 <p><em>本仓库持续更新中，感谢您的关注！</em></p>
 
