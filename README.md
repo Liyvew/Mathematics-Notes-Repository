@@ -8,9 +8,6 @@
 ## Notes Overview
 本仓库按学科或主题整理数学学习笔记，每个部分包含主要教材或讲义的摘要与参考。内容涵盖概率论、代数学、几何学和拓扑学等主题，内容持续更新并计划新增更多内容。
 
-### Probability
-- **Regular Conditional Probability**- 课程*Selected Topics in Probability Theory*的期末大作业, 内容包括正则条件概率的定义、性质及其在概率论中的应用
-
 ### Algebra
 - **Commutative Algebra（施工中）** - 基于 Atiyah & Macdonald 的*Introduction to Commutative Algebra*的学习笔记
 - **Reflection Groups and Coxeter Groups(计划中)** - 基于 Humphreys 的 *Reflection Groups and Coxeter Groups* 的学习笔记，内容涵盖反射群和考克斯特群的基本概念、性质及其在几何和代数中的应用
@@ -27,6 +24,9 @@
 ### Topology
 - **General Topology（计划中）** - 基于尤承业的《基础拓扑学讲义》的学习笔记，内容涵盖拓扑学的基本概念、工具和定理
 - **Algebraic Topology（计划中）** - 基于 Hatcher 的《Algebraic Topology》的学习笔记，内容涵盖代数拓扑的基本概念、工具和定理
+
+### Probability
+- **Regular Conditional Probability**- 课程*Selected Topics in Probability Theory*的期末大作业, 内容包括正则条件概率的定义、性质及其在概率论中的应用
 
 ## Contributing & Contact
 欢迎提出建议和改进意见！如果您发现任何错误或有改进想法，欢迎直接通过邮箱与我联系：shubinx@qq.com
