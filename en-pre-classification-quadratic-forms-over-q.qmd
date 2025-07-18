@@ -1,6 +1,6 @@
 ---
 title: "Classification of Quadratic Forms over $\\mathbb Q$"
-author: "Shubin Xue"
+author: "sun123xyz"
 date: "2025/09/15"
 date-modified: "2025/06/20"
 bibliography: classification-quadratic-forms-over-q.bib
