@@ -1,0 +1,51 @@
+# --- format defaults ---
+csl: "./_assets/ieee.csl"
+format:
+  html:
+    theme: "./_assets/custom.scss"
+    linestretch: 1.7
+    code-fold: true
+    html-math-method: mathjax
+    reference-location: margin
+    # citation-location: margin
+    link-external-icon: true
+    link-external-newwindow: true
+    toc: true
+    include-in-header:
+      text: $$\newcommand{\SunQuarTeX}{\phantom{}\kern-.0em\lower.0ex\hbox{$\mathbf S$}\kern-.045em\lower.0ex\hbox{$\scriptstyle \mathbf U$}\kern-.045em\hbox{$\scriptstyle \mathbb N$}\kern-.0em\hbox{$\mathbb Q$}\kern-.045em\lower.0ex\hbox{$\scriptstyle \mathbf U$}\kern-.135em\lower.0ex\hbox{$\scriptstyle \mathbf A$}\kern-.09em\lower.0ex\hbox{$\scriptstyle \mathbb R$}\kern-.072em\mathbf{\TeX}}$$
+  pdf:
+    # keep-tex: true
+    pdf-engine: xelatex
+    cite-method: biblatex # override the default csl cite method
+    execute:
+      echo: false
+    fig-pos: false
+    template: "./_assets/suntemp-art.tex"
+    include-in-header:
+      text: ""
+    # toc: true
+    # custom-theorem:
+      # numbered-within: section
+      # numbered-alike: true
+  docx:
+    reference-doc: "./_assets/suntemp-art.docx"
+  gfm:
+    wrap: preserve
+  beamer:
+    # slide-level: # left default to handle automatically, see Pandoc manual
+    pdf-engine: xelatex
+    theme: madrid
+    cite-method: biblatex # override the default csl cite method
+    execute:
+      echo: false
+    fig-pos: false
+    template: "./_assets/suntemp-pre.tex"
+    custom-color:
+      define: "\\definecolor{blueblk}{HTML}{1874D0}"
+      main: "green!40!black"
+      theorem: "green!32!black"
+      example: "blueblk!50!black"
+      remark: "white!15!black"
+      link: "lime!85!black"
+  # revealjs: default
+  # pptx: default
