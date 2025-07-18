@@ -3,7 +3,8 @@ $theorem-border-left-color: $green;
 
 /* === 网页背景图片设置 === */
 body {
-  background-image: url('./roxy.jpg');
+  /* 使用根目录中的图片 */
+  background-image: url('../roxy.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
