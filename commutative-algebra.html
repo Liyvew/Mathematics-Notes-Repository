@@ -9,7 +9,7 @@
 <meta name="author" content="Liyve">
 <meta name="dcterms.date" content="2025-06-25">
 
-<title>Commutative Algebra – SunQuarTeX</title>
+<title>Commutative Algebra – 数学笔记仓库</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,11 +63,11 @@ div.csl-indent {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-d345959adb11cc705a2559764d23265e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -89,7 +89,7 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-</head><body class="nav-sidebar floating quarto-light">$$\newcommand{\SunQuarTeX}{\phantom{}\kern-.0em\lower.0ex\hbox{$\mathbf S$}\kern-.045em\lower.0ex\hbox{$\scriptstyle \mathbf U$}\kern-.045em\hbox{$\scriptstyle \mathbb N$}\kern-.0em\hbox{$\mathbb Q$}\kern-.045em\lower.0ex\hbox{$\scriptstyle \mathbf U$}\kern-.135em\lower.0ex\hbox{$\scriptstyle \mathbf A$}\kern-.09em\lower.0ex\hbox{$\scriptstyle \mathbb R$}\kern-.072em\mathbf{\TeX}}$$
+</head><body class="nav-fixed quarto-light">$$\newcommand{\SunQuarTeX}{\phantom{}\kern-.0em\lower.0ex\hbox{$\mathbf S$}\kern-.045em\lower.0ex\hbox{$\scriptstyle \mathbf U$}\kern-.045em\hbox{$\scriptstyle \mathbb N$}\kern-.0em\hbox{$\mathbb Q$}\kern-.045em\lower.0ex\hbox{$\scriptstyle \mathbf U$}\kern-.135em\lower.0ex\hbox{$\scriptstyle \mathbf A$}\kern-.09em\lower.0ex\hbox{$\scriptstyle \mathbb R$}\kern-.072em\mathbf{\TeX}}$$
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -127,46 +127,51 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index-enart.html">Commutative Algebra</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">数学笔记</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">主页</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">笔记</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./commutative-algebra.html">
+ <span class="dropdown-text">交换代数</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Liyvew/Lecture-Notes"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">SunQuarTeX</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index-enart.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Commutative Algebra</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -194,7 +199,7 @@ window.Quarto = {
   <li><a href="#finitely-generated-module" id="toc-finitely-generated-module" class="nav-link" data-scroll-target="#finitely-generated-module"><span class="header-section-number">2.5</span> Finitely Generated Module</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index-enart.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="index-enart.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="index-enart.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="commutative-algebra.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="commutative-algebra.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="commutative-algebra.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
