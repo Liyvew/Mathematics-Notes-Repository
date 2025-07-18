@@ -13,6 +13,10 @@
 
 ### Algebra
 - **Commutative Algebra（施工中）** - 基于 Atiyah & Macdonald 的*Introduction to Commutative Algebra*的学习笔记
+- **Reflection Groups and Coxeter Groups(计划中)** - 基于 Humphreys 的 *Reflection Groups and Coxeter Groups* 的学习笔记，内容涵盖反射群和考克斯特群的基本概念、性质及其在几何和代数中的应用
+- **Deformed NilCoxeter Algebras and Related Combinatorial Problems（计划中）** - 正在推进中的本科毕业设计，内容涉及变形NilCoxeter代数的结构、性质及其相关的组合问题，重点介绍代数的定义、表示理论以及在组合数学中的应用
+
+### Number Theory
 - **A Course in Arithmetic** - 基于 Serre 的 *A Course in Arithmetic*（GTM 7）的学习笔记，内容涵盖 $p$-adic 数、二次型、模形式等主题，重点介绍有理数域及其扩域上的算术结构与理论，适合进阶数论学习者参考
 - **Classification of Quadratic Forms over Q（施工中）** - 基于GTM 7的进一步整理，研究有理数域上二次型的分类与应用，内容包括二次型的标准形、判别式以及在数论中的应用
 
