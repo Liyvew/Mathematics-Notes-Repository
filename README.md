@@ -2,8 +2,8 @@
 
 基于 Quarto 的自用中英文学术写作模板库．支持输出至 HTML、PDF/LaTeX、Beamer、MS Word、GFM 等多种格式，覆盖交叉引用、插图绘制、定理系统等多种功能．
 
-- [仓库主页](https://github.com/sun123zxy/sunquartex)
-- [网页 Demo](https://sun123zxy.github.io/sunquartex)
+- [仓库主页](https://github.com/Liyvew/Lecture-Notes)
+- [网页 Demo](https://Liyvew.github.io/Lecture-Notes)
 
 ## 核心功能
 
