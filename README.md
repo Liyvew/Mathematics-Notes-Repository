@@ -2,8 +2,8 @@
 
 基于 [SunQuarTeX](https://github.com/sun123zxy/sunquartex) 的数学学习笔记整理仓库。
 
-- [仓库主页](https://github.com/Liyvew/Lecture-Notes)
-- [在线阅读](https://Liyvew.github.io/Lecture-Notes)
+- [仓库主页](https://github.com/Liyvew/Mathematics-Notes-Repository)
+- [在线阅读](https://Liyvew.github.io/Mathematics-Notes-Repository)
 
 ## Notes Overview
 本仓库按学科或主题整理数学学习笔记，每个部分包含主要教材或讲义的摘要与参考。内容涵盖概率论、代数学、几何学和拓扑学等主题，内容持续更新并计划新增更多内容。

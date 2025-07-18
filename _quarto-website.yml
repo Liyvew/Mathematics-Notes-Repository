@@ -3,7 +3,7 @@ project:
 
 website:
   title: "Liyve's Notes"
-  site-url: "https://Liyvew.github.io/Lecture-Notes/"
+  site-url: "https://Liyvew.github.io/Mathematics-Notes-Repository/"
   navbar:
     title: "Liyve's Notes"
     left:
@@ -25,4 +25,4 @@ website:
             text: "Classification of Quadratic Forms over ℚ"
     right:
       - icon: github
-        href: https://github.com/Liyvew/Lecture-Notes
+        href: https://github.com/Liyvew/Mathematics-Notes-Repository
