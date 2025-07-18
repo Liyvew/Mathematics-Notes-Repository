@@ -103,14 +103,14 @@ $theorem-border-left-color: $green;
     z-index: 1;
   }
   
-  /* 夜间模式导航栏样式 */
+  /* 夜间模式导航栏样式 - 深灰色 */
   .navbar {
     background: linear-gradient(135deg, 
-      rgba(26, 32, 44, 0.95) 0%, 
-      rgba(45, 55, 72, 0.9) 50%, 
-      rgba(74, 85, 104, 0.85) 100%) !important;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+      rgba(40, 44, 52, 0.95) 0%, 
+      rgba(55, 59, 67, 0.9) 50%, 
+      rgba(67, 71, 79, 0.85) 100%) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
     width: 100%;
     position: relative;
@@ -147,11 +147,12 @@ $theorem-border-left-color: $green;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   }
   
+  /* 暗色主题下拉菜单 */
   .dropdown-menu {
-    background-color: rgba(45, 55, 72, 0.95);
+    background-color: rgba(55, 59, 67, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   }
   
   .dropdown-item {
@@ -159,14 +160,14 @@ $theorem-border-left-color: $green;
   }
   
   .dropdown-item:hover {
-    background-color: rgba(74, 85, 104, 0.8) !important;
+    background-color: rgba(67, 71, 79, 0.8) !important;
     color: #ffffff !important;
   }
   
   /* 夜间模式下的分隔符样式 */
   .dropdown-item[data-bs-target]:not([href]) {
     color: #a0aec0 !important;
-    background-color: rgba(26, 32, 44, 0.9) !important;
+    background-color: rgba(40, 44, 52, 0.9) !important;
   }
   
   /* 内容区域增强可读性 */
