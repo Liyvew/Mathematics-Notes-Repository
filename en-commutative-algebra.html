@@ -153,11 +153,10 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Notes</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-probability" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Probability</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-notes">    
-        <li class="dropdown-header">— Probability —</li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-probability">    
         <li>
     <a class="dropdown-item" href="./en-regular-conditional-probability.html">
  <span class="dropdown-text">Regular Conditional Probability (EN)</span></a>
@@ -166,12 +165,24 @@ window.Quarto = {
     <a class="dropdown-item" href="./cn-regular-conditional-probability.html">
  <span class="dropdown-text">正则条件概率 (中文)</span></a>
   </li>  
-        <li class="dropdown-header">— Algebra —</li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-algebra" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Algebra</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-algebra">    
         <li>
     <a class="dropdown-item" href="./en-commutative-algebra.html">
  <span class="dropdown-text">Commutative Algebra</span></a>
   </li>  
-        <li class="dropdown-header">— Number Theory —</li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-number-theory" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Number Theory</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-number-theory">    
         <li>
     <a class="dropdown-item" href="./en-pre-classification-quadratic-forms-over-q.html">
  <span class="dropdown-text">Classification of Quadratic Forms over ℚ</span></a>
@@ -181,7 +192,7 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Liyvew/Lecture-Notes"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Liyvew/Mathematics-Notes-Repository"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -2321,7 +2332,7 @@ M/N = (\mathfrak{a}M + N)/N \cong \mathfrak{a}M / (\mathfrak{a}M \cap N) \subset
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/Liyvew\.github\.io\/Lecture-Notes\/");
+        var filterRegex = new RegExp("https:\/\/Liyvew\.github\.io\/Mathematics-Notes-Repository\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
