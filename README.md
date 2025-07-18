@@ -23,7 +23,7 @@
 
 ### Topology
 - **General Topology（计划中）** - 基于尤承业的《基础拓扑学讲义》的学习笔记，内容涵盖拓扑学的基本概念、工具和定理
-- **Algebraic Topology（计划中）** - 基于 Hatcher 的《Algebraic Topology》的学习笔记，内容涵盖代数拓扑的基本概念、工具和定理
+- **Algebraic Topology（计划中）** - 基于 Hatcher 的*Algebraic Topology*的学习笔记，内容涵盖代数拓扑的基本概念、工具和定理
 
 ### Probability
 - **Regular Conditional Probability**- 课程*Selected Topics in Probability Theory*的期末大作业, 内容包括正则条件概率的定义、性质及其在概率论中的应用

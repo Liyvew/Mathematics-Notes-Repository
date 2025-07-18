@@ -1,5 +1,7 @@
 project:
   type: website
+  resources: 
+    - "_assets/"
 
 website:
   title: "Liyve's Notes"
@@ -26,3 +28,4 @@ website:
     right:
       - icon: github
         href: https://github.com/Liyvew/Mathematics-Notes-Repository
+      - theme-toggle
