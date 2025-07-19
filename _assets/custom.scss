@@ -33,18 +33,20 @@ $theorem-border-left-color: $green;
 
 /* 日间模式下拉菜单样式 */
 .dropdown-menu {
-  background-color: #f8f9fa;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff !important; /* 纯白背景，不透明 */
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: none !important; /* 禁用背景模糊 */
 }
 
 .dropdown-item {
-  color: #495057 !important;
+  color: #212529 !important; /* 深色文字，更好的对比度 */
   padding: 8px 16px;
+  background-color: transparent;
 }
 
 .dropdown-item:hover {
-  background-color: #e9ecef !important;
+  background-color: #e9ecef !important; /* 浅灰色悬停背景 */
   color: #212529 !important;
 }
 
