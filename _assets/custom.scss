@@ -1,17 +1,12 @@
 /*-- scss:rules --*/
 $theorem-border-left-color: $green;
 
-/* ==========================================
-   导航栏样式
-   ========================================== */
-
-/* 亮色主题导航栏 */
+/* === 导航栏自定义样式 === */
+/* 方案1：深色主题导航栏 */
 .navbar {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 1030;
 }
 
 .navbar-brand, .navbar-nav .nav-link {
@@ -34,11 +29,7 @@ $theorem-border-left-color: $green;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* ==========================================
-   下拉菜单样式
-   ========================================== */
-
-/* 亮色主题下拉菜单 */
+/* 下拉菜单样式 */
 .dropdown-menu {
   background-color: #f8f9fa;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -55,6 +46,27 @@ $theorem-border-left-color: $green;
   color: #212529 !important;
 }
 
+/* 暗色主题特定样式 */
+[data-bs-theme="dark"] {
+  .dropdown-menu {
+    background-color: #2d3748;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .dropdown-item {
+    color: #e2e8f0 !important;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #4a5568 !important;
+    color: #ffffff !important;
+  }
+  
+  .tikz svg {
+    filter: drop-shadow(0 0 .3px) invert(0.9);
+  }
+}
+
 /* 分隔符样式 */
 .dropdown-item[data-bs-target]:not([href]) {
   color: #6c757d !important;
@@ -66,203 +78,70 @@ $theorem-border-left-color: $green;
   background-color: #f1f3f4 !important;
 }
 
-/* ==========================================
-   暗色主题样式
-   ========================================== */
-
-[data-bs-theme="dark"] {
-  /* 夜间模式背景 */
-  body {
-    background: 
-      url('roxy.jpg'),
-      radial-gradient(circle at 20% 30%, rgba(120, 119, 198, 0.4) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-      radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%),
-      linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
-    background-size: cover, 100% 100%, 100% 100%, 100% 100%, cover;
-    background-position: center, center, center, center, center;
-    background-attachment: fixed, fixed, fixed, fixed, fixed;
-    background-repeat: no-repeat;
-    position: relative;
-    min-height: 100vh;
-  }
-  
-  /* 背景蒙版层 - 保持背景图片可见性 */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      135deg, 
-      rgba(15, 15, 35, 0.4) 0%, 
-      rgba(26, 32, 44, 0.35) 30%,
-      rgba(45, 55, 72, 0.3) 60%,
-      rgba(74, 85, 104, 0.35) 100%
-    );
-    z-index: -2;
-    pointer-events: none;
-  }
-  
-  /* 内容容器 */
-  .container, .container-fluid, main, article {
-    background-color: rgba(26, 32, 44, 0.25);
-    backdrop-filter: blur(2px);
-    border-radius: 8px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
-  
-  /* 暗色主题导航栏 */
-  .navbar {
-    background: linear-gradient(135deg, 
-      rgba(40, 44, 52, 0.95) 0%, 
-      rgba(55, 59, 67, 0.9) 50%, 
-      rgba(67, 71, 79, 0.85) 100%) !important;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-  }
-  
-  .navbar-brand, .navbar-nav .nav-link {
-    color: #e2e8f0 !important;
-    font-weight: 500;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: #ffffff !important;
-    background-color: rgba(255, 255, 255, 0.15) !important;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-  }
-  
-  .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-  }
-  
-  /* 暗色主题下拉菜单 */
-  .dropdown-menu {
-    background-color: rgba(55, 59, 67, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  }
-  
-  .dropdown-item {
-    color: #e2e8f0 !important;
-  }
-  
-  .dropdown-item:hover {
-    background-color: rgba(67, 71, 79, 0.8) !important;
-    color: #ffffff !important;
-  }
-  
-  /* 暗色主题分隔符 */
-  .dropdown-item[data-bs-target]:not([href]) {
-    color: #a0aec0 !important;
-    background-color: rgba(40, 44, 52, 0.9) !important;
-  }
-  
-  /* 内容元素样式 */
-  .callout, blockquote {
-    background-color: rgba(45, 55, 72, 0.8) !important;
-    backdrop-filter: blur(5px);
-    border-left-color: #4a5568 !important;
-  }
-  
-  pre, code {
-    background-color: rgba(26, 32, 44, 0.9) !important;
-    backdrop-filter: blur(3px);
-  }
-  
-  table {
-    background-color: rgba(45, 55, 72, 0.8) !important;
-    backdrop-filter: blur(5px);
-  }
-  
-  .sidebar, .panel, .card {
-    background-color: rgba(45, 55, 72, 0.85) !important;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .tikz svg {
-    filter: drop-shadow(0 0 .3px) invert(0.9);
-  }
-}
-
-/* ==========================================
-   通用样式
-   ========================================== */
-
-/* 图标和表格透明化 */
-#quarto-appendix.default {
-  background-color: transparent;
-}
-
-table {
-  background: transparent !important;
-}
-
-/* 图表标题居中 */
-figcaption, .panel-caption, .figure-caption {
+figcaption, .panel-caption, .figure-caption{
   text-align: center;
 }
 
-/* 强调样式 */
+/*
+// code before Quarto 1.4
+.theorem{
+  border-left-color: $theorem-border-left-color!important;
+  @extend .callout;
+  @extend .callout-style-simple;
+  @extend .no-icon;
+  
+  >:first-child{
+    margin-top: 0.25rem;
+  }
+  >:last-child{
+    margin-bottom: 0.4rem;
+  }
+  // .callout-body is not introduced to keep the original font size.
+}
+*/
+
+.callout-body:has(.theorem){
+  font-size: unset!important;
+  .theorem > :last-child{
+    margin-bottom: .2rem;
+  }
+}
+
+.proof{
+  &:not(.remark)>:last-child::after{ /*QED symbol*/
+    content: "\220e";
+    float: right;
+  }
+  +*{
+    clear: right;
+  }
+}
+
+#quarto-appendix.default {
+  background-color: transparent;
+}
+table {
+  background: transparent!important;
+}
+
 em {
   font-weight: bold;
 }
 
-/* TikZ图形样式 */
-.tikz svg {
+.tikz svg{
   max-width: 100%;
   height: auto;
   margin-bottom: .5rem;
   filter: drop-shadow(0 0 .3px);
 }
 
-/* ==========================================
-   数学定理样式
-   ========================================== */
-
-.callout-body:has(.theorem) {
-  font-size: unset !important;
-  
-  .theorem > :last-child {
-    margin-bottom: .2rem;
-  }
-}
-
-.proof {
-  &:not(.remark) > :last-child::after {
-    content: "\220e"; /* QED symbol */
-    float: right;
-  }
-  
-  + * {
-    clear: right;
-  }
-}
-
-/* ==========================================
-   可选样式（已注释）
-   ========================================== */
-
 /*
 section p {
     text-indent: 2em;
 }
+*/
 
+/*
 ol, ul {
   padding-left: 2rem;
 }
