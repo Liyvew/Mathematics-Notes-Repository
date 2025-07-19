@@ -7,6 +7,8 @@ $theorem-border-left-color: $green;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  min-height: 66px !important;
+  height: 66px !important;
 }
 
 .navbar-brand, .navbar-nav .nav-link {
@@ -47,47 +49,87 @@ $theorem-border-left-color: $green;
 }
 
 /* 暗色主题特定样式 */
-[data-bs-theme="dark"] {
-  /* 夜间模式下的导航栏样式 */
-  .navbar {
-    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%) !important;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .navbar-brand, .navbar-nav .nav-link {
-    color: #e2e8f0 !important;
-    font-weight: 500;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: #ffffff !important;
-    background-color: rgba(255, 255, 255, 0.15) !important;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-  }
-  
-  .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .dropdown-menu {
-    background-color: #2d3748;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .dropdown-item {
-    color: #e2e8f0 !important;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #4a5568 !important;
-    color: #ffffff !important;
-  }
-  
-  .tikz svg {
-    filter: drop-shadow(0 0 .3px) invert(0.9);
-  }
+/* 更强力的选择器，覆盖各种可能的暗色主题 */
+[data-bs-theme="dark"] .navbar,
+.quarto-dark .navbar,
+html[data-theme="dark"] .navbar,
+body.quarto-dark .navbar,
+body[data-bs-theme="dark"] .navbar,
+html.quarto-dark .navbar,
+.navbar[data-bs-theme="dark"],
+html:has(body[data-bs-theme="dark"]) .navbar {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%) !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  min-height: 66px !important;
+  height: 66px !important;
+}
+
+[data-bs-theme="dark"] .navbar-brand,
+[data-bs-theme="dark"] .navbar-nav .nav-link,
+.quarto-dark .navbar-brand,
+.quarto-dark .navbar-nav .nav-link,
+html[data-theme="dark"] .navbar-brand,
+html[data-theme="dark"] .navbar-nav .nav-link,
+body.quarto-dark .navbar-brand,
+body.quarto-dark .navbar-nav .nav-link,
+body[data-bs-theme="dark"] .navbar-brand,
+body[data-bs-theme="dark"] .navbar-nav .nav-link {
+  color: #e2e8f0 !important;
+  font-weight: 500;
+}
+
+[data-bs-theme="dark"] .navbar-nav .nav-link:hover,
+.quarto-dark .navbar-nav .nav-link:hover,
+html[data-theme="dark"] .navbar-nav .nav-link:hover,
+body.quarto-dark .navbar-nav .nav-link:hover,
+body[data-bs-theme="dark"] .navbar-nav .nav-link:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+[data-bs-theme="dark"] .navbar-toggler,
+.quarto-dark .navbar-toggler,
+html[data-theme="dark"] .navbar-toggler,
+body.quarto-dark .navbar-toggler,
+body[data-bs-theme="dark"] .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+[data-bs-theme="dark"] .dropdown-menu,
+.quarto-dark .dropdown-menu,
+html[data-theme="dark"] .dropdown-menu,
+body.quarto-dark .dropdown-menu,
+body[data-bs-theme="dark"] .dropdown-menu {
+  background-color: #2d3748 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme="dark"] .dropdown-item,
+.quarto-dark .dropdown-item,
+html[data-theme="dark"] .dropdown-item,
+body.quarto-dark .dropdown-item,
+body[data-bs-theme="dark"] .dropdown-item {
+  color: #e2e8f0 !important;
+}
+
+[data-bs-theme="dark"] .dropdown-item:hover,
+.quarto-dark .dropdown-item:hover,
+html[data-theme="dark"] .dropdown-item:hover,
+body.quarto-dark .dropdown-item:hover,
+body[data-bs-theme="dark"] .dropdown-item:hover {
+  background-color: #4a5568 !important;
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .tikz svg,
+.quarto-dark .tikz svg,
+html[data-theme="dark"] .tikz svg,
+body.quarto-dark .tikz svg,
+body[data-bs-theme="dark"] .tikz svg {
+  filter: drop-shadow(0 0 .3px) invert(0.9);
 }
 
 /* 分隔符样式 */
