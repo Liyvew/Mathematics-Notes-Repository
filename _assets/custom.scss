@@ -83,12 +83,35 @@ $theorem-border-left-color: $green;
     padding: 10px !important;
   }
   
+  /* 移动端导航链接颜色修正 */
+  .navbar-collapse .navbar-nav .nav-link {
+    color: #2d3748 !important; /* 深色文字，确保在白色背景下可读 */
+    font-weight: 600 !important;
+    padding: 10px 15px !important;
+  }
+  
+  .navbar-collapse .navbar-nav .nav-link:hover {
+    color: #1a202c !important; /* 悬停时更深的颜色 */
+    background-color: #f8f9fa !important;
+  }
+  
   .dropdown-menu {
     background-color: #f8f9fa !important;
     border: none !important;
     box-shadow: none !important;
     position: static !important;
     margin-left: 15px !important;
+  }
+  
+  /* 移动端下拉菜单项颜色修正 */
+  .dropdown-menu .dropdown-item {
+    color: #2d3748 !important; /* 确保下拉菜单项也是深色文字 */
+    padding: 8px 15px !important;
+  }
+  
+  .dropdown-menu .dropdown-item:hover {
+    color: #1a202c !important;
+    background-color: #e9ecef !important;
   }
 }
 
