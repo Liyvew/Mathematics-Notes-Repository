@@ -31,7 +31,7 @@ $theorem-border-left-color: $green;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* 下拉菜单样式 */
+/* 日间模式下拉菜单样式 */
 .dropdown-menu {
   background-color: #f8f9fa;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -48,70 +48,7 @@ $theorem-border-left-color: $green;
   color: #212529 !important;
 }
 
-/* 暗色主题特定样式 */
-/* 只在确实是暗色模式时应用 */
-[data-bs-theme="dark"] .navbar,
-html[data-bs-theme="dark"] .navbar,
-body[data-bs-theme="dark"] .navbar {
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%) !important;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
-  min-height: 66px !important;
-  height: 66px !important;
-}
-
-[data-bs-theme="dark"] .navbar-brand,
-[data-bs-theme="dark"] .navbar-nav .nav-link,
-html[data-bs-theme="dark"] .navbar-brand,
-html[data-bs-theme="dark"] .navbar-nav .nav-link,
-body[data-bs-theme="dark"] .navbar-brand,
-body[data-bs-theme="dark"] .navbar-nav .nav-link {
-  color: #e2e8f0 !important;
-  font-weight: 500;
-}
-
-[data-bs-theme="dark"] .navbar-nav .nav-link:hover,
-html[data-bs-theme="dark"] .navbar-nav .nav-link:hover,
-body[data-bs-theme="dark"] .navbar-nav .nav-link:hover {
-  color: #ffffff !important;
-  background-color: rgba(255, 255, 255, 0.15) !important;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-[data-bs-theme="dark"] .navbar-toggler,
-html[data-bs-theme="dark"] .navbar-toggler,
-body[data-bs-theme="dark"] .navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.4) !important;
-}
-
-[data-bs-theme="dark"] .dropdown-menu,
-html[data-bs-theme="dark"] .dropdown-menu,
-body[data-bs-theme="dark"] .dropdown-menu {
-  background-color: #2d3748 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-[data-bs-theme="dark"] .dropdown-item,
-html[data-bs-theme="dark"] .dropdown-item,
-body[data-bs-theme="dark"] .dropdown-item {
-  color: #e2e8f0 !important;
-}
-
-[data-bs-theme="dark"] .dropdown-item:hover,
-html[data-bs-theme="dark"] .dropdown-item:hover,
-body[data-bs-theme="dark"] .dropdown-item:hover {
-  background-color: #4a5568 !important;
-  color: #ffffff !important;
-}
-
-[data-bs-theme="dark"] .tikz svg,
-html[data-bs-theme="dark"] .tikz svg,
-body[data-bs-theme="dark"] .tikz svg {
-  filter: drop-shadow(0 0 .3px) invert(0.9);
-}
-
-/* 分隔符样式 */
+/* 日间模式分隔符样式 */
 .dropdown-item[data-bs-target]:not([href]) {
   color: #6c757d !important;
   font-weight: bold;
