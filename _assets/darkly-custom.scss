@@ -26,7 +26,7 @@ $my-category-opacity: 0.6;
 
 /* 暗色主题下的背景设置 */
 body {
-  background-image: url(/_assets/roxy.jpg); /* 修正路径：使用_assets目录 */
+  background-image: url(/assets/images/roxy.jpg); /* 使用sun的路径结构 */
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
