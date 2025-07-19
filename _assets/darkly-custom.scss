@@ -83,26 +83,57 @@ b, strong, h1, h2, h3, h4, h5, h6 {
 
 /* 暗色主题下的下拉菜单样式 */
 .dropdown-menu {
-  background-color: #2d3748 !important; /* 深灰色背景，不透明 */
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important; /* 增强阴影 */
+  background-color: #1a202c !important; /* 更深的不透明背景 */
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important; /* 更强的阴影 */
   backdrop-filter: none !important; /* 禁用背景模糊 */
+  border-radius: 8px !important; /* 圆角 */
+  min-width: 200px !important; /* 最小宽度 */
 }
 
 .dropdown-item {
-  color: #f7fafc !important; /* 更亮的文字颜色 */
-  background-color: transparent;
+  color: #e2e8f0 !important; /* 更亮的文字颜色 */
+  background-color: transparent !important;
+  padding: 12px 20px !important; /* 增加内边距 */
+  font-weight: 500 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; /* 分隔线 */
 }
 
-.dropdown-item:hover {
-  background-color: #4a5568 !important; /* 深灰色悬停背景 */
+.dropdown-item:last-child {
+  border-bottom: none !important; /* 最后一项不显示分隔线 */
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: #2d3748 !important; /* 深灰色悬停背景 */
   color: #ffffff !important;
+  transform: translateX(2px) !important; /* 轻微的悬停动画 */
+  transition: all 0.2s ease !important;
 }
 
 /* 暗色主题下的分隔符样式 */
 .dropdown-item[data-bs-target]:not([href]) {
   color: #a0aec0 !important;
   background-color: #2d3748 !important;
+}
+
+/* 移动端汉堡菜单样式优化 */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: #1a202c !important;
+    margin-top: 10px !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    padding: 10px !important;
+  }
+  
+  .dropdown-menu {
+    background-color: #2d3748 !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: static !important;
+    margin-left: 15px !important;
+  }
 }
 
 /* 图片和SVG的智能反色处理 */
