@@ -1,4 +1,56 @@
+/*-- scss:defaults --*/
+
+$blue: #1874d0; // callout-note颜色
+$primary: #1d1d1d; // 主要横幅颜色
+$code-color: #c0d6ff; // 内联代码颜色
+$body-color: #f5f5f5; // 正文颜色
+
+// 为了背景透明效果
+$code-bg: mix(#222, $body-color, 90%);
+
+/*-- scss:mixins --*/
+
 /*-- scss:rules --*/
+
+// callout框的头部颜色混合
+@each $name, $info in $callouts {
+    div.callout-#{$name}.callout-style-default > .callout-header {
+        background-color: rgba(shift-color(quarto-map.get($info, "color"), 50%), 0.8);
+    }
+}
+
+// 定义自定义颜色变量
+$my-strong-color: white; // 标题和粗体文字颜色
+$my-category-color: currentcolor;
+$my-category-opacity: 0.6;
+
+/* 暗色主题下的背景设置 */
+body {
+  background-image: url(/_assets/roxy.jpg); /* 修正路径：使用_assets目录 */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* 为了确保内容可读性，添加半透明遮罩 */
+#quarto-content {
+  background-color: rgba(26, 32, 44, 0.85); /* 半透明深色背景 */
+  min-height: 100vh;
+  backdrop-filter: blur(2px); /* 轻微模糊效果 */
+}
+
+/* 列表分类样式 */
+.listing-category {
+  color: $my-category-color !important;
+  border-color: $my-category-color !important;
+  opacity: $my-category-opacity;
+}
+
+/* 标题和粗体文字颜色 */
+b, strong, h1, h2, h3, h4, h5, h6 {
+  color: $my-strong-color;
+}
 
 /* 暗色主题下的导航栏样式 */
 .navbar {
@@ -53,6 +105,31 @@
   background-color: #2d3748 !important;
 }
 
+/* 图片和SVG的智能反色处理 */
+.cell-output img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .tikz svg {
-  filter: drop-shadow(0 0 .3px) invert(0.9);
+  filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 .3px);
+}
+
+/* 确保表格背景透明 */
+table {
+  background: transparent !important;
+}
+
+/* 为代码块添加半透明背景以提高可读性 */
+pre, code {
+  background-color: rgba(45, 55, 72, 0.9) !important;
+}
+
+/* callout框的背景透明度调整 */
+.callout {
+  background-color: rgba(45, 55, 72, 0.85) !important;
+}
+
+/* 确保appendix区域背景透明 */
+#quarto-appendix.default {
+  background-color: transparent;
 }
