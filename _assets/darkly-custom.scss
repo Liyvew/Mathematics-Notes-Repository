@@ -1,4 +1,47 @@
+/*-- scss:defaults --*/
+
+$blue: #1874d0; // callout-note颜色
+$primary: #1d1d1d; // 主要横幅颜色
+$code-color: #c0d6ff; // 内联代码颜色
+$body-color: #f5f5f5; // 正文颜色
+
+// 为了背景透明效果
+$code-bg: mix(#222, $body-color, 90%);
+
+/*-- scss:mixins --*/
+
 /*-- scss:rules --*/
+
+// callout框的头部颜色混合
+@each $name, $info in $callouts {
+    div.callout-#{$name}.callout-style-default > .callout-header {
+        background-color: rgba(shift-color(quarto-map.get($info, "color"), 50%), 0.8);
+    }
+}
+
+// 定义自定义颜色变量
+$my-strong-color: white; // 标题和粗体文字颜色
+$my-category-color: currentcolor;
+$my-category-opacity: 0.6;
+
+/* 暗色主题下的背景设置 */
+body {
+  background-image: url(/assets/images/roxy.jpg); /* 使用sun的路径结构 */
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* 列表分类样式 */
+.listing-category {
+  color: $my-category-color !important;
+  border-color: $my-category-color !important;
+  opacity: $my-category-opacity;
+}
+
+/* 标题和粗体文字颜色 */
+b, strong, h1, h2, h3, h4, h5, h6 {
+  color: $my-strong-color;
+}
 
 /* 暗色主题下的导航栏样式 */
 .navbar {
@@ -67,23 +110,84 @@
 /* 移动端汉堡菜单样式优化 */
 @media (max-width: 991.98px) {
   .navbar-collapse {
-    background-color: #1a202c !important;
+    background-color: #0f1419 !important; /* 更深的背景色 */
     margin-top: 10px !important;
     border-radius: 8px !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
-    padding: 10px !important;
+    border: 2px solid rgba(255, 255, 255, 0.4) !important; /* 增强边框对比度 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important; /* 增强阴影 */
+    padding: 15px !important; /* 增加内边距 */
+  }
+  
+  /* 移动端导航链接样式 */
+  .navbar-collapse .navbar-nav .nav-link {
+    color: #ffffff !important; /* 纯白色文字 */
+    background-color: rgba(255, 255, 255, 0.05) !important; /* 轻微背景 */
+    margin: 3px 0 !important;
+    padding: 12px 16px !important; /* 增加点击区域 */
+    border-radius: 6px !important;
+    font-weight: 600 !important; /* 加粗字体 */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; /* 添加边框 */
+  }
+  
+  .navbar-collapse .navbar-nav .nav-link:hover,
+  .navbar-collapse .navbar-nav .nav-link:focus {
+    background-color: rgba(255, 255, 255, 0.2) !important; /* 增强悬停效果 */
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateX(4px) !important; /* 增强动画效果 */
   }
   
   .dropdown-menu {
-    background-color: #2d3748 !important;
-    border: none !important;
-    box-shadow: none !important;
+    background-color: #0a0e13 !important; /* 更深的下拉菜单背景 */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* 添加边框 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3) !important; /* 内阴影 */
     position: static !important;
     margin-left: 15px !important;
+    margin-top: 5px !important;
+  }
+  
+  /* 移动端下拉菜单项样式 */
+  .navbar-collapse .dropdown-item {
+    color: #f7fafc !important; /* 更亮的文字 */
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    font-weight: 500 !important;
+    padding: 10px 20px !important;
+  }
+  
+  .navbar-collapse .dropdown-item:hover,
+  .navbar-collapse .dropdown-item:focus {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border-left: 3px solid #4299e1 !important; /* 添加左侧高亮条 */
   }
 }
 
+/* 图片和SVG的智能反色处理 */
+.cell-output img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .tikz svg {
-  filter: drop-shadow(0 0 .3px) invert(0.9);
+  filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 .3px);
+}
+
+/* 确保表格背景透明 */
+table {
+  background: transparent !important;
+}
+
+/* 为代码块添加半透明背景以提高可读性 */
+pre, code {
+  background-color: rgba(45, 55, 72, 0.9) !important;
+}
+
+/* callout框的背景透明度调整 */
+.callout {
+  background-color: rgba(45, 55, 72, 0.85) !important;
+}
+
+/* 确保appendix区域背景透明 */
+#quarto-appendix.default {
+  background-color: transparent;
 }
