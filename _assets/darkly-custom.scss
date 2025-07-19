@@ -97,7 +97,6 @@ b, strong, h1, h2, h3, h4, h5, h6 {
 .dropdown-item:hover, .dropdown-item:focus {
   background-color: #2d3748 !important; /* 深灰色悬停背景 */
   color: #ffffff !important;
-  transform: translateX(2px) !important; /* 轻微的悬停动画 */
   transition: all 0.2s ease !important;
 }
 
@@ -134,7 +133,6 @@ b, strong, h1, h2, h3, h4, h5, h6 {
     background-color: rgba(255, 255, 255, 0.2) !important; /* 增强悬停效果 */
     color: #ffffff !important;
     border-color: rgba(255, 255, 255, 0.3) !important;
-    transform: translateX(4px) !important; /* 增强动画效果 */
   }
   
   .dropdown-menu {
