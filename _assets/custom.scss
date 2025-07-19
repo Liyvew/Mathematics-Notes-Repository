@@ -33,21 +33,32 @@ $theorem-border-left-color: $green;
 
 /* 日间模式下拉菜单样式 */
 .dropdown-menu {
-  background-color: #ffffff !important; /* 纯白背景，不透明 */
-  border: 1px solid rgba(0, 0, 0, 0.15) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  background-color: #ffffff !important; /* 纯白背景，完全不透明 */
+  border: 2px solid rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important; /* 增强阴影 */
   backdrop-filter: none !important; /* 禁用背景模糊 */
+  border-radius: 8px !important; /* 圆角 */
+  min-width: 200px !important; /* 最小宽度 */
+  z-index: 1050 !important; /* 确保在背景图片之上 */
 }
 
 .dropdown-item {
-  color: #212529 !important; /* 深色文字，更好的对比度 */
-  padding: 8px 16px;
-  background-color: transparent;
+  color: #2d3748 !important; /* 深色文字，确保对比度 */
+  padding: 12px 20px !important; /* 增加内边距 */
+  background-color: transparent !important;
+  font-weight: 500 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* 分隔线 */
 }
 
-.dropdown-item:hover {
-  background-color: #e9ecef !important; /* 浅灰色悬停背景 */
-  color: #212529 !important;
+.dropdown-item:last-child {
+  border-bottom: none !important; /* 最后一项不显示分隔线 */
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: #f8f9fa !important; /* 浅灰色悬停背景 */
+  color: #1a202c !important; /* 更深的文字颜色 */
+  transform: translateX(2px) !important; /* 轻微的悬停动画 */
+  transition: all 0.2s ease !important;
 }
 
 /* 日间模式分隔符样式 */
@@ -59,6 +70,26 @@ $theorem-border-left-color: $green;
   letter-spacing: 0.5px;
   pointer-events: none;
   background-color: #f1f3f4 !important;
+}
+
+/* 移动端汉堡菜单样式优化 */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: #ffffff !important;
+    margin-top: 10px !important;
+    border-radius: 8px !important;
+    border: 2px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    padding: 10px !important;
+  }
+  
+  .dropdown-menu {
+    background-color: #f8f9fa !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: static !important;
+    margin-left: 15px !important;
+  }
 }
 
 figcaption, .panel-caption, .figure-caption{
