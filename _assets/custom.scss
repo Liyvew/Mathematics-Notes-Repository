@@ -57,7 +57,6 @@ $theorem-border-left-color: $green;
 .dropdown-item:hover, .dropdown-item:focus {
   background-color: #f8f9fa !important; /* 浅灰色悬停背景 */
   color: #1a202c !important; /* 更深的文字颜色 */
-  transform: translateX(2px) !important; /* 轻微的悬停动画 */
   transition: all 0.2s ease !important;
 }
 
@@ -99,7 +98,6 @@ $theorem-border-left-color: $green;
     background-color: rgba(0, 0, 0, 0.1) !important; /* 增强悬停效果 */
     color: #1a202c !important;
     border-color: rgba(0, 0, 0, 0.2) !important;
-    transform: translateX(4px) !important; /* 增强动画效果，与夜间模式统一 */
   }
   
   .dropdown-menu {
