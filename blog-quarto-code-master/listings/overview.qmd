@@ -1,0 +1,26 @@
+---
+title: Overview
+description: A list of listings of posts.
+aliases: 
+  - "/index.html"
+  
+listing:
+  contents:
+    - all.qmd
+    - math.qmd
+    - cp.qmd
+    - dedicated.qmd
+    - technical.qmd
+    - short.qmd
+    - casual.qmd
+    - solution.qmd
+    - draft.qmd
+  fields: ["title", "subtitle", "description", "image"]
+  type: grid
+  sort: false
+
+page-layout: full
+
+format:
+    html: default
+---

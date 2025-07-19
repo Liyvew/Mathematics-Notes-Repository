@@ -1,0 +1,24 @@
+website:
+  site-url: "https://blog.sun123zxy.top"
+  title: "sun123zxy's blog"
+  favicon: "/assets/images/avatar.png"
+  navbar:
+    left:
+      - listings/overview.qmd
+      - text: About
+        href: about.qmd
+
+    right:
+      - icon: github
+        href: "https://github.com/sun123zxy/blog-quarto-code/"
+      - icon: rss
+        menu:
+          - text: All Posts
+            href: "/listings/all.xml"
+  page-navigation: true
+  page-footer:
+    left: "Proudly powered by [Quarto](https://quarto.org/)"
+    center: "sun123zxy's blog"
+    right:
+      - thanks.qmd
+  draft-mode: visible

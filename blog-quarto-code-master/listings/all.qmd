@@ -1,0 +1,15 @@
+---
+title: All Posts
+description: All posts hosted on this site.
+image: "/assets/images/asterisk.png"
+
+format:
+  html: default
+
+listing:
+  exclude:
+    draft: true
+
+metadata-files:
+  - _listing-all.yml
+---

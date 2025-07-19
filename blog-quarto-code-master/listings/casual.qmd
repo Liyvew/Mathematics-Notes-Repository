@@ -1,0 +1,17 @@
+---
+title: Casual
+description: Rambling words.
+image: "/assets/images/sleep.jpg"
+
+listing:
+  include:
+    collection: ["casual"]
+  exclude:
+    draft: true
+
+format:
+  html: default
+
+metadata-files:
+  - _listing-all.yml
+---
