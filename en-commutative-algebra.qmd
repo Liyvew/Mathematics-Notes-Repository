@@ -17,8 +17,6 @@ format:
         custom-theorem:
          numbered-within: subsection # 开启后定理编号分点，相对于 section（或 subsection 等）
          numbered-alike: true # 开启后不同类型的定理将共享编号
-    docx: default
-    gfm: default
 ---
 
 \newcommand{\ideala}{\mathfrak{a}}

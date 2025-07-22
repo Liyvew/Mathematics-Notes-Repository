@@ -17,8 +17,7 @@ format:
     html: default
     pdf:
         toc: true
-    docx: default
-    gfm: default
+
 ---
 
 \newcommand{\A}{\mathcal{A}}
