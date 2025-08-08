@@ -1,9 +1,9 @@
 ---
 title: "Classification of Quadratic Forms over $\\mathbb Q$"
-author: "sun123xyz"
-date: "2025/09/15"
-date-modified: "2025/06/20"
-bibliography: classification-quadratic-forms-over-q.bib
+author: "Liyve"
+date: "2025/09/11"
+date-modified: "2025/07/29"
+bibliography: index.bib
 lang: en
 
 abstract: "A reading guidance of the first part of J. P. Serre's *A Course in Arithmetic*"
@@ -17,95 +17,224 @@ format:
 
 ---
 
-# First Attempts and General Approaches
-
-\newcommand{\T}{\mathrm{T}}
-\newcommand{\Image}{\operatorname{Im}}
-\newcommand{\rk}{\operatorname{rk}}
-\newcommand{\sgn}{\operatorname{sgn}}
-\newcommand{\rad}{\operatorname{rad}}
-
 ### Notations
 
-- We denote by $K$ an arbitrary field. **All fields are assumed to be of characteristic $\neq 2$**.
+- We denote by $K$ an arbitrary field of characteristic $\neq 2$. 
 
-- $\nu_p : \mathbb Q_p \to \mathbb Z$ being the $p$-adic valuation.
+- $\left(\dfrac a p \right)$ being the Legendre symbol.
 
-- $\left(\dfrac a p \right)$ being the Legendre symbol. $a$ is understood as $p^{-\nu_p(a)} a \bmod p$ if $a \in \mathbb Q_p$. Define this similarly in $\mathbb F_q$.
+- We will often denote by the same letter an element and its class modulo. 
 
-- Let $f \oplus g$ denote the direct sum of two quadratic forms $f$ and $g$.
+- Assume familiarity with quadratic residues and basic knowledge of $p$-adic numbers and $p$-adic field.
 
-- Assume familiarity with quadratic residues and basic knowledge of $p$-adic numbers
+# Motivation and Introduction
 
-- Skip most of the proofs
+## Quadratic Forms and Quadratic Spaces over Field.
 
-- Apology in advance for potential mistakes
+### What is a Quadratic Form/Quadratic Space?
+:::{#def-quadratic-space}
+## Quadratic Space
 
-## Example: Quadratic Forms over $\mathbb R$ and $\mathbb F_q$
+Let $V$ be a vector space (finite-dimensional) over a field $K$ of characteristic $\neq2$. A function $Q: V \to K$ is called quadratic form on $V$ satisfying:
 
-### Review: Quadratic Forms over $\mathbb R$
+- $Q(\lambda v) = \lambda^2 Q(v)$ for all $\lambda \in K$, $v \in V$,
+- The function $B_Q(u, v) = Q(u + v) - Q(u) - Q(v)$ is a symmetric bilinear form on $V$.
 
-- A quadratic form $f: V \to K$ may be identified by a symmetric matrix $A \in M_n(K)$ by $f(v) = v^\T A v$.
+A quadratic space is such a pair $(V, Q)$.
+:::
 
-  Their equivalence is defined by *congruence*: $A \sim B \iff A = Q^\T B Q$.
+- Put $x\cdot y=\frac{1}{2}B_Q(x,y)$. One has $Q(x)=x\cdot x$. 
+- Given a basis $\{e_1, \ldots, e_n\}$ of $V$, the quadratic form $Q$ can be associated with a symmetric matrix $A = (a_{ij})$ where $a_{ij}=e_i\cdot e_j$.
 
-- Real symmetric matrices may be diagonalized orthogonally.
+$$
+\text{If }x=\sum_{i=1}^n x_i e_i\in V\text{, then }Q(x) = \sum_{i,j=1}^n a_{ij} x_i x_j.
+$$
+<!--Which shows that $Q(x)$ is a quadratic form in $x_1,\cdots,x_n$ in the usual sence.-->
 
-- Scale each eigenvalue by multiplying a square. Only their sign matters.
+### Translations
 
-  - the *rank* $n$, an invariant
-  - the *signature* $(r,s) := (\# \text{positive eigenvalues}, \# \text{negative eigenvalues})$.
+Let us consider quadratic forms in a more familiar form:
 
-- Same rank and signature implies the equivalence.
+- $f(X)=\sum_{i,j=1}^n a_{ij} X_i X_j$ is a quadratic form in $n$ variables over $K$, where $a_{ij}=a_{ji}$.
 
-- Sylvester's law of inertia: signature is also an invariant.
+- The pair $(K^n, f)$ is a quadratic space.
 
-### Some Refinement
+- The matrix $A=(a_{ij})$ is associated with $f$.
 
-On an arbitrary field $K$:
+- Let $f(X_1,\cdots,X_n)$ and $g(X_1,\cdots,X_m)$ be two quadratic forms, we denote $f\oplus g$ the quadratic form
+$$
+f(X_1,\cdots,X_n)+g(X_{n+1},\cdots,X_{n+m})
+$$
+in $n+m$ variables.
 
-- All symmetric matrix is equivalent to a diagonal one.
+### Invariant: Discriminant
+Change the basis $\{e_i\}$ to another basis $\{e'_i\}$; the associated symmetric matrix $A$ transforms as $A' = PAP^T$.
 
-  - Pick a non-isotropic vector $v$ (exists when the form is nonzero), its orthogonal complement is a hyperplane and does not include $v$. Change basis and do the induction.
+- Two quadratic forms are equivalent if their matrices are congruent under such a transformation. 
 
-- The rank is always an invariant. **We may (and we shall always) reduce to classify the non-degenerate quadratic forms of rank $n$.**
+- We know that any symmetric matrix can always be diagonalized by a congruence transformation. 
 
-- The squares $(K^\times)^2$ give us the ability to scale. Knowledge of the distribution of diagonal elements in $K^\times / (K^\times)^2$ suffices to show the equivalence^[Though working in the refined structure $\{0\} \cup K^\times / (K^\times)^2$ is probably a better idea if one wishes to deal with the degenerate case in a uniform manner.].
+- Without loss of generality, assume quadratic forms are of the shape
+$$
+f \sim \sum_{i=1}^n a_i X_i^2
+$$
+And $A' = PAP^T$ give us: $\det(A)=\det(A')\det(P)^2.$
+
+- This means the image of $\det(A)$ in $K^\times/{K^\times}^2$ is a invariant, it's called discriminant of $Q$, and denoted by $d(Q)$ or simply $d$.
+
+## Review: Classification of Quadratic Forms over $\mathbb R$ and $\mathbb F_q$
+
+### The case over $\mathbb R$
+
+:::{#thm-Sylvester}
+## Sylvester’s law of inertia
+Let $f=\sum_{i,j=1}^na_{ij}X_iX_j$ be a quadratic form of rank $n$ over $\mathbb R$. Then
+$$
+f\sim X_1^2+X_2^2+\cdots+X_r^2-X_{r+1}^2-\cdots-X_{r+s}^2.
+$$
+where $r$ and $s$ are non-negative integers, and $r+s=n$, the pair $(r,s)$ is called signature of $f$.
+:::
+
+
+By diagonalizing via congruence and factoring out squares on the diagonal, we see that the only invariants for classifying real quadratic forms are:
+
+- the rank $\operatorname{rank}f = n$.
+
+- the signature $(r,s):=(\#\text{positive eigenvalues},\#\text{negative eigenvalues})$.
+
+The *rank* and *signature* are invariants.
+
+### General Ideas
+
+On an arbitrary field $K$: 
+
+- The rank is always an invariants. Hence we may (and we shall always) reduce to classify the non-degenerate quadratic forms of $\operatorname{rank} n$.
+
+- Two quadratic forms $f=\sum_{i\neq j}a_{ij}X_iX_j$ and $f'=\sum_{i\neq j}a'_{ij}X_iX_j$ satisfy: there exist $t_{ij}\in {K^\times}^2$ s.t. $a_{ij}=t_{ij}a'_{ij}$, then $f\sim f'$. 
+
+- The distribution of diagonal elements in $K^\times/{K^\times}^2$ suffices to show the equivalence
 
   - $\mathbb C^\times / (\mathbb C^\times)^2 \cong \{1\}$, suffices to classify by the rank.
+
   - $\mathbb R^\times / (\mathbb R^\times)^2 \cong \{1,-1\}$, signature is also needed.
-  - $\mathbb F_q^\times / (\mathbb F_q^\times)^2 \cong \{1,a\}$, where $a \in \mathbb F_q$ is a quadratic nonresidue.
+
+  - $\mathbb F_q^\times / (\mathbb F_q^\times)^2 \cong \{1,a\}$, where $a \in \mathbb F_q$ isn't a square.
+  
   - For $\mathbb Q_p$ and $\mathbb Q$?
 
-### Another Example: Quadratic Forms over $\mathbb F_q$
+### The case over $\mathbb F_q$
 
-We classify the non-degenerate quadratic forms of rank $n$.
+- Following the above discussion, we might hope that the number of squares appearing on the diagonal would serve as a sufficient criterion for equivalence. However, this is not the case.
 
-- Refined signature: counting nonzero quadratic residues and nonresidues. It may serve as a sufficient criterion for equivalence.
+- Consider the non-degenerate quadratic form of rank $2$ in $2$ variables over $\mathbb F_q$ with a quadratic nonresidue $a$, $aX^2+aY^2\sim X^2+Y^2$.
 
-- But it's not an invariant. $a X^2 + a Y^2 \sim X^2 + Y^2$ over $\mathbb F_q$.
+    - Do a change of basis: $X=sX'+tY'$ and $Y=tX'-sY'$. If we requier $aX'^2+aY'^2=X^2+Y^2$, then $s^2+t^2=a$. Then we must focus on the existence of solution of eqation $s^2+t^2=a$.
 
-  - Do a change of basis $X=sU+tV$ and $Y=tU-sV$. If we require $a U^2 + a V^2 = X^2 + Y^2$, then $s^2+t^2=a$. 
-  
-  - It always has a nonzero solution in $\mathbb F_q$: $s^2$ and $a - t^2$ have both $(q+1)/2$ possible values, thus must reach a common value.
+    - $s^2$ and $a−t^2$ have both $(q+1)/2$ possible values, the pigeonhole principle implies the eqation has a nonzero solution.
 
-- The *discriminant* $d := \left( \dfrac{\det(A)}{q} \right) \in \mathbb F_q^\times / (\mathbb F_q^\times)^2$ is an invariant and reveals the parity of the signature. It classifies the non-degenerate quadratic forms over $\mathbb F_q$.
+- The discriminant $\det(A)\in \mathbb F_q^\times/{\mathbb F_q^\times}^2$ is an invariant for classifying quadratic forms.
 
-Insight: Existence of nonzero solutions to the equation $a X^2 + b Y^2 = Z^2$ in $K$ seems to be of great importance.
+### Hilbert Symbol
 
-## Quadratic Spaces
+The existence of nonzero solutions to the equation $aX^2+bY^2=Z^2$ in $K^3$ seems to be of great importance.
 
-### Quadratic Spaces
+:::{#def-hilbert-symbol}
+## Hilbert symbol
+Let $a, b\in K^\times$:
+$$
+(a, b) _K= 
+\begin{cases}
+1 & \text{if $Z^2-aX^2-bY^2=0$ has a nontrivial solution in $K^3$}, \\
+-1 & \text{if $Z^2-aX^2-bY^2=0$ has no nontrivial solution in $K^3$}.
+\end{cases}
+$$
+The number $(a,b)_K$ is called the *Hilbert symbol* of $a$ and $b$ relative to $K$.
 
-The structure of a quadratic space, i.e. vector space equipped with a symmetric bilinear form, is much more subtle than its positive-definite counterpart over $\mathbb R$ or $\mathbb C$. For example, for a non-degenerate quadratic space $V$ and a subspace $U$ of $V$ ([@serre_course_1973] p. 28, chap. 4, sec. 1.2):
+**(When there is no ambiguity, the subscript is often omitted.)**
+:::
 
-- $U \cap U^\perp = \rad(U)$, $\dim U + \dim U^\perp = \dim V$, $(U^\perp)^\perp = U$
+- The symbol may also be viewed in $K^\times / (K^\times)^2$ when working with non-degenerate forms.
 
-- $U \oplus U^\perp = V$ iff $U + U^\perp = V$ iff $\rad(U) = 0$ 
+### The Hilbert Symbol over $\mathbb Q_p$
 
-- It's much harder to show that an orthogonal basis of $U$ expands to an orthogonal basis of $V$. 
+From now on, we always assume $K = \mathbb{Q}_p$ for a prime $p$： <!-- Let's take a look at the Hilbert symbol over the $p$-adic field $\mathbb{Q}_p$-->
 
-### Structure of Quadratic Spaces
+:::{#thm-hilbert-symbol}
+## ([@serre_course_1973] p. 20, chap. 3, sec. 1.2, theorem 1)
+
+Say $a = p^\alpha u$ and $b = p^\beta v$ are $p$-adic numbers where $u,v \in \mathbb Z_p^\times$, then
+$$
+\begin{aligned}
+&(a, b)=(-1)^{\alpha \cdot \beta \cdot \frac{p-1}{2}} \left(\dfrac{u}{p}\right)^\beta \left(\dfrac{v}{p}\right)^\alpha &\text{ if } p \neq 2\\
+&(a, b)=(-1)^{\frac{u-1}{2}\frac{v-1}{2}+\alpha\frac{v^2-1}{8}+\beta\frac{u^2-1}{8}} &\text{ if } p=2
+\end{aligned}
+$$
+:::
+
+- This means that Hilbert symbol is a symmetric non-degenerate bilinear form. 
+
+### The Multiplicative Formula of Hilbert Symbol
+Let $\mathbb{V}=\mathbb{P} \cup \{\infty\}$, and $\mathbb Q_\infty=\mathbb R$. If $a,b\in \mathbb Q^\times$, $(a,b)_v$ denotes the Hilbert symbol of their images in $\mathbb Q_v$ for all $v\in\mathbb{V}$.
+
+:::{#prp-multiplicative-formula}
+## Multiplicative formula
+If $a,b\in \mathbb Q^\times$, we have $(a,b)_v=1$ for almost all $v\in \mathbb{V}$ and 
+$$
+\prod_{v\in\mathbb{V}}(a,b)_v=1.
+$$
+:::
+
+- We have seen that the Hilbert symbol works for rank 2, but how do we generalize to rank $>2$? 
+
+- Let $\varepsilon(f)=\prod_{i<j}(a_i,a_j)$, which is called the Hasse invariant of $f$.
+
+### The Two Invariants
+
+We have reduced to work with non-degenerate diagonalized quadratic forms of rank $n$. 
+
+- Recall that the *discriminant*
+$$
+d(f) = a_1 a_2 \dots a_n \in \mathbb Q_p^\times / (\mathbb Q_p^\times)^2
+$$
+is an invariant.
+
+- Recall that the *Hasse invariant* 
+$$
+\varepsilon(f) := \prod_{1 \leq i < j \leq n} ( a_i, a_j )
+$$
+is also an invariant.
+
+- If $f=a_1X_1^2\oplus f_1$ where $f_1=a_2X_2^2+\cdots+a_nX_n^2$, then we have:
+$$
+\begin{aligned}
+d(f) &= \prod_{i=1}^na_i = a_1 \prod_{i=2}^na_i= a_1 d(f_1).\\
+\varepsilon(f) &= \prod_{1 \leq i < j \leq n} ( a_i, a_j ) = \varepsilon(f_1) \cdot ( a_1, a_2\cdots a_n) = \varepsilon(f_1) \cdot ( a_1, a_1 d(f)) 
+\end{aligned}
+$$
+
+## Representation Numbers of Quadratic Forms
+
+### Decomposition of Quadratic Forms
+
+On an arbitrary field $K$, we say that a quadratic form $f$ *represent*s $a \in K$ if there exists a nonzero $v \in V$ such that $f(v) = a$.
+
+- It may be viewed in $\{0\} \cup K^\times / (K^{\times})^2$.
+
+:::{#prp-represent}
+
+## ([@serre_course_1973] p. 33, chap. 4, sec. 1.6, corollary 1)
+
+Let $a \in K^\times$. TFAE:
+
+- $f$ represents $a$
+- $f \sim g \oplus aZ^2$ where $g$ is of rank $\operatorname{rank} f - 1$.
+- $f \oplus -aZ^2$ represents $0$.
+:::
+
+- To check if $a$ can be represented by $f$, it suffices to examine when a quadratic form represents $0$.
+- Suppose $f_1$ and $f_2$ can both represent some $a\in K^\times$, then we hope to reduce their rank and use induction in subsequent proofs. 
+
+### Conditions for decomposing quadratic forms
 
 We mention some results here without details.
 
@@ -116,6 +245,8 @@ We mention some results here without details.
 Every injective metric-preserving map from a subspace $U$ of a quadratic space $V$ to another quadratic space $W$ may be extended to a metric-preserving map from $V$ to $W$.
 :::
 
+- If a quadratic space $(V, Q)$ has two isometric subspaces $U$ and $W$, then by Witt's theorem, the isometry can be extended to an automorphism of $V$. By restricting this automorphism to $U^\perp$, we see that $U^\perp$ and $W^\perp$ are also isometric. The results about quadratic spaces can be translated into results about quadratic forms：
+
 :::{#thm-witt-cancel}
 
 ## Witt's cancellation ([@serre_course_1973] p. 34, chap. 4, sec. 1.6, theorem 4)
@@ -123,227 +254,43 @@ Every injective metric-preserving map from a subspace $U$ of a quadratic space $
 $f_1 \oplus g_1 \sim f_2 \oplus g_2$ and  $g_1 \sim g_2$ implies $f_1 \sim f_2$.
 :::
 
-:::{#thm-witt-decomposition}
+### When does a quadratic form represent $0$, $a$ ($a \in K^\times$)?
 
-## Witt's decomposition
+<!--*This involves a lot of tedious casework, so we will omit all details due to time constraints.-->
 
-Every quadratic space $V$ is a direct sum of: $\rad(V)$, an anisotropic quadratic space (i.e. its nonzero vectors has nonzero norms) and a split quadratic space (i.e. $U = U^\perp$, full of hyperbolas)
-:::
-
-## The Common Represented Element Method
-
-### Another Invariant: $\operatorname{R}(f)$
-
-On an arbitrary field $K$, we say that a quadratic form $f$ *represent*s $a \in K$ if there exists a nonzero $v \in V$ such that $f(v) = a$.
-
-- The numbers represented by a quadratic form $f$, $\operatorname{R}(f)$, is an invariant.
-
-- It may be viewed in $\{0\} \cup K^\times / (K^{\times})^2$.
-
-- Is it complete?
-
-### Insights from the $\operatorname{R}(f)$
-
-:::{#prp-range}
-
-## ([@serre_course_1973] p. 33, chap. 4, sec. 1.6, corollary 1)
-
-Let $a \in K^\times$. TFAE:
-
-- $f$ represents $a$
-- $f \sim g \oplus (Z \mapsto a Z^2)$ where $g$ is of rank $\rk f - 1$.
-- $f \oplus (Z \mapsto -a Z^2)$ represents $0$.
-:::
-
-- Insight from line 3: To understand the $\operatorname{R}(f)$, it suffices to examine when a quadratic form represents $0$.
-- Insight from line 2 (*the common represented element method*): Say $f_1$, $f_2$ are nonzero and represent a common $a \in K^\times$. Reducing $Z \mapsto aZ^2$, if only $g_1$ and $g_2$ also share a common represented element...
-
-### Insights from the $\operatorname{R}(f)$
-
-- Sadly, the $\operatorname{R}(f)$ is not always a complete invariant.
-
-  - Otherwise all indefinite quadratic forms over $\mathbb R$ are equivalent, absurd.
-
-- But we shall show that when $K = \mathbb Q_p$ and moreover $K = \mathbb Q$, it plays a subtle role in the classification of quadratic forms. This requires a more precise characterization of the $\operatorname{R}(f)$.
-
-- In fact, if only there are some simple invariants that can fully determine the $\operatorname{R}(f)$...
-
-## Global and Local Equivalence
-
-### Global and Local Equivalence
-
-- Fact: Field extensions preserve the equivalence of quadratic forms.
-
-  - Example: Equivalence classes are finer over $\mathbb R$ than those over $\mathbb C$.
-
-- $\mathbb Q \hookrightarrow \mathbb R$, thus the rank and the signature are invariants. But we need more information to classify.
-
-- Other field extension of $\mathbb Q$? $\mathbb Q \hookrightarrow \mathbb Q_p$
-
-:::{#thm-hasse-minkowski}
-
-## Hasse-Minkowski ([@serre_course_1973] p. 41, chap. 4, sec. 3.1, theorem 8)
-
-$f$ represents $0$ over $\mathbb Q$ iff it represents $0$ over $\mathbb R$ and all $\mathbb Q_p$.
-:::
-
-- To gain more invariants for $\mathbb Q$ (especially those related to the $\operatorname{R}(f)$), let's classify quadratic forms over $\mathbb Q_p$ first.
-
-# Quadratic Forms over $\mathbb Q_p$ and $\mathbb Q$
-
-## Structure of $\mathbb Q_p^\times / (\mathbb Q_p^\times)^2$
-
-### Structure of $\mathbb Q_p^\times$
-
-- $\mathbb Q_p^\times \cong \mathbb Z \times \mathbb Z_p^\times$ by collecting common powers of $p$
-
-- $\mathbb Z_p^\times \cong \mathbb F_p^\times \times (1 + p \mathbb Z_p)$ by $a \mapsto a \bmod p$
-
-  - It splits by the explicit construction of a primitive root of order $p$, via Hensel's lemma / Teichmüller lift $\lim_{n \to \infty} g^{p^n}$, where $g$ is a primitive root of $\mathbb F_p^\times$.
-
-### Structure of $1 + p \mathbb Z_p$ and the log / exp map
-
-For $p \neq 2,\, \alpha \geq 1$ or $p = 2,\, \alpha \geq 2$:
-$$
-\begin{aligned}
-1 + p^\alpha \mathbb Z_p &\cong (p^\alpha \mathbb Z_p, +) \cong (\mathbb Z_p, +) \\
-1 + p^\alpha a &\mapsto \log(1+p^\alpha a)
-\end{aligned}
-$$
-
-For $p=2,\,\alpha = 1$,
-
-- $$
-  1 + 2 \mathbb Z_2 \cong \mathbb Z / 2 \mathbb Z \times (1 + 4 \mathbb Z_2)
-  $$
-  
-  - by $1 + 2a \mapsto a \bmod 2$
-
-  - It splits by the explicit construction of a primitive root of order $2$: $(-1,-1,\dots) = \sum_{n=0}^{+\infty} 2^n$.
-
-- $(1 + 4 \mathbb Z_2) \cong (4 \mathbb Z_2, +) \cong (\mathbb Z_2, +)$ by the log map
-
-- Thus
-  $$
-  1 + 2 \mathbb Z_2 \cong \mathbb Z / 2 \mathbb Z \times (\mathbb Z_2, +)
-  $$
-
-
-### Quadratic residues of $\mathbb Q_p$
-
-For $p \neq 2$:
-
-- $\mathbb Q_p^\times \cong \mathbb Z \times \mathbb F_p^\times \times (\mathbb Z_p, +)$
-
-- $2$ is a unit in $\mathbb Z_p$. Thus $a \in (\mathbb Q_p^\times)^2$ iff $\nu_p(a) \bmod 2 = 0$ and $a \bmod p \in \mathbb F_p^\times$ is a quadratic residue.
-
-- $\mathbb Q_p^\times / (\mathbb Q_p^\times)^2 \cong \mathbb Z / 2\mathbb Z \times \mathbb Z / 2\mathbb Z$, generated by $p$ and $a$, where $a \bmod p$ is a quadratic nonresidue．
-
-For $p = 2$:
-
-- $\mathbb Q_2^\times \cong \mathbb Z \times \mathbb Z / 2 \mathbb Z \times (\mathbb Z_2, +)$
-
-- Quadratic residues of $(\mathbb Z_2, +)$ are $(2 \mathbb Z_2, +)$, which pull back to $1 + 8 \mathbb Z_2$.
-
-- $a \in (\mathbb Q_2^\times)^2$ iff $\nu_2(a) \bmod 2 = 0$ and $a \bmod 8 \equiv 1$.
-
-- $\mathbb Q_2^\times / (\mathbb Q_2^\times)^2 \cong \mathbb Z / 2\mathbb Z \times \mathbb Z / 2\mathbb Z \times \mathbb Z / 2\mathbb Z$, generated by $2$, $3$ and $5$.
-
-## The Hilbert Symbol
-
-### The Hilbert Symbol
-
-The Hilbert symbol over $\mathbb Q_p$ is defined as:
-$$
-\langle a, b \rangle := \begin{cases}
-  1 & \text{if } a X^2 + b Y^2 = Z^2 \text{ has a nonzero solution in } \mathbb Q_p \\
-  -1 & \text{otherwise}
-\end{cases}
-$$
-The symbol may also be viewed in $\{0\} \cup \mathbb Q_p^\times / (\mathbb Q_p^\times)^2$ or even more simply in $\mathbb Q_p^\times / (\mathbb Q_p^\times)^2$ when working with non-degenerate forms.^[Lots of the resources, even [@serre_course_1973], switch between these three views without enough warning. Sadly we shall also commit this usual mild sin (and have already done to other innocent invariants such as the discriminant...)]
-
-### Properties of the Hilbert Symbol
-
-- $\langle a, -a \rangle = 1$
-
-- $\langle a, b \rangle = \langle b, a \rangle$ (symmetric)
-
-- If $\langle a_2,b \rangle = 1$, then $\langle a_1 a_2, b \rangle = \langle a_1,b \rangle$
-  
-  - In fact, $\langle a_1 a_2, b \rangle = \langle a_1, b \rangle \langle a_2, b \rangle$ (multiplicatively bilinear)
-
-- $\langle a, b \rangle = 1$ for all $b$ iff $a \in \mathbb Q_p^2$ (nondegenerate)
-
-- the Hilbert symbol is a non-degenerate symmetric bilinear form of the $\mathbb F_2$-vector space $\mathbb Q_p^\times / (\mathbb Q_p^\times)^2$
-  
-  - This is a non-trivial result and is said to be, to some extent, a generalization of the law of quadratic reciprocity in local class field theory.
-
-  - To show above over $\mathbb Q_p$, we develop an explicit formula for the Hilbert symbol.
-
-### The Explicit Formula of the Hilbert Symbol
-
-:::{#thm-hilbert-symbol}
-
-## ([@serre_course_1973] p. 20, chap. 3, sec. 1.2, theorem 1)
-
-Say $a = p^\alpha u$ and $b = p^\beta v$ are $p$-adic numbers where $u,v \in \mathbb Z_p^\times$, then
-$$
-\langle a, b \rangle = (-1)^{\alpha \cdot \beta \cdot \frac{p-1}{2}} \left(\dfrac{u}{p}\right)^\beta \left(\dfrac{v}{p}\right)^\alpha \text{ if } p \neq 2
-$$
-We omit the case $p=2$. It's a tedious modification of the above formula.
-:::
-
-
-|       | $0$   | $1$ | $a$ | $p$ |
-|-----  |:---:|:---:|:---:|:---:|
-| $0$   | $1$   | $1$ | $1$ | $1$ |
-| $1$   |       | $1$ | $1$ | $1$ |
-| $a$   |       |     | $1$ | $-1$ |
-| $p$   |       |     |     | $(-1)^{\frac{p-1}{2}}$  |
-
-: Table of Hilbert symbol, $p \neq 2$
-
-## Invariants that Determine the $\operatorname{R}(f)$
-
-### The Hasse Invariant
-
-Recall that we have reduced to work with non-degenerate diagonalized quadratic forms of rank $n$. Recall that the discriminant
-$$
-d(f) = a_1 a_2 \dots a_n \in \mathbb Q_p^\times / (\mathbb Q_p^\times)^2
-$$
-is an invariant.
-
-- Define the *Hasse invariant* $\varepsilon(f) := \prod_{1 \leq i < j \leq n} \langle a_i, a_j \rangle$
-
-- It is an invariant:
-  $$
-  \varepsilon(f) = \prod_{1 \leq i < j \leq n} \langle a_i, a_j \rangle = \varepsilon(f_1) \prod_{2 \leq j \leq n} \langle a_1, a_j \rangle = \varepsilon(f_1) \cdot \langle a_1, a_1 d(f) \rangle
-  $$
-  Thus $\varepsilon$ is preserved under *contiguous* change of orthogonal bases (fixes one of the vector of the basis)
-
-  - For $n \geq 3$, orthogonal bases are transitive under contiguous change ([@serre_course_1973] p. 30, sec. 4.1.4, theorem 2)
-
-### $d$ and $\varepsilon$ Determine the $\operatorname{R}(f)$
-
-:::{#thm-qp-range-determine}
+:::{#thm-qp-represent-determine}
 
 ## ([@serre_course_1973] p. 36, chap. 4, sec. 2.2, theorem 6)
 
-For a non-degenerate quadratic form $f$ of rank $n$ over $\mathbb Q_p$, the $\operatorname{R}(f)$ is determined by the discriminant $d := d(f)$ and the Hasse invariant $\varepsilon := \varepsilon(f)$.
+$f$ represents $0$ iff:
 
-Or, in detail, $f$ represents $0$ iff:
-
-- For $n=2$: $d=-1$
-- For $n=3$: $\langle -1,-d \rangle = \varepsilon$
-- For $n=4$: $d \neq 1$ or $d=1$ and $\varepsilon = \langle -1,-1 \rangle$
-- For $n=5$: no conditions
+- For $n=2$: $d=-1$;
+- For $n=3$: $(-1,-d)= \varepsilon$;
+- For $n=4$: $d \neq 1$ or $d=1$ and $\varepsilon = (-1,-1)$;
+- For $n\geq5$: no conditions.
 :::
 
-Recall that $f$ represents $a \in \mathbb Q_p^\times / (\mathbb Q_p^\times)^2$ iff $f \oplus (Z \mapsto -a Z^2)$ represents $0$, thus above fully characterizes the $\operatorname{R}(f)$.
+By applying Theorem to $f_a=f \oplus -aZ^2$, we obtain:
 
-## Classification
+:::{#cor-qp-represent-determine-cor}
 
-### Classification of Quadratic Forms over $\mathbb Q_p$
+## ([@serre_course_1973] p. 37, chap. 4, sec. 2.2, corollary to themrem 6)
+
+$f$ represents $a\in K^\times/K^\times$ iff:
+
+- For $n=1$: $a=d$;
+- For $n=2$: $( a,-d ) = \varepsilon$;
+- For $n=3$: $a \neq d$ or $a=d$ and $\varepsilon = ( -1,-d )$;
+- For $n\geq4$: no conditions.
+:::
+
+<!--Therefore, the set of numbers represented by a quadratic form $f$ is completely determined by its discriminant and Hasse invariant.-->
+
+# Quadratic Forms over $\mathbb{Q}_p$ and $\mathbb{Q}$
+
+## Quadratic Forms over $\mathbb{Q}_p$
+
+### Quadratic Forms $f \sim g$ over $\mathbb{Q}_p$
 
 :::{#thm-qp-classification}
 ## ([@serre_course_1973] p. 39, chap. 4, sec. 2.3, theorem 7)
@@ -351,47 +298,204 @@ Recall that $f$ represents $a \in \mathbb Q_p^\times / (\mathbb Q_p^\times)^2$ i
 Two non-degenerate quadratic forms of rank $n$ over $\mathbb Q_p$ are equivalent iff they have the same discriminant $d$ and Hasse invariant $\varepsilon$.
 :::
 
-- $f,g$ have same $d$ and $\varepsilon$, thus have the same $\operatorname{R}(f)$. Say they both represent $a \in \mathbb Q_p^\times / (\mathbb Q_p^\times)^2$.
+- $f,g$ have same $d$ and $\varepsilon$, thus there exists $a\in \mathbb Q_p^\times$ which both represented by $f$ and $g$.
 
-- Then $f \sim f_1 \oplus (Z \mapsto a Z^2)$, where $f_1$ is of rank $n-1$.
+- Then $f \sim f_1 \oplus aZ^2$, where $f_1$ is of rank $n-1$.
 
 - $d$ and $\varepsilon$ of $f_1$ can be determined:
   
-  - $d(f_1) = a d(f)$
-  - $\varepsilon(f_1) = \varepsilon(f) \cdot (a, a d(f))$ (shown when discussing the invariance of $\varepsilon$)
+  - $d(f_1) = a d(f) = a d(g) = d(g_1)$
+  - $\varepsilon(f_1) = \varepsilon(f) \cdot (a, a d(f)) = \varepsilon(g) \cdot (a, a d(g)) = \varepsilon(g_1)$
 
-- The same for $g$. Thus $f_1, g_1$ share the same $d$ and $\varepsilon$ (thus also their $\operatorname{R}(f)$). QED by induction.
+- Thus $f_1, g_1$ share the same $d$ and $\varepsilon$. QED by induction.
 
-### Classification of Quadratic Forms over $\mathbb Q$
+### Classification of Quadratic Forms over $\mathbb{Q}_p$
 
-:::{#thm-qp-classification}
-## ([@serre_course_1973] p. 39, chap. 4, sec. 2.3, theorem 7)
+The invariants $d$ and $\varepsilon$ are not independent; they satisfy the following relations:
 
-Two non-degenerate quadratic forms of rank $n$ over $\mathbb Q$ are equivalent iff they are equivalent over $\mathbb R$ and over each $\mathbb Q_p$.
+- For $n=1$: $\varepsilon=1$;
+- For $n=2$: $d\neq-1$ or $\varepsilon=1$;
+- For $n\geq3$: no conditions.
+
+Skeleton of Proof:
+
+- $n=1$: $f=aX^2$ has $\varepsilon=1$ and $d=a$ is arbitrary.
+- $n=2$: $f=aX^2+Y^2$ has $\varepsilon=(a,b)=(a,-ab)$. If $d=ab=-1$, then $\varepsilon=1$. Conversely:
+    - if $d=-1$, $\varepsilon=1$: take $f=X^2-Y^2$
+    - if $d\neq-1$, since the Hilbert symbol is non-degenerate, there exists $a\in \mathbb Q_p^\times$ such that $(a,-d)=\varepsilon$. Take $f=aX^2+adY^2$. 
+    - *(when $d=-1$, $f=X^2-Y^2=aX^2+adY^2$)*
+- $n=3$: Choose $a\in \mathbb Q_p^\times/{\mathbb Q_p^\times}^2$ and $a\neq d$. There exsits form $g$ of rank 2 s.t. $d(g)=ad, \varepsilon(g)=\varepsilon(a,-d)$. The form $f=g\oplus aZ^2$ works.
+- $n>3$: Take $f=g(X_1,X_2,X_3)\oplus a_4X^2\oplus\cdots\oplus a_nX_n^2$.
+
+## Quadratic Forms over $\mathbb{Q}$
+
+### Quadratic Forms $f \sim g$ over $\mathbb{Q}$
+
+:::{#thm-hasse-minkowski}
+## Hasse-Minkowski
+$f$ represents $0$ over $\mathbb Q$ iff it represents $0$ over $\mathbb R$ and all $\mathbb Q_p$.
 :::
 
-- Say $f,g$ are equivalent over each local field ($\mathbb Q_p$ and $\mathbb R$), thus they share the same $\operatorname{R}(f)$ locally.
 
-- By Hasse-Minkowski theorem, they also share the same $\operatorname{R}(f)$ globally over $\mathbb Q$.
+:::{#thm-q-classification}
+## ([@serre_course_1973] p. 44, chap. 4, sec. 3.3, theorem 9)
+Two non-degenerate quadratic forms of rank $n$ over $\mathbb Q$ are equivalent iff they are equivalent over each $\mathbb{Q}_v$.
+:::
 
-- Then $f \sim f_1 \oplus (Z \mapsto a Z^2)$ globally, where $f_1$ is of rank $n-1$. The same for $g$.
+- Suppose $f \sim g$ over $\mathbb{Q}_v$ for all $v$, then there exists $a \in \mathbb{Q}$ represented by both $f$ and $g$.
 
-- $f_1 \sim g_1$ locally by Witt's cancellation theorem. QED by induction.
+- Thus $f \sim aZ^2 \oplus f_1$, $g \sim aZ^2 \oplus g_1$, where $\operatorname{rank} f_1 = \operatorname{rank} g_1 = n-1$.
 
-### Problem Remains
+- By Witt's cancellation theorem, we have $f_1 \sim g_1$ over $\mathbb{Q}_v$ for all $v \in \mathbb{V}$.
 
-- Proof of the Hasse-Minkowski theorem
+- By induction on rank $n$, $f_1 \sim g_1$ over $\mathbb{Q}$, thus $f \sim g$ over $\mathbb{Q}$.
 
-  - essentially needs some understanding of the global property of the Hilbert symbol, which we have not discussed (cf. [@serre_course_1973])
+### Classification of Quadratic Forms over $\mathbb{Q}$
+<!--
+- Recall:  
+    - The classification over $\mathbb Q_p$.
+    - The invariant signature $(r,s)$ over $\mathbb R$.
+    - The multiplicative formula: $(a,b)_v=1$ for almost all $v\in \mathbb{V}$, and $\prod_{v\in\mathbb{V}}(a,b)_v=1$.
+-->
+:::{#prp-classifacation}
+## Conclusion over $\mathbb Q$
+The invariants $d$ and $\varepsilon$ are not independent; they satisfy the following relations:
 
-- Refine the theory for degenerate quadratic forms (relatively easy)
+- $\varepsilon_v=1$ for almost $v\in\mathbb V$, and $\prod_{v\in\mathbb{V}}\varepsilon_v=1$.
+- $\varepsilon_v=1$ if $n=1$ and if $n=2$ and if the image $d_v$ of $d$ in $\mathbb Q_p^\times/{\mathbb Q_p^\times}^2$ is equal to $-1$.
+- $r,s\geq 0$ and $r+s=\operatorname{rank}$.
+- $d_\infty=(-1)^s$
+- $\varepsilon_\infty=(-1)^{s(s-1)/2}$
 
-- Enumerate all the equivalence classes of quadratic forms over $\mathbb Q_p$ and $\mathbb Q$ (cf. [@serre_course_1973])
+Let $d$, $(\varepsilon_v)_{v\in \mathbb V}$, and $(r,s)$ vertify the relations above, then there exists a quadratic form of rank $n$ over $\mathbb Q$ having for invariants $d$, $(\varepsilon_v)_{v\in \mathbb V}$, and $(r,s)$.
+:::
 
-- To what extent can we use the common represented element method to classify quadratic forms over other fields?
+# Appendix
 
-- For which fields, the $\operatorname{R}(f)$ of a quadratic form is a complete invariant? (At least $\mathbb R$ fails. $\mathbb Q$, $\mathbb Q_p$?)
+## Lemmas Required for the Proof
 
-- What can we say about $\mathbb Q^\times / (\mathbb Q^\times)^2$?
+### Lemmas
 
-- Classification of quadratic forms over commutative rings (e.g. $\mathbb Z$, $\mathbb Z / m \mathbb Z$)
+:::{#lem-solution}
+Let $f_i\in\mathbb Z_p[X_1,\cdots,X_m]$ be homogeneous polynomials with $p$-adic integer coefficents. TFAE:
+
+- The $f_i$ have a non trivial common zero in $(\mathbb Q_p)^m$
+- The $f_i$ have acommon primitive zero(i.e. solution $(z,x,y)\not\equiv(0,0,0) (\operatorname{mod}p)$) in $(\mathbb Z_p)^m$
+- For all $n>1$, the $f_i$ have a common primitive zero in $(\mathbb{Z}/p^n\mathbb{Z})^m$.
+:::
+
+:::{#lem-hilbert}
+Let $a,b\in K^\times$ and let $K_b=K(\sqrt{b})$. For $(a,b)=1 \iff a\in N(K_b^\times)$ of norms of elements of $K_b^\times$.
+:::
+
+### Lemmas
+
+:::{#lem-represent}
+Let $f=g\oplus -h$, TFAE:
+
+- $f$ represents $0$
+- There exists $a\in K^\times$ which is represented by $g$ and $h$.
+:::
+
+:::{#thm-exsitence-hilbert}
+Let $(a_i)_{i\in I}$ be a finite family of elements in $\mathbb Q^\times$ and let $(\varepsilon_{i,v})_{i\in I, v\in \mathbb V}$ be a family of numbers equal to $\pm1$. In order that there exists $x\in \mathbb Q\times$ such that $(a_i,x)_v=\varepsilon_{i,v}$ for all $i\in I$ and $v\in \mathbb V$ iff the following conditions be satisfied:
+
+- Almost all the $\varepsilon_{i,v}=1$
+- $\prod_{v\in \mathbb{V}}\varepsilon_{i,v}=1$ for all $i\in I$
+- For all $v\in \mathbb{V}$ there exists $x_v\in \mathbb{Q}_p^\times$ such that $(a_i,x_v)_v=\varepsilon_{i,v}$ for all $i\in I$.
+:::
+
+### Lemmas
+
+:::{#thm-approximation}
+## Approximation Theorem
+Let $S\subseteq\mathbb V$ be a finite set. The image of $\mathbb Q$ in $\prod_{v\in S}\mathbb Q_v$ is dense.
+:::
+
+:::{#lem-three-variables}
+All quadratic forms in at least 3 variavles over $\mathbb{F}_q$ have a non trivial zero.
+:::
+
+:::{#lem-lift}
+Suppose $p\neq2$. Let $f$ be a quadratic form with coefficients in $\mathbb{Z}_p$ whose discriminant $\operatorname{det(a_{ij})}$ is invertible. Let $a\in \mathbb{Z}_p$, every primitive solution of the equation $f(x)\equiv a(\operatorname{mod}p)$ lifts to a true solutons.
+:::
+
+## Proof of Hasse-Minkowski Theorem
+
+### Proof
+
+:::{#thm-hasse-minkowski}
+## Hasse-Minkowski
+$f$ represents $0$ over $\mathbb Q$ iff it represents $0$ over $\mathbb R$ and all $\mathbb Q_p$.
+:::
+
+- The necessity is trivial. W.L.O.G., $f=\sum_{i=1}^na_iX_i^2$, $a_i\in\mathbb Q^\times$. By replacing $f$ by $a_1f$, we can soppose $a_i=1$
+
+- $n=2$: Suppose $f=X_1^2-aX_2^2$
+    - $f_\infty$ represents $0$ implies $a>0$. Let $a=\prod_{p \text{ prime}}p^{\nu_p(a)}$.
+    - $f_v$ represents $0$ implies that $\nu_p(a)$ is even. Then $a$ is a square, $f$ represents $0$ over $\mathbb Q$.
+
+### Proof
+
+- $n=3$: Suppose $f=X_1^2-aX_2^2-bX_3^2$, we can assume $a,b$ are square-free and $|a|\leq|b|$. Proceed by induction on $m=|a|+|b|$.
+
+- If $m=2$, then $f=X_1^2\pm X_2^2\pm X_3^2$.    
+    - $f_\infty$ represents $0$ implies $f\neq X_1^2+X_2^2+X_3^2$.
+    - In other cases, $f$ represents $0$ by $f(1,1,0)$.
+
+- If $m>2$, then $b\geq2$, let $b=\pm p_1\cdots p_k$.
+- We need to show $a$ is a square modulo $p_i$ for all $i$.
+
+### Proof
+
+- It is obvious if $a\equiv0 \pmod{p_i}$.
+- Otherwise, $a$ is a $p_i$-adic unit.
+- By hypothesis, $f=X_1^2-aX_2^2-bX_3^2$ represents $0$, i.e. $z^2-ax^2-by^2$ has a nontrivial zero in $(\mathbb Q_{p_i})^3$.
+- By the lemma, $z^2-ax^2-by^2$ has a primitive zero $(z,x,y)$ in $(\mathbb Z_{p_i})^3$.
+- We have $z^2-ax^2\equiv0\pmod{p_i}$.
+- If $x\equiv0\pmod{p_i}$, then $z\equiv0\pmod{p_i}$.
+- Then $p_i^2\mid by^2=z^2-ax^2$, but $\nu_{p_i}(b)=1$ implies $y\equiv0\pmod{p_i}$.
+- Thus $(z,x,y)\equiv(0,0,0) \pmod{p_i}$, which is a contradiction, hence $x\not\equiv0\pmod{p_i}$.
+- Moreover, $a=\left(\frac{z}{x}\right)^2$ is a square modulo $p_i$.
+- Since $\mathbb{Z}/b\mathbb{Z}\cong\prod_{i=1}^k\mathbb{Z}/p_i\mathbb{Z}$, $a$ is a square modulo $b$.
+
+### Proof
+
+- There exist $t, b'$ integers such that $t^2=a+bb'$.
+- We can choose $t$ such that $|t|\leq|\frac{b}{2}|$. $bb'=t^2-a$ is a norm from $K(\sqrt{a})$ where $K=\mathbb Q$ or $\mathbb{Q}_p$.
+- By above lemma $(a,bb')=1$, hence $(a,b)=1\iff(a,b')=1$.
+- That means $f=X_1^2-aX_2^2-bX_3^2$ represents $0$ iff $f'=X_1^2-aX_2^2-b'X_3^2$ represents $0$.
+- $|b'|=|\frac{t^2-a}{b}|\leq|\frac{t^2}{b}|+|\frac{a}{b}|\leq\frac{|b|}{4}+1\leq|b|$.
+- Write $b'=u^2b''$, where $b''$ is square-free. We have $|b''|\leq|b|$.
+- The inductive hypothesis applies to $f''=X_1^2-aX_2^2-b''X_3^2$, so it represents $0$, and the same is true for $f$.
+
+### Proof
+
+- $n=4$: Suppose $f=aX_1^2+bX_2^2-(cX_3^2+dX_4^2)$. There exists $a\in K^\times$ which is represented by $aX_1^2+bX_2^2$ and $cX_3^2+dX_4^2$.
+    - $(x_v,-ab)_v=(a,b)_v$ and $(x_v,-cd)_v=(c,d)_v$ for all $v\in \mathbb{V}$
+    - By above theorem there exists $x\in \mathbb{Q}^\times$ s.t. $(x,-ab)_v=(a,b)_v$ and $(x,-cd)_v=(c,d)_v$ for all $v\in \mathbb{V}$
+    - This means $aX_1^2+bX_2^2$ and $cX_3^2+dX_4^2$ represents $x$ in $\mathbb{Q}_p$
+    - i.e. $aX^2+bY^2-xZ^2$ represents $0$ in all $\mathbb{Q}_v$ also $\mathbb{Q}$, and the same argument applied to $cX_3^2+dX_4^2$, the fact that $f$ represents $0$ in $\mathbb{Q}$ follows from this.
+
+### Proof
+
+- $n\geq5$: we use induction on $n$. Suppose $f=h\oplus -g$ with $h=a_1X_1^2+a_2X_2^2$, $g=-(a_3X_3^2+\cdots+a_nX_n^2)$.
+- Let $S=\{p\in \mathbb{V}\mid\nu_{p}(a_i)\neq0, i\geq3\}\cup\{2,\infty\}$, it is a finite set.
+- Let $v \in S$, $f_v$ represents $0$, so there exists $a_v \in \mathbb{Q}_v^\times$ which is represented by both $h$ and $g$ in $\mathbb{Q}_v$.
+- That is, there exist $x_1^{(v)}, x_2^{(v)} \in \mathbb{Q}_v$ such that $h(x_1^{(v)}, x_2^{(v)}) = a_v$, and $x_3^{(v)}, \ldots, x_n^{(v)} \in \mathbb{Q}_v$ such that $g(x_3^{(v)}, \ldots, x_n^{(v)}) = a_v$.
+- The set $\mathbb Q_v^{\times 2}$ is open in $\mathbb{Q}_v^\times$, so $\prod a_v Q_v^{\times 2}$ is also open in $\prod_{v \in S} \mathbb{Q}_v^\times$, and $h$ is a continuous map.
+
+### Proof
+
+- By the Approximation Theorem, there exists $a \in \mathbb{Q}^\times$ such that $a \in a_v Q_v^{\times 2}$ for all $v \in S$.
+- Thus, $(x_1,x_2)\in(\mathbb{Q})^2$ s.t. $h(x_1,x_2)=a$, and $a/a_v\in {\mathbb{Q}^\times}^2$ for all $v\in S$.
+
+- Consider $f_1=aZ^2\oplus -g$.
+    - if $v\in S$, $g$ represents $a_v$, also $a$ since $a/a_v\in {\mathbb{Q}^\times}^2$.
+    - if $v\not\in S$, the coeffients are $v$-adic units, the $d(g)$ is also a unit. And because $v\neq2$, we have $\varepsilon(g)=1$.
+
+- By above lemma, there exist a solution, and it lifts a true solution.
+- In all case we see $f_1$ represents $0$ in $\mathbb{Q}_v$, and $\operatorname{rank}f_1=n-1$.
+- By inductive hypothesis: $f_1$ represents $0$ in $\mathbb{Q}$. i.e. $g$ represents $a$, and $h$ represents $a$.
+
+- The proof is complete.

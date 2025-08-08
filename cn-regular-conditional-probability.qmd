@@ -5,7 +5,7 @@ author: "Liyve"
 date: "2025/06/23"
 date-modified: "2025/07/02"
 abstract: "本作业探讨了正则条件概率的概念, 重点关注其存在性与唯一性. [@Rockner2016ProbabilityNotes] 并未给出存在性与唯一性的证明, 因此, 严谨地补全这些证明成为本次作业的核心内容. "
-bibliography: "regular-conditional-probability.bib"
+bibliography: "index.bib"
 lang: zh
 
 number-sections: true

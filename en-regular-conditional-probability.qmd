@@ -5,7 +5,7 @@ author: "Liyve"
 date: "2025/06/23"
 date-modified: "2025/07/02"
 abstract: "This assignment explores the concept of regular conditional probability, focusing on its existence and uniqueness. However, the proofs for existence and uniqueness were not provided in [@Rockner2016ProbabilityNotes]. As a result, rigorously establishing these proofs became the central focus of the assignment."
-bibliography: "regular-conditional-probability.bib"
+bibliography: "index.bib"
 lang: en
 
 number-sections: true

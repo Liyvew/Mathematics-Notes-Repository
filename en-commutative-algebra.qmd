@@ -5,7 +5,7 @@ author: "Liyve"
 date: "2025/06/25"
 date-modified: "2025/06/25"
 abstract: "Note about [@atiyah2018introduction{*Introduction to Commutative Algebra*}]."
-bibliography: "commutative-algebra.bib"
+bibliography: "index.bib"
 lang: en
 
 number-sections: true
