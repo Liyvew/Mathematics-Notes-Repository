@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/cn-regular-conditional-probability.html</loc>
-    <lastmod>2025-08-08T04:27:05.481Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/en-pre-classification-quadratic-forms-over-q.html</loc>
-    <lastmod>2025-08-08T04:27:05.482Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/en-commutative-algebra.html</loc>
-    <lastmod>2025-08-08T04:27:05.482Z</lastmod>
+    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/index.html</loc>
+    <lastmod>2025-08-10T16:57:37.095Z</lastmod>
   </url>
   <url>
     <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/en-regular-conditional-probability.html</loc>
-    <lastmod>2025-08-08T04:27:05.482Z</lastmod>
+    <lastmod>2025-08-10T16:57:37.093Z</lastmod>
   </url>
   <url>
-    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/index.html</loc>
-    <lastmod>2025-08-08T04:27:05.483Z</lastmod>
+    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/en-commutative-algebra.html</loc>
+    <lastmod>2025-08-10T16:57:37.093Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/examples/readme.html</loc>
+    <lastmod>2025-08-10T16:57:37.095Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/en-pre-classification-quadratic-forms-over-q.html</loc>
+    <lastmod>2025-08-10T16:57:37.093Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/examples/cnart.html</loc>
+    <lastmod>2025-08-10T16:57:37.094Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/examples/enart.html</loc>
+    <lastmod>2025-08-10T16:57:37.094Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/cn-regular-conditional-probability.html</loc>
+    <lastmod>2025-08-10T16:57:37.093Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Liyvew.github.io/Mathematics-Notes-Repository/helloworld.html</loc>
+    <lastmod>2025-08-10T16:57:37.095Z</lastmod>
   </url>
 </urlset>
