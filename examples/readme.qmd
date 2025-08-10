@@ -1,0 +1,15 @@
+---
+title: "README"
+
+aliases: 
+  - "/index.html"
+
+number-sections: true
+
+format:
+  html:
+    include-in-header:
+      - file: ai.html
+---
+
+{{< include ../README.md >}}

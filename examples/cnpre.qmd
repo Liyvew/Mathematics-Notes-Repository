@@ -1,0 +1,265 @@
+---
+title: $\SunQuarTeX$-cnpre 测试文档
+subtitle: "这是副标题"
+author: "sun123zxy"
+institute: $\SunQuarTeX$ Institute of LaTeX Technology
+shortinstitute: $\SunQuarTeX$
+date: "2023/08/21"
+date-modified: "2024/02/22"
+bibliography: bibliography.bib
+lang: zh
+
+format:
+  beamer:
+    toc: true
+  pptx: default
+---
+
+# Section A
+
+### 文字
+
+长长长**长长 long 长长**长长长长长*长长 long 长长*长长长长长长长长长长长长长长长长长长长长长长长长长长长句子．
+
+长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长段落．
+
+::::: {.columns}
+
+::: {.column width="30%"}
+- 左栏．
+- 窄窄窄窄窄窄窄窄窄窄窄窄窄窄窄窄窄的左栏．
+:::
+
+::: {.column width="70%"}
+- 右栏．
+- 宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽宽的右栏．
+:::
+
+:::::
+
+### 列表
+
+- 这是列表．
+- 紧的列表．
+
+噢
+
+- 这是列表．
+
+- 松的列表．
+
+下面是一个定义列表．
+
+自反性
+
+: $a \sim a$
+
+反对称性
+
+: $a \leq b \land b \leq a \implies a=b$
+
+传递性
+
+: $a \leq b \land b \leq c \implies a \leq c$
+
+### 引用
+
+哇[@deepface, {p.1}]．哇哦[@define;@eigenfaces]．嗨^[这是一个脚注．]．
+
+# Section B
+
+## Subsection 1
+
+### 代码块
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    return 0;
+}
+```
+
+### 表
+
+::: {#tbl-panel-unsolved layout-ncol=2}
+|||||
+|:-:|:-:|:-:|:-:|
+| $L_i \times C_j$   | $2$           | $\mathbb N$   | $\mathbb R$   |
+| $2$                | $4$           | $\mathbb N$   | $\mathbb R$   |
+| $\mathbb N$        | $\mathbb N$   | $\mathbb N$   | ?             |
+| $\mathbb R$        | $\mathbb R$   | ?             | $\mathbb R$   |
+
+:笛卡尔积 {#tbl-cartesian-unsolved}
+
+|||||
+|:-:|:-:|:-:|:-:|
+|$L_i^{C_j}$  | $2$           | $\mathbb N$   | $\mathbb R$     |      
+|$2$          | $4$           | $\mathbb R$   | $2^{\mathbb R}$ | 
+|$\mathbb N$  | $\mathbb N$   | ?             | ?               |
+|$\mathbb R$  | $\mathbb R$   | ?             | ?               |
+
+:集合幂 {#tbl-power-unsolved}
+
+相关集合的势（不完整版）
+:::
+
+
+引用一下 [@tbl-cartesian-unsolved]．
+
+### 图
+
+![这是一张插图](figure.png){#fig-figure}
+
+引用一下 [@fig-figure]．
+
+### 计算图
+
+复杂的并列效果．（[@fig-light-on], [@fig-light-on-1], [@fig-light-on-2]）
+
+```{python}
+import numpy as np
+import math
+from IPython.display import Markdown, display
+import matplotlib.pyplot as plt
+
+R = np.array([0,100,200,300,400,500,600,700,800,900,1000,
+1100,1110,1120,1130,1140,1150,1160,1170,1180,1190,
+1200,1210,1220,1230,1240,1250,1260,1270,1280,1290,
+1300,1400,1500,2000,4000,math.inf])
+U = np.array([24.2E-3, 0.386,0.747,1.104,1.460,1.813,2.16,2.51,2.86,3.19,3.48,
+3.70,3.75,3.77,3.78,3.80,3.81,3.83,3.84,3.85,3.86,
+3.87,3.90,3.92,3.93,3.94,3.95,3.95,3.96,3.97,3.98,
+3.99,4.08,4.16,4.39,4.66,4.85])
+I = np.array([3.6,3.6,3.6,3.6,3.6,3.5,3.5,3.5,3.5,3.5,3.4,
+3.3,3.4,3.4,3.4,3.4,3.3,3.3,3.3,3.3,3.3,
+3.2,3.2,3.2,3.2,3.2,3.2,3.2,3.1,3.1,3.1,
+3.0,2.9,2.7,2.2,1.130,47.7E-3])
+P = U*I
+```
+
+```{python}
+#| label: fig-light-on
+#| fig-cap: 太阳能电池的负载特性
+#| fig-subcap:
+#|   - 输出电流与电压关系曲线
+#|   - 输出功率与负载电阻关系曲线
+#| layout-ncol: 2
+
+fig, ax = plt.subplots()
+
+ax.set_xlabel("U (V)")
+ax.set_ylabel("I (mA)")
+
+ax.plot(U, I, marker="o")
+ax.grid(True)
+ax.set_xlim(0)
+ax.set_ylim(0)
+
+plt.show()
+
+
+fig, ax = plt.subplots()
+
+ax.set_xlabel("R (Ω)")
+ax.set_ylabel("P (mW)")
+
+ax.plot(R, P, marker="o")
+ax.grid(True)
+ax.set_xlim((0, 2000))
+ax.set_ylim(0)
+
+plt.show()
+```
+
+### TikZ {.fragile}
+
+:::{#fig-tikzcd}
+
+```{tikz}
+\begin{tikzcd}
+        & {\mathbb C[x]}                                                              &  & \mathbb C^{\mathbb C}                                                           \\
+f(x)    & \sum_{i=0}^{n-1} a_i x^i \arrow[rr, "\operatorname{DFT}"] \arrow[d, dotted] &  & (f(\omega_k))_{k=0}^{n-1} \arrow[d]                                             \\
+(fg)(x) & \sum_{k=0}^{n-1} x^k \sum_{i+j = k} a_i b_j                             &  & (f(\omega_n^k)g(\omega_n^k))_{k=0}^{n-1} \arrow[ll, "\operatorname{DFT^{-1}}"'] \\
+g(x)    & \sum_{j=0}^{n-1} b_j x^j \arrow[rr, "\operatorname{DFT}"] \arrow[u, dotted] &  & (g(\omega_k))_{k=0}^{n-1} \arrow[u]                                            
+\end{tikzcd}
+```
+
+An tikzcd image
+
+:::
+
+## Subsection 2
+
+### 定理 {.allowframebreaks}
+
+:::{#thm-test}
+
+## 测试定理
+
+这是一个定理．
+$$
+\sum_{d \mid n} \varphi(d) = n
+$$
+:::
+
+:::{.proof}
+
+这是一个以公式结尾的证明．
+$$
+\sum_{d \mid n} \mu(d) = [n=1]
+$$
+:::
+
+:::{.proof}
+
+这是一个比较长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的证明．
+:::
+
+:::{#def-test}
+
+这是一个定义．
+:::
+
+:::{#exm-test}
+
+## 一个例子
+
+这是一个例子．
+:::
+
+:::{.solution}
+
+这是例子的解．
+:::
+
+:::{#exr-test}
+
+这是一个练习．
+:::
+
+:::{.remark}
+
+这是一个注记，[@exr-test] 的注记．
+:::
+
+:::{#lem-test}
+
+这是一个引理．
+:::
+
+:::{#cor-test}
+
+这是一个推论，[@thm-test] 的推论．
+:::
+
+:::{#prp-test}
+
+这是一个命题．
+:::
+
+:::{#cnj-test}
+
+这是一个猜想．
+:::
