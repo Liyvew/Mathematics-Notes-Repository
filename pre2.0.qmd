@@ -1,0 +1,532 @@
+---
+title: Classification of Quadratic Forms over $\mathbb Q$
+author: "Shubin Xue"
+institute: Beijing Institute of Technology
+date: "2025/09/11"
+lang: en
+
+abstract: "A reading guidance of the first part of J. P. Serre's *A Course in Arithmetic*"
+
+slide-level: 3
+
+format:
+  beamer:
+    toc: true
+    custom-color:
+      define: | 
+        \definecolor{LightSalmon}{RGB}{255, 160, 122}
+        \definecolor{LightCream}{RGB}{255, 253, 240}
+        \definecolor{LightGreen}{RGB}{143, 191, 143}
+        \definecolor{MagicBlue}{RGB}{63, 81, 181}
+        \definecolor{MagicGreen}{RGB}{63, 81, 61}
+        \definecolor{Remark}{RGB}{0, 128, 128}
+      remark: |
+        MagicGreen
+
+---
+
+### Notations
+
+- $K$: an arbitrary field with $\operatorname{Char}K \neq 2$. 
+
+\vfill
+
+- $X$, $Y$, $Z$: variables.
+
+\vfill
+
+- $\mathbb{V} = \{v:v\in\mathbb{V}\} = \{p: \text{prime number}\} \cup \{\infty\}$.
+
+\vfill
+
+- $\mathbb{Q}_v$: completion of $\mathbb{Q}$
+    - $\mathbb{Q}_\infty = \mathbb{R}$
+    - $\mathbb{Q}_p$: with respect to the $p$-adic valuation.
+
+### Quadratic Froms
+
+- $f(\vec{X})=\sum_{i,j=1}^n a_{ij} X_i X_j$ is a quadratic form
+    \vspace{0.1cm}
+    - $a_{ij}=a_{ji}\in K$.
+    \vspace{0.1cm}
+    - $\vec{X}=(X_1,\cdots,X_n)\in K^n$
+
+\vfill
+
+- The matrix $A_f=(a_{ij})$ associated with $f$ is symmetric. 
+
+\vfill
+
+- The pair $(K^n, f)$ is a quadratic space.
+    \vspace{0.1cm}
+    - $f \sim g$: $\exists P\in GL(n,K)$ s.t. $A_f=P^TA_gP$.
+    \vspace{0.1cm}
+    - $f \sim g \iff (K^n,f) \cong (K^n,g)$.
+
+### Case over $\mathbb R$
+
+- Invariants:
+    - Rank: $\operatorname{rank}f = n$.
+    - Signature: $(r,s):=(\#\text{positive eigenvalues},\#\text{negative eigenvalues})$.
+
+\vfill
+
+:::{#thm-Sylvester}
+## Sylvester’s Law of Inertia
+Let $f=\sum_{i,j=1}^na_{ij}X_iX_j$ be a quadratic form of rank $n$ over $\mathbb R$. Then
+$$
+f\sim X_1^2+X_2^2+\cdots+X_r^2-X_{r+1}^2-\cdots-X_{r+s}^2.
+$$
+:::
+
+\vfill
+
+$$
+{\textcolor{green!40!black}{\boxed{\text{\bfseries Problem: How to Classify Quadratic Forms over $\mathbb Q$?}}}}
+$$
+
+<!--
+By diagonalizing via congruence and factoring out squares on the diagonal, we see that the only invariants for classifying real quadratic forms are:
+-->
+
+# Classification and Representation
+
+## Some History
+
+### Background (17-18th Century) {.fragile}
+<!-- 
+As early as the early development of number theory, mathematicians began to pay attention to the representation problem of quadratic forms.
+
+In the 19th century, mathematicians gradually discovered subtle connections between these problems.
+-->
+
+$f$ represents $a \in K$: $\exists x \in K^n \setminus \{0\}$ s.t. $f(x) = a$.
+
+\begin{center}
+\begin{minipage}[t]{0.3\textwidth}
+\centering
+\includegraphics[width=\linewidth]{Pierre_de_Fermat3.jpg}
+\captionof{figure}{Fermat}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+\centering
+\includegraphics[width=\linewidth]{Carl_Friedrich_Gauss_1840_by_Jensen.jpg}
+\captionof{figure}{Gauss}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+\centering
+\includegraphics[width=\linewidth]{Joseph_Louis_Lagrange2.jpg}
+\captionof{figure}{Lagrange}
+\end{minipage}
+\end{center}
+
+### Background (19-20th Century)
+<!--
+With the development of algebraic number theory, mathematicians extended Gauss's ideas to the field of rational numbers. By utilizing the properties of "local fields" (the real numbers and $p$-adic fields), they further strengthened the logical connection between classification and representation of numbers.
+-->
+
+:::{.remark}
+Equivalent quadratic forms represent exactly the same set of numbers.
+:::
+
+\vspace{0.7cm}
+
+:::{#thm-hasse-minkowski}
+## Hasse-Minkowski
+$f$ represents $0$ over $\mathbb Q$ iff it represents $0$ over all $\mathbb Q_v$.
+:::
+
+### Representation of Numbers
+
+$f(X_1,\cdots,X_n)$ and $g(X_1,\cdots,X_m)$
+
+- $f\oplus g=f(X_1,\cdots,X_n)+g(X_{n+1},\cdots,X_{n+m})$
+
+:::{#prp-represent}
+Let $a \in K^\times$. The following are equivalent:
+
+- $f$ represents $a$
+- $f \sim f_1 \oplus aZ^2$ where $f_1$ is of rank $\operatorname{rank} f - 1$.
+- $f_a=f \oplus -aZ^2$ represents $0$.
+:::
+
+:::{#cor-hasse-minkowski}
+## Hasse-Minkowski Theorem
+$f$ represents $a\in\mathbb Q^\times$ over $\mathbb Q$ iff it represents $a$ over all $\mathbb Q_v$.
+:::
+
+- Apply the Hasse-Minkowski Theorem to $f_a=f \oplus -aZ^2$.
+
+<!--
+
+- To check if $a$ can be represented by $f$, it suffices to examine when a quadratic form represents $0$.
+
+- Suppose $f_1$ and $f_2$ can both represent some $a\in K^\times$, then we hope to reduce their rank and use induction in subsequent proofs. 
+
+-->
+
+## From Global to Local
+
+### Decomposing Quadratic Spaces {.fragile}
+
+<!--
+If a quadratic space $(V, Q)$ has two isometric subspaces $U$ and $W$, then by Witt's theorem, the isometry can be extended to an automorphism of $V$. By restricting this automorphism to $U^\perp$, we see that $U^\perp$ and $W^\perp$ are also isometric.
+-->
+
+:::{#thm-witt-cancel}
+
+## Witt's Cancellation 
+
+$f_1 \oplus g_1 \sim f_2 \oplus g_2$ and  $g_1 \sim g_2$ implies $f_1 \sim f_2$.
+:::
+
+- $(V, Q)$: A quadratic space.
+- $(U, Q)$ and $(W, Q)$: Isometric subspaces.
+
+
+:::{#fig-tikzcd-quiver}
+
+```{tikz}
+\begin{tikzcd}
+	V & V && V & V \\
+	U & W && {U^\perp} & {W^\perp}
+	\arrow["\cong", from=1-1, to=1-2]
+	\arrow[no head, from=1-2, to=2-2]
+	\arrow["\cong", from=1-4, to=1-5]
+	\arrow["{{\text{Restrict}}}"', dashed, no head, from=1-4, to=2-4]
+	\arrow[dashed, no head, from=1-5, to=2-5]
+	\arrow["{{\text{Lift}}}", no head, from=2-1, to=1-1]
+	\arrow["\cong", from=2-1, to=2-2]
+	\arrow["\cong", from=2-4, to=2-5]
+\end{tikzcd}
+```
+
+Witt's Cancellation Theorem
+:::
+
+### $f \sim g$ over $\mathbb{Q}$
+
+:::{#thm-q-classification}
+## Minkowski
+Two non-degenerate quadratic forms of rank $n$ over $\mathbb Q$ are equivalent iff they are equivalent over each $\mathbb{Q}_v$.
+:::
+
+- By the Hasse-Minkowski Theorem, the numbers represented by both $f$ and $g$ over $\mathbb{Q}$ is also the same.
+
+- Take $a$ represented, $f \sim aZ^2 \oplus f_1$ over $\mathbb{Q}$ and $\mathbb{Q}_v$. Similarly for $g$.
+
+- By Witt's cancellation, we have $f_1 \sim g_1$ over $\mathbb{Q}_v$ for all $v \in \mathbb{V}$.
+
+- By induction on rank $n$, $f_1 \sim g_1$ over $\mathbb{Q}$, thus $f \sim g$ over $\mathbb{Q}$.
+
+# Quadratic Forms over $\mathbb{Q}_v$
+
+## General Ideas over Arbitrary $K$
+
+### General Ideas over $K$
+
+- Reduced Form: $f \sim \sum_{i=1}^n a_i X_i^2$, where $a_i\in K^\times/(K^\times)^2$.
+
+    - Invariant rank: non-degenerate.
+
+    - Symmetric matrices: diagonal.
+
+    - $\sum a_i b_i^2 X_i^2 \sim \sum a_i X_i^2$: square-free.
+
+\vspace{0.5cm}
+
+- If $f \sim g$, $\det(A_f) = \det(P^T A_g P) = \det(A_g) \det(P)^2$
+    - Invariant discriminant: $d = \det(A)$ in $K^\times/(K^\times)^2$.
+
+\vspace{0.5cm}
+
+- $\mathbb{R}^\times / (\mathbb{R}^\times)^2 \cong \{1, -1\}$.
+- $\mathbb{Q}_p^\times / (\mathbb{Q}_p^\times)^2 \cong K_4 = \{1, a, p, ap\}$ ($p\neq2$).
+- $\mathbb{Q}_2^\times / (\mathbb{Q}_2^\times)^2 \cong (\mathbb Z/2\mathbb Z)\times (\mathbb Z/2\mathbb Z)\times (\mathbb Z/2\mathbb Z)$.
+
+## Invariants that Determine the Representation over $\mathbb Q_p$
+
+### Binary Quadratic Forms over $\mathbb Q_{p}$ for $p\neq2$
+
+:::{#thm-classification}
+
+## Classification of Binary Quadratic Forms over $\mathbb Q_{p}$ for $p\neq2$
+
+Two binary quadratic forms over $\mathbb Q_{p}$ for $p\neq2$ are equivalent if and only if they have the same discriminant $d$ and a comman  represented number $a$.
+:::
+
+\vfill
+
+- Take $a$ represented by $f$.
+
+\vfill
+
+- $f\sim f_1\oplus aZ^2$ where $\operatorname{rank}f_1=1$.
+
+\vfill
+
+- Then $f_1=adX^2$. Thus $f$ is determined.
+
+### Binary Quadratic Forms over $\mathbb Q_{p}$ for $p\neq2$
+
+- Entry: the discriminant of $\alpha X^2+\beta Y^2$
+- $\textcolor{blue}{a}$: same color, same equivalent class
+  - mutually distinct if colored black
+- $\boxed{a}$: boxed quadratic forms don't represent $1$
+
+\vfill
+
+\begin{columns}[T]
+\column{0.5\textwidth}
+\centering
+\begin{tabular}{c|cccc}
+\diagbox{$\alpha$}{$\beta$} & $1$ & $a$ & $p$ & $ap$ \\
+\hline
+$1$  & \textcolor{blue}{1} & $a$ & $p$ & $ap$ \\
+$a$  & & \textcolor{blue}{1} & \boxed{ap} & \boxed{p} \\
+$p$  & & & \textcolor{blue}{1} & \boxed{a} \\
+$ap$ & & & & \textcolor{blue}{1}
+\end{tabular}
+\\[0.2cm]
+\textcolor{green!40!black}{(a)} $p \equiv 1 \ (\mathrm{mod} \ 4)$
+
+\column{0.5\textwidth}
+\centering
+\begin{tabular}{c|cccc}
+\diagbox{$\alpha$}{$\beta$} & $1$ & $a$ & $p$ & $ap$ \\
+\hline
+$1$  & \textcolor{blue}{1} & \textcolor{red}{$a$} & $p$ & $a p$ \\
+$a$  & & \textcolor{blue}{1} & \boxed{ap} & \boxed{p} \\
+$p$  & & & \boxed{\textcolor{green!60!black}{1}} & \textcolor{red}{$a$} \\
+$ap$ & & & & \boxed{\textcolor{green!60!black}{1}}
+\end{tabular}
+\\[0.2cm]
+\textcolor{green!40!black}{(b)} $p \equiv 3 \ (\mathrm{mod} \ 4)$
+\end{columns}
+
+\vfill
+
+\centering
+*Table:* Classification of binary quadratic forms over $\mathbb Q_{p}$ for $p \neq 2$
+
+### Hilbert Symbol
+
+$$
+\begin{aligned}
+f = aX^2 + bY^2 &\text{ represents } 1 \\
+\iff \\
+Z^2 - aX^2 - bY^2 &\text{ represents } 0.
+\end{aligned}
+$$
+
+\vspace{0.7cm}
+
+- Hilbert symbol:
+$$
+(a, b) = 
+\begin{cases}
+1 & \text{$Z^2-aX^2-bY^2$ represents 0}, \\
+-1 & \text{Otherwise}.
+\end{cases}
+$$
+
+### Computation of Hilbert Symbol
+
+\begin{columns}[T]
+\column{0.5\textwidth}
+\centering
+\begin{tabular}{c|rrrr}
+$(\cdot,\cdot)$ & $1$ & $a$ & $p$ & $ap$ \\
+\hline
+$1$  & $1$ & $1$ & $1$ & $1$ \\
+$a$  & & $1$ & $-1$ & $-1$ \\
+$p$  & & & $1$ & $-1$ \\
+$ap$ & & & & $1$
+\end{tabular}
+\\[0.2cm]
+\textcolor{green!40!black}{(a)} $p \equiv 1 \ (\mathrm{mod} \ 4)$
+
+\column{0.5\textwidth}
+\centering
+\begin{tabular}{c|rrrr}
+$(\cdot,\cdot)$ & $1$ & $a$ & $p$ & $ap$ \\
+\hline
+$1$  & $1$ & $1$ & $1$ & $1$ \\
+$a$  & & $1$ & $-1$ & $-1$ \\
+$p$  & & & $-1$ & $1$ \\
+$ap$ & & & & $-1$
+\end{tabular}
+\\[0.2cm]
+\textcolor{green!40!black}{(b)} $p \equiv 3 \ (\mathrm{mod} \ 4)$
+\end{columns}
+
+\vspace{0.3cm}
+
+\centering
+*Table:* Hilbert Symbol of $\mathbb Q_{p}$ for $p\neq2$
+
+\vfill
+
+- Hilbert symbol is a symmetric non-degenerate bilinear form.
+
+### Hasse Invariant
+
+- $f=a_1X_1^2+\cdots+a_nX_n^2$.
+
+\vspace{0.2cm}
+
+- Hasse invariant: $\varepsilon(f)=\prod_{i<j}(a_i,a_j)$
+    
+\vfill
+
+- $f_1=a_2X_2^2+\cdots+a_nX_n^2$.
+
+\vspace{0.2cm}
+
+- $d(f)=\prod_{i=1}^na_i=a_1\prod_{i=2}^na_i=a_1d(f_1)$.
+
+\vspace{0.1cm}
+
+- $\varepsilon(f)=\prod_{1\leq i<j\leq n}(a_i,a_j)=\varepsilon(f_1)\cdot(a_1,a_2\cdots a_n)=\varepsilon(f_1)\cdot(a_1,a_1d(f))$.
+
+### Representation of Numbers over $\mathbb Q_p$
+
+<!--*This involves a lot of tedious casework, so we will omit all details due to time constraints.-->
+
+
+$f$ represents $0$ over $\mathbb Q_p$ iff:
+
+- For $n=2$: $d=-1$;
+- For $n=3$: $(-1,-d)= \varepsilon$;
+- For $n=4$: $d \neq 1$ or $d=1$ and $\varepsilon = (-1,-1)$;
+- For $n\geq5$: no conditions.
+
+\vspace{0.5cm}
+
+By applying the result to $f_a=f \oplus -aZ^2$, we obtain:
+
+\vspace{0.5cm}
+
+$f$ represents $a\in \mathbb Q_p^\times$ iff:
+
+- For $n=1$: $a=d$;
+- For $n=2$: $( a,-d ) = \varepsilon$;
+- For $n=3$: $a \neq d$ or $a=d$ and $\varepsilon = ( -1,-d )$;
+- For $n\geq4$: no conditions.
+
+
+<!--Therefore, the set of numbers represented by a quadratic form $f$ is completely determined by its discriminant and Hasse invariant.-->
+
+## Classification of Quadratic Forms over $\mathbb Q_p$
+
+### $f \sim g$ over $\mathbb{Q}_p$
+
+:::{#thm-qp-classification}
+Two non-degenerate quadratic forms of rank $n$ over $\mathbb Q_p$ are equivalent iff they have the same discriminant $d$ and Hasse invariant $\varepsilon$.
+:::
+
+- $f,g$ have same $d$ and $\varepsilon$, thus there exists $a\in \mathbb Q_p^\times$ which both represented by $f$ and $g$.
+
+\vfill
+
+- Then $f \sim f_1 \oplus aZ^2$, where $f_1$ is of rank $n-1$. Similarly for $g$.
+
+\vfill
+
+- $d$ and $\varepsilon$ of $f_1$ can be determined:
+  
+  - $d(f_1) = a\cdot d(f) = a\cdot  d(g) = d(g_1)$
+  - $\varepsilon(f_1) = \varepsilon(f) \cdot (a, a d(f)) = \varepsilon(g) \cdot (a, a d(g)) = \varepsilon(g_1)$
+
+\vfill
+
+- Thus $f_1, g_1$ share the same $d$ and $\varepsilon$. 
+
+\vfill
+
+- By induction on $n$, the proof is completed.
+
+# Results
+
+## Classifications
+
+### Classification of Quadratic Forms over $\mathbb{Q}_p$
+
+Fix $(d,\varepsilon)$, all possible quadratic forms  over $\mathbb{Q}_p$:
+
+\vfill
+
+- $n=1$: $f=dX^2$
+
+\vfill
+
+- $n=2$: $f=aX^2+adY^2$, for
+
+    \vspace{0.1cm}
+
+    - $a\in\mathbb{Q}_p^\times / (\mathbb{Q}_p^\times)^2$
+
+\vfill
+
+- $n\geq3$: $f=aX_1^2+bX_2^2+abdX_3^2+\sum_{i>3} X^2_{i}$, for
+
+    \vspace{0.1cm}
+
+    - $a: a\neq -d$
+
+    \vspace{0.1cm}
+
+    - $b: (b,-ad)\cdot(a,-d)=\varepsilon$
+
+### Classification of Quadratic Forms over $\mathbb{Q}$
+
+:::{#thm-product-formula}
+
+## Product Formula
+
+$(a,b)_v=1$ for almost all $v\in \mathbb{V}$ and $\prod_{v\in\mathbb{V}}(a,b)_v=1$
+:::
+
+The invariants $d_v$ and $\varepsilon_v$ satisfy the following relations:
+
+\vspace{0.1cm}
+
+- $\varepsilon_v=1$ for almost $v\in\mathbb V$, and $\prod_{v\in\mathbb{V}}\varepsilon_v=1$.
+
+\vspace{0.1cm}
+
+- $\varepsilon_v=1$ if $n=1$ and if $n=2$ and if the image $d_v$ of $d$ in $\mathbb Q_p^\times/{\mathbb Q_p^\times}^2$ is equal to $-1$.
+
+\vspace{0.1cm}
+
+- $r,s\geq 0$ and $r+s=\operatorname{rank}$.
+
+\vspace{0.1cm}
+
+- $d_\infty=(-1)^s$
+
+\vspace{0.1cm}
+
+- $\varepsilon_\infty=(-1)^{s(s-1)/2}$
+
+### 
+
+\vspace{3cm}
+
+\begin{center}
+
+$\Huge{\textcolor{green!40!black}{\text{\bfseries Thank You!}}}$
+
+\vspace{2cm}
+
+\textcolor{green!40!black}{\bfseries Shubin Xue}
+
+\scriptsize\
+
+$\texttt{shubinx@qq.com}$
+
+Beijing Institute of Technology
+
+\end{center}

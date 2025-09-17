@@ -20,6 +20,8 @@ website:
         menu:
           - href: en-pre-classification-quadratic-forms-over-q.qmd
             text: "Classification of Quadratic Forms over ℚ"
+          - href: pre2.0.qmd
+            text: "pre"
       - text: Probability
         menu:
           - href: en-regular-conditional-probability.qmd
